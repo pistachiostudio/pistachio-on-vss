@@ -1,0 +1,61 @@
+body {
+    margin: 5rem 0px 5rem 5rem;
+    font-family: 'VT323', monospace;
+}
+
+html {
+    font-size: 18px;
+}
+
+/* Heading */
+h1 {
+    font-size: 3.0rem;
+    margin: 4rem 0 1rem 0;
+}
+
+h2 {
+    font-size: 1.5rem;
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+h3 {
+    font-size: 1.25rem;
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+h4 {
+    font-size: 1.0rem;
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+h5 {
+    font-size: 0.75rem;
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+h6 {
+    font-size: 0.5rem;
+    margin: 0.5rem 0 0.5rem 0;
+}
+
+
+/* Linke & hover */
+a:-webkit-any-link {
+    color: #999999;
+}
+
+a:hover {
+    color: #eb40a4;
+}
+
+/* social icons */
+.social {
+    list-style: none;
+    margin: 1rem 0 2rem 0;
+    padding: 0
+}
+
+.social>li {
+    display: inline-block;
+    padding-inline-end: 8px;
+}
