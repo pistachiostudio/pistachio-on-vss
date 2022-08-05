@@ -4,9 +4,23 @@
 +--------------------------------+
 */
 
+/* root variables. you can change colors here*/
+:root {
+    --title-color: #000000;
+    --main-font-color: #000000;
+    --link-color: #ff2222;
+    --link-hover-color: #fdb1de;
+    --social-button-color: #ff00d4;
+    --social-button-hover-color: #8bffa6;
+}
+
 body {
-    margin: 5rem 0px 5rem 5rem;
+    color: var(--main-font-color);
+    margin: 0rem 0px 5rem 5rem;
     font-family: 'VT323', monospace;
+    margin: 0 auto;
+    max-width: 500px;
+    padding: 1rem
 }
 
 html {
@@ -16,7 +30,7 @@ html {
 /* Heading */
 h1 {
     font-size: 3.0rem;
-    margin: 4rem 0 1rem 0;
+    margin: 3rem 0 1rem 0;
 }
 
 h2 {
@@ -26,7 +40,7 @@ h2 {
 
 h3 {
     font-size: 1.25rem;
-    margin: 0.5rem 0 0.5rem 0;
+    margin: 3.0rem 0 1.0rem 0;
 }
 
 h4 {
@@ -46,17 +60,30 @@ h6 {
 
 
 ul {
-    padding-left: 1.2rem;
+    margin-inline-start: 1.2rem;
 }
 
-
-/* Linke & hover */
-a:-webkit-any-link {
-    color: #999999;
+/* Link & hover */
+a:any-link {
+    color: var(--link-color);
+    text-decoration: none;
 }
 
 a:hover {
-    color: #eb40a4;
+    color: var(--link-hover-color);
+}
+
+#title:any-link {
+    color: var(--title-color);
+    text-decoration: none;
+}
+
+#social:any-link {
+    color: var(--social-button-color);
+}
+
+#social:hover {
+    color: var(--social-button-hover-color);
 }
 
 /* social icons */
@@ -69,4 +96,46 @@ a:hover {
 .social>li {
     display: inline-block;
     padding-inline-end: 8px;
+}
+
+/* footer copyright */
+.footer {
+    text-align: right;
+    font-size: 0.7rem;
+    margin-top: 4rem;
+}
+
+/* Responsive */
+
+/* smart phone */
+@media screen and (max-width: 768px) {
+    body {
+        background-color: #16ff68;
+    }
+
+    h1 {
+        margin: 1rem 0rem;
+    }
+
+    ul {
+        margin-inline-start: -1rem;
+    }
+}
+
+/* tablet */
+@media screen and (min-width: 768px) {
+    body {
+        background-color: #f1ff2d;
+    }
+
+    ul {
+        margin-inline-start: -1rem;
+    }
+}
+
+/* desktop */
+@media only screen and (min-width: 767px) and (max-width: 1280px) {
+    body {
+        background-color: aqua;
+    }
 }
