@@ -77,13 +77,20 @@ a:hover {
     color: #eb40a4;
 }
 
+#title:any-link {
+    color: var(--title-color);
+    text-decoration: none;
+}
 
+#social:any-link {
+    color: var(--social-button-color);
+    text-decoration: none;
+}
 
-
-
-
-
-
+#social:hover{
+    color: var(--social-button-hover-color);
+    text-decoration: none;
+}
 
 /* social icons */
 .social {
