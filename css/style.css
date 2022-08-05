@@ -1,3 +1,9 @@
+/*
++--------------------------------+
+| Hello, This is Pistacho Studio |
++--------------------------------+
+*/
+
 body {
     margin: 5rem 0px 5rem 5rem;
     font-family: 'VT323', monospace;
@@ -36,6 +42,11 @@ h5 {
 h6 {
     font-size: 0.5rem;
     margin: 0.5rem 0 0.5rem 0;
+}
+
+
+ul {
+    padding-left: 1.2rem;
 }
 
 
