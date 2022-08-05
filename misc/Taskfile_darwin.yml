@@ -1,0 +1,18 @@
+# https://taskfile.dev
+
+version: '3'
+
+vars:
+  TARGET: vss
+
+tasks:
+  archive:
+    desc: Create archive file
+    vars:
+      ARCHIVE_DIR: "dist/{{.TARGET}}_{{OS}}_{{ARCH}}"
+    cmds:
+      - mkdir -p dist
+      - mkdir -p {{.ARCHIVE_DIR}}
+      - mv {{.TARGET}} {{.ARCHIVE_DIR}}
+      - tar -zcvf {{.ARCHIVE_DIR}}.tar.gz {{.ARCHIVE_DIR}}
+      - rm -rf {{.ARCHIVE_DIR}}
