@@ -6,12 +6,13 @@
 
 /* root variables. you can change colors here*/
 :root {
+    --main-font-size: 20px;
     --title-color: #000000;
     --main-font-color: #000000;
     --link-color: #ff2222;
     --link-hover-color: #fdb1de;
-    --social-button-color: #ff00d4;
-    --social-button-hover-color: #8bffa6;
+    --social-button-color: #a230ff;
+    --social-button-hover-color: #dbffe3;
 }
 
 body {
@@ -24,7 +25,7 @@ body {
 }
 
 html {
-    font-size: 18px;
+    font-size: var(--main-font-size);
 }
 
 /* Heading */
@@ -34,12 +35,12 @@ h1 {
 }
 
 h2 {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     margin: 0.5rem 0 0.5rem 0;
 }
 
 h3 {
-    font-size: 1.25rem;
+    font-size: 1.1rem;
     margin: 3.0rem 0 1.0rem 0;
 }
 
@@ -74,7 +75,7 @@ a:hover {
 }
 
 a:hover {
-    color: #eb40a4;
+    color: var(--link-hover-color);
 }
 
 #title:any-link {
