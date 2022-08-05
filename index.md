@@ -1,7 +1,3 @@
-# Pistachio Studio
-
-## Neighborhood recording crew from kngw, Japan.
-
 ### Upcoming Party
 
 There is nothing going on. L(@_@;)  
