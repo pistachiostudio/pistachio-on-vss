@@ -86,6 +86,10 @@ a:hover {
     color: var(--social-button-hover-color);
 }
 
+#social:hover {
+    color: var(--social-button-hover-color);
+}
+
 /* social icons */
 .social {
     list-style: none;
