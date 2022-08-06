@@ -216,3 +216,7 @@ a:hover {
       animation: octocat-wave 560ms ease-in-out
   }
 }
+
+svg:not(:root) {
+  overflow: hidden
+}
