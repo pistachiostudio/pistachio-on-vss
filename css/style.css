@@ -4,15 +4,16 @@
 +--------------------------------+
 */
 
-/* root variables. you can change colors here*/
+/* root variables. you can change colors & weight here*/
 :root {
   --main-font-size: 20px;
-  --title-color: #000000;
   --main-font-color: #000000;
+  --title-color: #000000;
   --link-color: #ff2222;
   --link-hover-color: #fdb1de;
   --social-button-color: #a230ff;
   --social-button-hover-color: #dbffe3;
+  --title-shadow-color: #ffffff;
 }
 
 body {
@@ -27,6 +28,30 @@ body {
 html {
   font-size: var(--main-font-size);
 }
+
+/* title shadow */
+.h1-title {
+    text-shadow: 0.2rem 0.2rem 0rem var(--title-shadow-color);
+}
+
+
+.doggo {
+    animation: flash 0.3s linear infinite;
+    color: #ff2222;
+}
+
+@keyframes flash {
+
+    50%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.4;
+    }
+}
+
 
 /* Heading */
 h1 {
