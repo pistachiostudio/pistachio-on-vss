@@ -6,143 +6,141 @@
 
 /* root variables. you can change colors here*/
 :root {
-    --main-font-size: 20px;
-    --title-color: #000000;
-    --main-font-color: #000000;
-    --link-color: #ff2222;
-    --link-hover-color: #fdb1de;
-    --social-button-color: #a230ff;
-    --social-button-hover-color: #dbffe3;
+  --main-font-size: 20px;
+  --title-color: #000000;
+  --main-font-color: #000000;
+  --link-color: #ff2222;
+  --link-hover-color: #fdb1de;
+  --social-button-color: #a230ff;
+  --social-button-hover-color: #dbffe3;
 }
 
 body {
-    color: var(--main-font-color);
-    margin: 0rem 0px 5rem 5rem;
-    font-family: 'VT323', monospace;
-    margin: 0 auto;
-    max-width: 500px;
-    padding: 1rem
+  color: var(--main-font-color);
+  margin: 0rem 0px 5rem 5rem;
+  font-family: "VT323", monospace;
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 1rem;
 }
 
 html {
-    font-size: var(--main-font-size);
+  font-size: var(--main-font-size);
 }
 
 /* Heading */
 h1 {
-    font-size: 3.0rem;
-    margin: 3rem 0 1rem 0;
+  font-size: 3rem;
+  margin: 3rem 0 1rem 0;
 }
 
 h2 {
-    font-size: 1.2rem;
-    margin: 0.5rem 0 0.5rem 0;
+  font-size: 1.2rem;
+  margin: 0.5rem 0 0.5rem 0;
 }
 
 h3 {
-    font-size: 1.1rem;
-    margin: 3.0rem 0 1.0rem 0;
+  font-size: 1.1rem;
+  margin: 3rem 0 1rem 0;
 }
 
 h4 {
-    font-size: 1.0rem;
-    margin: 0.5rem 0 0.5rem 0;
+  font-size: 1rem;
+  margin: 0.5rem 0 0.5rem 0;
 }
 
 h5 {
-    font-size: 0.75rem;
-    margin: 0.5rem 0 0.5rem 0;
+  font-size: 0.75rem;
+  margin: 0.5rem 0 0.5rem 0;
 }
 
 h6 {
-    font-size: 0.5rem;
-    margin: 0.5rem 0 0.5rem 0;
+  font-size: 0.5rem;
+  margin: 0.5rem 0 0.5rem 0;
 }
 
-
 ul {
-    margin-inline-start: 1.2rem;
+  margin-inline-start: 1.2rem;
 }
 
 /* Link & hover */
 a:any-link {
-    color: var(--link-color);
-    text-decoration: none;
+  color: var(--link-color);
+  text-decoration: none;
 }
 
 a:hover {
-    color: var(--link-hover-color);
+  color: var(--link-hover-color);
 }
 
 a:hover {
-    color: var(--link-hover-color);
+  color: var(--link-hover-color);
 }
 
 #title:any-link {
-    color: var(--title-color);
-    text-decoration: none;
+  color: var(--title-color);
+  text-decoration: none;
 }
 
 #social:any-link {
-    color: var(--social-button-color);
-    text-decoration: none;
+  color: var(--social-button-color);
+  text-decoration: none;
 }
 
-#social:hover{
-    color: var(--social-button-hover-color);
-    text-decoration: none;
+#social:hover {
+  color: var(--social-button-hover-color);
+  text-decoration: none;
 }
 
 /* social icons */
 .social {
-    list-style: none;
-    margin: 1rem 0 2rem 0;
-    padding: 0
+  list-style: none;
+  margin: 1rem 0 2rem 0;
+  padding: 0;
 }
 
-.social>li {
-    display: inline-block;
-    padding-inline-end: 8px;
+.social > li {
+  display: inline-block;
+  padding-inline-end: 8px;
 }
 
 /* footer copyright */
 .footer {
-    text-align: right;
-    font-size: 0.7rem;
-    margin-top: 4rem;
+  text-align: right;
+  font-size: 0.7rem;
+  margin-top: 4rem;
 }
 
 /* Responsive */
-
 /* smart phone */
 @media screen and (max-width: 768px) {
-    body {
-        background-color: #16ff68;
-    }
+  body {
+    background-color: #16ff68;
+  }
 
-    h1 {
-        margin: 1rem 0rem;
-    }
+  h1 {
+    margin: 1rem 0rem;
+  }
 
-    ul {
-        margin-inline-start: -1rem;
-    }
+  ul {
+    margin-inline-start: -1rem;
+  }
 }
 
 /* tablet */
 @media screen and (min-width: 768px) {
-    body {
-        background-color: #f1ff2d;
-    }
+  body {
+    background-color: #f1ff2d;
+  }
 
-    ul {
-        margin-inline-start: -1rem;
-    }
+  ul {
+    margin-inline-start: -1rem;
+  }
 }
 
 /* desktop */
 @media only screen and (min-width: 767px) and (max-width: 1280px) {
-    body {
-        background-color: aqua;
-    }
+  body {
+    background-color: aqua;
+  }
 }
