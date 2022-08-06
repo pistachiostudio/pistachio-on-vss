@@ -7,7 +7,7 @@
 /* root variables. you can change colors & weight here*/
 :root {
   --main-font-size: 20px;
-  --social-font-size: 1.3rem;
+  --social-font-size: 1.5rem;
   --main-font-color: #000000;
   --title-color: #000000;
   --link-color: #ff2222;
@@ -161,6 +161,9 @@ a:hover {
   ul {
     margin-inline-start: -1rem;
   }
+  .social > li {
+    font-size: 1.0rem;
+  }
 }
 
 /* tablet */
@@ -212,21 +215,4 @@ a:hover {
   .github-corner .octo-arm {
       animation: octocat-wave 560ms ease-in-out
   }
-}
-
-/* font awesome iOS safari issue fix */
-.fa,
-.fas,
-.fa-solid,
-.far,
-.fa-regular,
-.fal,
-.fa-light,
-.fat,
-.fa-thin,
-.fad,
-.fa-duotone,
-.fab,
-.fa-brands {
-  text-rendering: optimizeLegibility;
 }
