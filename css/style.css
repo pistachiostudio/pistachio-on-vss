@@ -32,6 +32,7 @@ html {
 /* title shadow */
 .h1-title {
     text-shadow: 0.2rem 0.2rem 0rem var(--title-shadow-color);
+    text-decoration: underline;
 }
 
 
@@ -145,7 +146,12 @@ a:hover {
 
   h1 {
     margin: 1rem 0rem;
+    font-size:2.1rem;
   }
+
+    h2 {
+        font-size: 1.1rem;
+    }
 
   ul {
     margin-inline-start: -1rem;

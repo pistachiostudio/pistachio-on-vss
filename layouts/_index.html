@@ -23,15 +23,24 @@ XX                          XXXXXXX
 +--------------------------------+
 -->
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>Pistachio Studio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- local css -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://pistachiostudio.github.io/pistachio-on-vss/css/style.css">
-    <link href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/dot.css">
+
+    <!-- css dir for githubpages. you should disable when you develop local -->
+    <!-- <link rel="stylesheet" href="https://pistachiostudio.github.io/pistachio-on-vss/css/style.css"/> -->
+    <!-- <link rel="stylesheet" href="https://pistachiostudio.github.io/pistachio-on-vss/css/dot.css"/> -->
+
+    <!-- awesome font for social icons -->
+    <link href="https://use.fontawesome.com/releases/v6.1.1/css/all.css" rel="stylesheet"/>
+
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet"/>
+
+    <meta name="viewport" content="width=device-width"/>
 </head>
 
 <body>
@@ -63,12 +72,35 @@ XX                          XXXXXXX
 
     @contents
 
-<div class="footer">
-    <script type="text/javascript">
-        var today = new Date();
-        var y = today.getFullYear();
-        document.write("&copy; 2005-" + y + " Pistachio Studio.");
+    <!-- jquery hosted by google -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <!-- typewrighter settings -->
+    <script src="./js/t.js"></script>
+    <!-- <script src="https://pistachiostudio.github.io/pistachio-on-vss/js/t.js"></script> -->
+
+    <script>
+        $(function () {
+            $(".typek").t({
+                caret: '<span style="color:hotpink;">•</span>',
+                speed: 25,
+                beep: false,
+                mistype: 10,
+                locale: "en",
+                speed_vary: true,
+                blink: true,
+                delay: 1.4,
+            });
+        });
     </script>
-</div>
+
+    <!-- footer -->
+    <div class="footer">
+        <script type="text/javascript">
+            var today = new Date();
+            var y = today.getFullYear();
+            document.write("&copy; 2005-" + y + " Pistachio Studio.");
+        </script>
+    </div>
 
 </body>
