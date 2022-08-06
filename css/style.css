@@ -7,6 +7,7 @@
 /* root variables. you can change colors & weight here*/
 :root {
   --main-font-size: 20px;
+  --social-font-size: 1.3rem;
   --main-font-color: #000000;
   --title-color: #000000;
   --link-color: #ff2222;
@@ -38,7 +39,10 @@ html {
 
 .doggo {
     animation: flash 0.3s linear infinite;
+    margin-top: 2.2rem;
     color: #ff2222;
+    display: inline-block;
+    _display: inline;
 }
 
 @keyframes flash {
@@ -57,7 +61,7 @@ html {
 /* Heading */
 h1 {
   font-size: 3rem;
-  margin: 3rem 0 1rem 0;
+  margin: 1.5rem 0 1rem 0;
 }
 
 h2 {
@@ -126,6 +130,7 @@ a:hover {
 }
 
 .social > li {
+  font-size: var(--social-font-size);
   display: inline-block;
   padding-inline-end: 8px;
 }
@@ -207,4 +212,21 @@ a:hover {
   .github-corner .octo-arm {
       animation: octocat-wave 560ms ease-in-out
   }
+}
+
+/* font awesome iOS safari issue fix */
+.fa,
+.fas,
+.fa-solid,
+.far,
+.fa-regular,
+.fal,
+.fa-light,
+.fat,
+.fa-thin,
+.fad,
+.fa-duotone,
+.fab,
+.fa-brands {
+  text-rendering: optimizeLegibility;
 }
