@@ -26,26 +26,19 @@ XX                          XXXXXXX
 <head>
     <meta charset="utf-8" />
     <title>Pistachio Studio</title>
-
-    <!-- local css -->
+    <!-- CSS IMPORT -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/dot.css" />
-
-    <!-- css dir for githubpages. you should disable when you develop local -->
-    <!-- <link rel="stylesheet" href="https://pistachiostudio.github.io/pistachio-on-vss/css/style.css"/>
-    <link rel="stylesheet" href="https://pistachiostudio.github.io/pistachio-on-vss/css/dot.css"/> -->
-
-    <!-- awesome font for social icons -->
+    <!-- AWESOME FONT STYLE IMPORT FROM CDN -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" />
-
-    <!-- google font -->
+    <!-- GOOGLE FONT IMPORT FROM CDN -->
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
-
+    <!-- VIEWPORT FOR RESPONSIVE -->
     <meta name="viewport" content="width=device-width" />
 </head>
 
 <body>
-    <!-- left top dot icon. see dot.css -->
+    <!-- LEFT TOP DOT ICON, IF YOU WANT EDIT SEE "dot.css" -->
     <div class="dot"></div>
     <div class="doggo">*</div>
     <span class="typew">backgroud color: yellow(desktop), blue(tablet), green(mobile)</span>
@@ -54,7 +47,7 @@ XX                          XXXXXXX
     </h1>
     <h2 class="typek">Neighborhood recording crew from kngw, Japan.</h2>
 
-    <!-- Social navi icons using Font Awesome -->
+    <!-- SOCIAL ICONS USING FONT AWESOME -->
     <ul class="social">
         <li>
             <a id="social" href="http://instagram.com/pistachiostudio"><i class="fa-brands fa-instagram fa-shake"></i></a>
@@ -92,6 +85,7 @@ XX                          XXXXXXX
         </li>
     </ul>
 
+    <!-- @CONTENTS -->
     <h3>Upcoming Party</h3>
     <p>
         There is nothing going on. L(@_@;)<br />
@@ -199,14 +193,14 @@ XX                          XXXXXXX
         </li>
     </ul>
 
-    <!-- jquery hosted by google -->
+    <!-- JQUERY IMPORT FROM CDN HOSTED BY GOOGLE -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
-    <!-- typewrighter settings -->
+    <!-- TYPEWRITER EFFECT JS IMPORT -->
     <script src="./js/t.js"></script>
     <!-- <script src="https://pistachiostudio.github.io/pistachio-on-vss/js/t.js"></script> -->
 
-    <!-- h2 neighborhood recording ~ -->
+    <!-- H2 CLASS "typek" TYPEWRITER EFFECT SETTINGS -->
     <script>
         $(function () {
             $(".typek").t({
@@ -223,7 +217,8 @@ XX                          XXXXXXX
     </script>
 
 
-    <!-- on top message span -->
+    <!-- SPAN CLASS "typew" TYPEWRITER EFFECT SETTINGS
+    (TOP MESSAGE) -->
     <script>
         $(function () {
             $(".typew").t({
@@ -239,7 +234,7 @@ XX                          XXXXXXX
         });
     </script>
 
-    <!-- GitHub corners -->
+    <!-- GITHUB CORNERS -->
     <a href="https://github.com/pistachiostudio/pistachio-on-vss" class="github-corner"
         aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="
         fill: var(--github-corner-color);
@@ -259,7 +254,7 @@ XX                          XXXXXXX
         </svg></a>
 
 
-    <!-- footer copyright -->
+    <!-- FOOTER & COPYRIGHT SCRIPT -->
     <div class="footer">
         Acknowledgments: <a href="https://github.com/zztkm/vss">vss</a>, 
         <a href="https://mntn-dev.github.io/t.js/">t.js</a>, 
@@ -271,6 +266,5 @@ XX                          XXXXXXX
             document.write("&copy; 2005-" + y + " Pistachio Studio");
         </script>
     </div>
-
 
 </body>
