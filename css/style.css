@@ -4,17 +4,27 @@
 +--------------------------------+
 */
 
-/* root variables. you can change colors & weight here*/
+/* ROOT VARIABLES,
+YOU CAN CHANGE COLORS & WEIGHT HERE! */
 :root {
+  /* MAIN FONT SETTINGS */
   --main-font-size: 20px;
-  --social-font-size: 1.5rem;
   --main-font-color: #000000;
+  /* TOP TITLE COLOR */
   --title-color: #000000;
+  --title-shadow-color: #ffffff;
+  /* LINK COLOR SETTINGS */
   --link-color: #ff2222;
   --link-hover-color: #fdb1de;
+  /* SOCIAL ICON SETTINGS */
+  --social-font-size: 1.5rem;
   --social-button-color: #a230ff;
   --social-button-hover-color: #dbffe3;
-  --title-shadow-color: #ffffff;
+  /* GITHUB CORNER COLOR */
+  --github-corner-color: #000000;
+  --github-corner-inside-color: #f3ffe6;
+  /* DOGGO COLOR */
+  --doggo-color: #ff0000;
 }
 
 body {
@@ -30,35 +40,35 @@ html {
   font-size: var(--main-font-size);
 }
 
-/* title shadow */
+/* TITLE SHADOW */
 .h1-title {
-    text-shadow: 0.2rem 0.2rem 0rem var(--title-shadow-color);
-    text-decoration: underline;
+  text-shadow: 0.2rem 0.2rem 0rem var(--title-shadow-color);
+  text-decoration: underline;
 }
 
-
+/* DOGGO SETTING */
 .doggo {
-    animation: flash 0.3s linear infinite;
-    margin-top: 2.2rem;
-    color: #ff2222;
-    display: inline-block;
-    _display: inline;
+  animation: flash 0.3s linear infinite;
+  margin-top: 2.2rem;
+  color: var(--doggo-color);
+  display: inline-block;
+  _display: inline;
 }
 
 @keyframes flash {
 
-    50%,
-    100% {
-        opacity: 1;
-    }
+  50%,
+  100% {
+    opacity: 1;
+  }
 
-    50% {
-        opacity: 0.4;
-    }
+  50% {
+    opacity: 0.4;
+  }
 }
 
 
-/* Heading */
+/* HEADING */
 h1 {
   font-size: 3rem;
   margin: 1.5rem 0 1rem 0;
@@ -93,7 +103,7 @@ ul {
   margin-inline-start: 1.2rem;
 }
 
-/* Link & hover */
+/* LINK & HOVER */
 a:any-link {
   color: var(--link-color);
   text-decoration: none;
@@ -122,28 +132,28 @@ a:hover {
   text-decoration: none;
 }
 
-/* social icons */
+/* SOCIAL ICONS */
 .social {
   list-style: none;
   margin: 1rem 0 2rem 0;
   padding: 0;
 }
 
-.social > li {
+.social>li {
   font-size: var(--social-font-size);
   display: inline-block;
   padding-inline-end: 8px;
 }
 
-/* footer copyright */
+/* FOOTER & COPYRIGHT */
 .footer {
   text-align: right;
   font-size: 0.7rem;
   margin-top: 4rem;
 }
 
-/* Responsive */
-/* smart phone */
+/* RESPONSIVE */
+/* SMART PHONE */
 @media screen and (max-width: 768px) {
   body {
     background-color: #16ff68;
@@ -151,22 +161,23 @@ a:hover {
 
   h1 {
     margin: 1rem 0rem;
-    font-size:2.1rem;
+    font-size: 2.1rem;
   }
 
-    h2 {
-        font-size: 1.1rem;
-    }
+  h2 {
+    font-size: 1.1rem;
+  }
 
   ul {
     margin-inline-start: -1rem;
   }
-  .social > li {
+
+  .social>li {
     font-size: 1.0rem;
   }
 }
 
-/* tablet */
+/* TABLET */
 @media screen and (min-width: 768px) {
   body {
     background-color: #f1ff2d;
@@ -177,46 +188,42 @@ a:hover {
   }
 }
 
-/* desktop */
+/* DESKTOP */
 @media only screen and (min-width: 767px) and (max-width: 1280px) {
   body {
     background-color: aqua;
   }
 }
 
-/* GitHub corners */
+/* GITHUB CORNERS */
 .github-corner:hover .octo-arm {
-  animation: octocat-wave 560ms ease-in-out
+  animation: octocat-wave 560ms ease-in-out;
 }
 
 @keyframes octocat-wave {
 
   0%,
   100% {
-      transform: rotate(0)
+    transform: rotate(0)
   }
 
   20%,
   60% {
-      transform: rotate(-25deg)
+    transform: rotate(-25deg)
   }
 
   40%,
   80% {
-      transform: rotate(10deg)
+    transform: rotate(10deg)
   }
 }
 
 @media (max-width:500px) {
   .github-corner:hover .octo-arm {
-      animation: none
+    animation: none
   }
 
   .github-corner .octo-arm {
-      animation: octocat-wave 560ms ease-in-out
+    animation: octocat-wave 560ms ease-in-out
   }
-}
-
-svg:not(:root) {
-  overflow: hidden
 }
