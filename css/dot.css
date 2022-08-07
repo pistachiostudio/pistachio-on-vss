@@ -1,6 +1,9 @@
-/* Dot icon css.
-You can create your original dot icons only use css.
-check here https://bcrikko.github.io/css-collection/tool/dotgen/index.html */
+/*
+This is left top dot icon css.
+You can create your original dot icons only css.
+check & create your original one here
+https://bcrikko.github.io/css-collection/tool/dotgen/index.html
+*/
 
 .dot::before {
     content: "";
