@@ -1,25 +1,13 @@
 <!--
-   XXXXXXXXXX
-XXX          XXXX
-XX              XXX
-X                XXXXXXXXXXXX
-XX                          XXXXXXX
- XXXX      XXX   XXX              XXX
-    XXX    XXX   XXX               XX
-      XX                          XXX
-      XXX                       XXXX
-       XX XXXXXXXXXXXXX       XXXX
-       XX                     X
-        XXXX                  XXX
-          XXXXXXXX             XXX
-                XXXXXX          XXX
-                     XXX         XX
-                      XXXX       XX
-                        XXXXX XXXX
-                           XXXXXX
-+--------------------------------+
-| Hello, This is Pistacho Studio |
-+--------------------------------+
+ _______   ______   ______  
+/       \ /      | /      \ 
+$$$$$$$  |$$$$$$/ /$$$$$$  |
+$$ |__$$ |  $$ |  $$ \__$$/ 
+$$    $$/   $$ |  $$      \ 
+$$$$$$$/    $$ |   $$$$$$  |
+$$ |       _$$ |_ /  \__$$ |
+$$ |      / $$   |$$    $$/ 
+$$/       $$$$$$/  $$$$$$/  
 -->
 
 <!DOCTYPE html>
@@ -27,6 +15,8 @@ XX                          XXXXXXX
     <meta charset="utf-8" />
     <!-- FAVICON -->
     <link rel="icon" sizes="16x16" href="/favicon.ico" />
+    <link rel="icon" sizes="32x32" href="/favicon.ico" />
+    <link rel="icon" sizes="48x48" href="/favicon.ico" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/manifest.json" />
     <!-- TITLE & META DESCRIPTION -->
@@ -35,8 +25,6 @@ XX                          XXXXXXX
     <!-- CSS IMPORT -->
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/dot.css" />
-    <!-- AWESOME FONT STYLE IMPORT FROM CDN -->
-    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" rel="stylesheet" /> -->
     <!-- GOOGLE FONT IMPORT FROM CDN -->
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
     <!-- VIEWPORT FOR RESPONSIVE -->
@@ -48,7 +36,7 @@ XX                          XXXXXXX
     <div class="dot"></div>
     <div class="doggo">*</div>
     <span class="typew">backgroud color: yellow(desktop), blue(tablet), green(mobile)</br>
-    Issue: iOS Safari block social navi icons because of contents blocker(+_+;)</span>
+        Issue: iOS Safari block social navi icons because of contents blocker(+_+;)</span>
     <h1 class="h1-title">
         <a id="title" href="http://pistachiostudio.net">Pistachio Studio!</a>
     </h1>
@@ -57,10 +45,12 @@ XX                          XXXXXXX
     <!-- SOCIAL ICONS USING FONT AWESOME -->
     <ul class="social">
         <li>
-            <a id="social" href="http://instagram.com/pistachiostudio"><i class="fa-brands fa-instagram fa-shake"></i></a>
+            <a id="social" href="http://instagram.com/pistachiostudio"><i
+                    class="fa-brands fa-instagram fa-shake"></i></a>
         </li>
         <li>
-            <a id="social" href="https://twitter.com/pstchstd" target="_blank"><i class="fa-brands fa-twitter fa-shake"></i></a>
+            <a id="social" href="https://twitter.com/pstchstd" target="_blank"><i
+                    class="fa-brands fa-twitter fa-shake"></i></a>
         </li>
         <li>
             <a id="social" href="https://www.youtube.com/c/pistachiostudiokngw" target="_blank"><i
@@ -199,6 +189,8 @@ XX                          XXXXXXX
             <a href="https://www.youtube.com/watch?v=qhJkEV48OX4">youtube.com/watch?v=qhJkEV48OX4</a>
         </li>
     </ul>
+    <!-- /@CONTENTS -->
+
 
     <!-- JQUERY IMPORT FROM CDN HOSTED BY GOOGLE -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -224,8 +216,7 @@ XX                          XXXXXXX
     </script>
 
 
-    <!-- SPAN CLASS "typew" TYPEWRITER EFFECT SETTINGS
-    (TOP MESSAGE) -->
+    <!-- SPAN CLASS "typew" TYPEWRITER EFFECT SETTINGS (TOP MESSAGE) -->
     <script>
         $(function () {
             $(".typew").t({
@@ -243,14 +234,15 @@ XX                          XXXXXXX
 
     <!-- GITHUB CORNERS -->
     <a href="https://github.com/pistachiostudio/pistachio-on-vss" class="github-corner"
-        aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="
-        fill: var(--github-corner-color);
+        aria-label="View source on GitHub">
+        <svg width="80" height="80" viewBox="0 0 250 250"
+        style="fill: var(--github-corner-color);
         color: var(--github-corner-inside-color);
         position: absolute;
         top: 0;
         border: 0;
-        right: 0;
-      " aria-hidden="true">
+        right: 0;"
+        aria-hidden="true">
             <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
             <path
                 d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
@@ -263,8 +255,8 @@ XX                          XXXXXXX
 
     <!-- FOOTER & COPYRIGHT SCRIPT -->
     <div class="footer">
-        Acknowledgments: <a href="https://github.com/zztkm/vss">vss</a>, 
-        <a href="https://mntn-dev.github.io/t.js/">t.js</a>, 
+        Acknowledgments: <a href="https://github.com/zztkm/vss">vss</a>,
+        <a href="https://mntn-dev.github.io/t.js/">t.js</a>,
         <a href="https://fontawesome.com/">Font Awesome</a></br>
         Hosted by <a href="https://pages.github.com/">GitHub Pages</a></br>
         <script type="text/javascript">
