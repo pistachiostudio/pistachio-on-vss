@@ -4,6 +4,9 @@
 +--------------------------------+
 */
 
+/* IMPORT FONT AWESOME CSS */
+@import url(https://use.fontawesome.com/releases/v6.1.1/css/all.css);
+
 /* ROOT VARIABLES,
 YOU CAN CHANGE COLORS & WEIGHT HERE! */
 :root {
