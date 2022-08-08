@@ -1,4 +1,5 @@
 .venv
 vss.exe
+vss
 dist
 t.css
