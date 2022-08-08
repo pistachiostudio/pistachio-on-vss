@@ -1,0 +1,2 @@
+ghpages==0.0.1
+pycommando==2.1.3
