@@ -2,7 +2,7 @@
 
 testing for pistachiostudio.net on vss static site generator
 
-https://pistachiostudio.github.io/pistachio-on-vss/
+[https://dev.pistachiostudio.net/](https://dev.pistachiostudio.net/)
 
 ## vss
 
