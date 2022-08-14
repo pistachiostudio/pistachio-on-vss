@@ -1,5 +1,7 @@
 # pistachio-on-vss
 
+[![Deploy vss site to Pages](https://github.com/pistachiostudio/pistachio-on-vss/actions/workflows/pages.yml/badge.svg)](https://github.com/pistachiostudio/pistachio-on-vss/actions/workflows/pages.yml)
+
 testing for pistachiostudio.net on vss static site generator
 
 [https://dev.pistachiostudio.net/](https://dev.pistachiostudio.net/)
