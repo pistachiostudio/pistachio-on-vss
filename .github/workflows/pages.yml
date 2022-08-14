@@ -5,9 +5,9 @@ on:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
-    paths:
-      - "!README.md"
-      - "!archive/**"
+    paths-ignore:
+      - "README.md"
+      - "archive/**"
 
 
   # Allows you to run this workflow manually from the Actions tab
