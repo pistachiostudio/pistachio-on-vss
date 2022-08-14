@@ -30,8 +30,6 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Install vss cli
-        run: make setup
       - name: Checkout
         uses: actions/checkout@v3
         with:
@@ -39,6 +37,8 @@ jobs:
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v1
+      - name: Install vss cli
+        run: make setup
       - name: Build with vss
         run: make build
       - name: Upload artifact
