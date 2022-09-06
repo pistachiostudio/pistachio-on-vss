@@ -9,25 +9,35 @@ If you want more information, follow us on Instagram or Twitter!!
 
 ### News
 
-**Oct 25, 2021**  
+#### Oct 25, 2021
+
 CBS' lyrics on [GitHub](https://github.com/pistachiostudio/lyrics)
 
-**Jul 27, 2021**  
-Pistachio Minecraft server launched!  
-You can join any editions! (Bedrock or Java)  
-[Check on wiki>>>](https://github.com/pistachiostudio/gaming/wiki/Pistachio-Minecraft-server)  
+#### Jul 27, 2021
 
-**Jul 24, 2021**  
-Home-made MV "break down"  
-[Watch on YouTube>>>](https://youtu.be/PfU5vtTAxZE)  
+Pistachio Minecraft server launched!
 
-**Nov 18, 2019**  
-MV "All I Can Say"  
-[Watch on YouTube>>>](https://youtu.be/qjopZ2wYMFI)  
+You can join any editions! (Bedrock or Java)
 
-**Oct 22, 2019**  
-Minato Tape on subscribe  
-[Listen!>>>](https://linkco.re/73Q6rgVB)  
+[Check on wiki>>>](https://github.com/pistachiostudio/gaming/wiki/Pistachio-Minecraft-server)
+
+#### Jul 24, 2021
+
+Home-made MV "break down"
+
+[Watch on YouTube>>>](https://youtu.be/PfU5vtTAxZE)
+
+#### Nov 18, 2019
+
+MV "All I Can Say"
+
+[Watch on YouTube>>>](https://youtu.be/qjopZ2wYMFI)
+
+#### Oct 22, 2019
+
+Minato Tape on subscribe
+
+[Listen!>>>](https://linkco.re/73Q6rgVB)
 
 Our discography on [Discogs>>>](https://www.discogs.com/label/1290260-Pistachio-Studio-2)
 
