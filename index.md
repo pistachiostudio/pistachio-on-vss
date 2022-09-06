@@ -2,8 +2,9 @@ Hello, This is develop page of pistachiostudio.net
 
 ### Upcoming Party
 
-There is nothing going on. L(@_@;)  
-[Past Parties>>>](/pastgigs)  
+There is nothing going on. L(@_@;)
+
+[Past Parties>>>](https://pistachiostudio.net/past)
 
 If you want more information, follow us on Instagram or Twitter!!
 
@@ -37,15 +38,15 @@ MV "All I Can Say"
 
 Minato Tape on subscribe
 
-[Listen!>>>](https://linkco.re/73Q6rgVB)
-
+[Listen!>>>](https://linkco.re/73Q6rgVB)  
+  
 Our discography on [Discogs>>>](https://www.discogs.com/label/1290260-Pistachio-Studio-2)
 
 ### Members
 
 #### CBS & Chicken Is Nice
 
-- [pistachiostudio.net/cbscin](https://pistachiostudio.net/cbscin)
+- [pistachiostudio.net/cbscin](https://dev.pistachiostudio.net/cbscin)
 
 #### supple
 
