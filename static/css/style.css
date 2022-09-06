@@ -84,18 +84,18 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   margin: 0.5rem 0 0.5rem 0;
 }
 
 h3 {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
   margin: 3rem 0 1rem 0;
 }
 
 h4 {
-  font-size: 1rem;
-  margin: 0.5rem 0 0.5rem 0;
+  font-size: 1.1rem;
+  margin: 1.2rem 0 0.3rem 0;
 }
 
 h5 {
@@ -109,8 +109,17 @@ h6 {
 }
 
 ul {
+  list-style-type: square;
   margin-inline-start: 1.2rem;
+  margin-block-start: 0em;
+  margin-block-end: 1em;
 }
+
+/* Paragraph */
+p {
+  margin: 0.2rem 0 0.3rem 0;
+}
+
 
 /* LINK & HOVER */
 a:any-link {
