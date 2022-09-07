@@ -16,27 +16,28 @@ $$/       $$$$$$/  $$$$$$/
 /* ROOT VARIABLES,
 YOU CAN CHANGE COLORS & WEIGHT HERE! */
 :root {
+  /* MAIN BACKGROUND COLOR */
+  --main-bg-color: #1b45ff;
   /* MAIN FONT SETTINGS */
   --main-font-size: 20px;
-  --main-font-color: #000000;
+  --main-font-color: #d2d2d2;
   /* TOP TITLE COLOR */
-  --title-color: #000000;
-  --title-shadow-color: #ffffff;
+  --title-color: #d2d2d2;
+  --title-shadow-color: #000000;
   /* LINK COLOR SETTINGS */
-  --link-color: #ff2222;
-  --link-hover-color: #fdb1de;
+  --link-color: #ffd501;
+  --link-hover-color: #ffffff;
   /* SOCIAL ICON SETTINGS */
   --social-font-size: 1.5rem;
-  --social-button-color: #a230ff;
+  --social-button-color: #ffd501;
   --social-button-hover-color: #dbffe3;
-  /* GITHUB CORNER COLOR */
-  --github-corner-color: #000000;
-  --github-corner-inside-color: #f3ffe6;
-  /* DOGGO COLOR */
-  --doggo-color: #ff0000;
+  /* DOGGO (TOP *) COLOR */
+  --doggo-color: #ffd501;
 }
 
+
 body {
+  background-color: var(--main-bg-color);
   color: var(--main-font-color);
   margin: 0rem 0px 5rem 5rem;
   font-family: "VT323", monospace;
@@ -55,7 +56,7 @@ html {
   text-decoration: underline;
 }
 
-/* DOGGO SETTING */
+/* DOGGO (Dot) SETTING */
 .doggo {
   animation: flash 0.3s linear infinite;
   margin-top: 2.2rem;
@@ -65,7 +66,6 @@ html {
 }
 
 @keyframes flash {
-
   50%,
   100% {
     opacity: 1;
@@ -76,11 +76,11 @@ html {
   }
 }
 
-
 /* HEADING */
 h1 {
   font-size: 3rem;
   margin: 1.5rem 0 1rem 0;
+  text-decoration: underline;
 }
 
 h2 {
@@ -110,16 +110,15 @@ h6 {
 
 ul {
   list-style-type: square;
-  margin-inline-start: 1.2rem;
+  margin-inline-start: -0.4rem;
   margin-block-start: 0em;
   margin-block-end: 1em;
 }
 
-/* Paragraph */
+/* PARAGRAPH */
 p {
   margin: 0.2rem 0 0.3rem 0;
 }
-
 
 /* LINK & HOVER */
 a:any-link {
@@ -157,7 +156,7 @@ a:hover {
   padding: 0;
 }
 
-.social>li {
+.social > li {
   font-size: var(--social-font-size);
   display: inline-block;
   padding-inline-end: 8px;
@@ -173,10 +172,6 @@ a:hover {
 /* RESPONSIVE */
 /* SMART PHONE */
 @media screen and (max-width: 768px) {
-  body {
-    background-color: #16ff68;
-  }
-
   h1 {
     margin: 1rem 0rem;
     font-size: 2.1rem;
@@ -186,62 +181,15 @@ a:hover {
     font-size: 1.1rem;
   }
 
-  ul {
-    margin-inline-start: -1rem;
-  }
-
-  .social>li {
-    font-size: 1.0rem;
+  .social > li {
+    font-size: 1rem;
   }
 }
 
 /* TABLET */
 @media screen and (min-width: 768px) {
-  body {
-    background-color: #f1ff2d;
-  }
-
-  ul {
-    margin-inline-start: -1rem;
-  }
 }
 
 /* DESKTOP */
 @media only screen and (min-width: 767px) and (max-width: 1280px) {
-  body {
-    background-color: aqua;
-  }
-}
-
-/* GITHUB CORNERS */
-.github-corner:hover .octo-arm {
-  animation: octocat-wave 560ms ease-in-out;
-}
-
-@keyframes octocat-wave {
-
-  0%,
-  100% {
-    transform: rotate(0)
-  }
-
-  20%,
-  60% {
-    transform: rotate(-25deg)
-  }
-
-  40%,
-  80% {
-    transform: rotate(10deg)
-  }
-}
-
-@media (max-width:500px) {
-  .github-corner:hover .octo-arm {
-    animation: none
-  }
-
-  .github-corner .octo-arm {
-    animation: octocat-wave 560ms ease-in-out
-  }
 }
