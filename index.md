@@ -83,7 +83,7 @@ Our discography on [Discogs>>>](https://www.discogs.com/label/1290260-Pistachio-
 
 #### Terrapin Audio
 
-- [terrapin-audio.bandcamp.com](https://terrapin-audio.bandcamp.com)
+- [soundcloud.com/terrapin-audio](https://soundcloud.com/terrapin-audio)
 
 #### MC wakava
 
