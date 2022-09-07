@@ -50,3 +50,21 @@ testing for pistachiostudio.net on vss static site generator
 
 - Makefileを[これ](https://github.com/veltiosoft/kansuya/blob/main/Makefile)に
 - `make setup-win`
+
+
+## Install scripts (Windows only)
+
+#### PowerShellで下記を実行
+```
+irm https://raw.githubusercontent.com/vssio/vss_install/main/install.ps1 | iex
+```
+
+- 最新のvss.exeが `C:\Users\xxxxx\.vss\bin` に配置される
+- 環境変数でパスを通してくれる
+- vssのアップデートも同じスクリプトを実行すればOK
+
+うまくインストールが成功していれば、
+```
+$ vss help
+```
+でヘルプが表示される。
