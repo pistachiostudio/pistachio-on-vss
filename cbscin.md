@@ -1,6 +1,6 @@
 ### CBS
 
-Kyon Boy, Takaya & Basho.
+#### Kyon Boy, Takaya & Basho.
 
 ### Chicken Is Nice: A house band of Pistachio Studio.
 
@@ -12,7 +12,7 @@ Drums, Rhythm Programming, Compose
 
 Key, Compose, Arrange
 
-#### Kirito Yamada (4 strings Rikimaru)
+#### Kirito Yamada (Yongen)
 
 Bass
 
