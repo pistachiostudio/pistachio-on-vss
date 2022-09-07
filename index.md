@@ -2,7 +2,7 @@
 
 There is nothing going on. L(@_@;)
 
-[Past Parties>>>](https://pistachiostudio.net/past)
+[Past Parties>>>](https://dev.pistachiostudio.net/past)
 
 If you want more information, follow us on Instagram or Twitter!!
 
