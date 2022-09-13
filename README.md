@@ -2,69 +2,55 @@
 
 [![Deploy vss site to Pages](https://github.com/pistachiostudio/pistachio-on-vss/actions/workflows/pages.yml/badge.svg)](https://github.com/pistachiostudio/pistachio-on-vss/actions/workflows/pages.yml)
 
-testing for pistachiostudio.net on vss static site generator
+pistachiostudio.net on VSS static site generator
 
 [https://dev.pistachiostudio.net/](https://dev.pistachiostudio.net/)
 
-## vss
+## VSS
 
-[vss: Easy-to-use static site generator](https://github.com/vssio/vss) by [zzktkm](https://github.com/zztkm)
+[VSS: Easy-to-use static site generator](https://github.com/vssio/vss) by [zzktkm](https://github.com/zztkm)
 
-## deploy
+### Installing VSS
 
-デプロイは GitHub Actions で自動化されおり、以下をトリガーにしてデプロイされます
+#### For Windows PowerShell
 
-- main ブランチへの push (マージも含む)
-- README.md と archive dir 以外のファイルへの変更
-
-#### settings
-
-デプロイ設定については以下を確認してください
-
-- GitHub Pages の設定
-    - [Configuring a publishing source for your GitHub Pages site - GitHub Docs](https://docs.github.com/ja/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow)
-
-- Actions の設定
-    - Actions の動作内容については以下のファイルに定義されています
-    - [.github/workflows/pages.yml](https://github.com/pistachiostudio/pistachio-on-vss/blob/main/.github/workflows/pages.yml)
-
-- カスタムドメインの設定
-    - [GitHub Pages サイトのカスタムドメインを管理する - GitHub Docs](https://docs.github.com/ja/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain)
-
-## Operation note
-
-すぐに忘れるのでメモ
-
-#### ローカルで色々チェックするとき
-
-- vss.exeのlatestをルートに配置する
-- ビルドコマンドを実行
-  - bash: `./vss build`
-  - cmd: `vss build`
-- これで/distフォルダにビルドされる
-- /distフォルダでLive Serverを起動してチェックなどする
-- 本番に影響するのは/layoutsや/staticなので、/distでいじって最終は/layoutsや/staticをいじる。
-- /layoutsの.htmlはcssやjsのパスが違うので注意する。
-
-#### vss.exeをlatestに更新する
-
-- Makefileを[これ](https://github.com/veltiosoft/kansuya/blob/main/Makefile)に
-- `make setup-win`
-
-
-## Install scripts (Windows only)
-
-#### PowerShellで下記を実行
-```
+```shell
 irm https://raw.githubusercontent.com/vssio/vss_install/main/install.ps1 | iex
 ```
 
-- 最新のvss.exeが `C:\Users\xxxxx\.vss\bin` に配置される
-- 環境変数でパスを通してくれる
-- vssのアップデートも同じスクリプトを実行すればOK
+#### For Mac/Linux
 
-うまくインストールが成功していれば、
+[see here](https://github.com/vssio/vss#installation)
+
+### Commands
+
+```shell
+$ vss serve
+$ vss build
 ```
-$ vss help
-```
-でヘルプが表示される。
+
+## Deploy
+
+Deployment is automated via GitHub Actions.
+
+triggered by...
+- A push to the main branch (including merges)
+- Changes to `README.md` and `/archive dir` are ignored
+
+#### settings
+
+- GitHub Pages
+    - [Configuring a publishing source for your GitHub Pages site - GitHub Docs](https://docs.github.com/ja/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow)
+
+- Actions
+    - [.github/workflows/pages.yml](https://github.com/pistachiostudio/pistachio-on-vss/blob/main/.github/workflows/pages.yml)
+
+- Custom domains
+    - [GitHub Pages サイトのカスタムドメインを管理する - GitHub Docs](https://docs.github.com/ja/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain)
+
+## Acknowledgements
+
+- [VSS: Easy-to-use static site generator](https://github.com/vssio/vss) by [zzktkm](https://github.com/zztkm)
+- [t.js: Lightweight $.Hypertext.Typewriter](https://github.com/mntn-dev/t.js) by [mntn-dev](https://github.com/mntn-dev)
+- [VHS Retro](https://codepen.io/pbitos/pen/zypwVr) by [pbitos](https://codepen.io/pbitos)
+- [Font Awesome](https://fontawesome.com/)
