@@ -17,22 +17,22 @@ $$/       $$$$$$/  $$$$$$/
 YOU CAN CHANGE COLORS & WEIGHT HERE! */
 :root {
   /* MAIN BACKGROUND COLOR */
-  --main-bg-color: #1b45ff;
+  --main-bg-color: #0027d3;
   /* MAIN FONT SETTINGS */
   --main-font-size: 20px;
-  --main-font-color: #d2d2d2;
+  --main-font-color: #cbcbcb;
   /* TOP TITLE COLOR */
-  --title-color: #d2d2d2;
+  --title-color: #cbcbcb;
   --title-shadow-color: #000000;
   /* LINK COLOR SETTINGS */
-  --link-color: #ffd501;
+  --link-color: #ffdb25;
   --link-hover-color: #ffffff;
   /* SOCIAL ICON SETTINGS */
   --social-font-size: 1.5rem;
-  --social-button-color: #ffd501;
-  --social-button-hover-color: #dbffe3;
+  --social-button-color: #ffdb25;
+  --social-button-hover-color: #ffffff;
   /* DOGGO (TOP *) COLOR */
-  --doggo-color: #ffd501;
+  --doggo-color: #ffdb25;
 }
 
 

@@ -50,7 +50,7 @@
   background: linear-gradient(
     to bottom,
     transparent 50%,
-    rgba(0, 0, 0, 0.5) 51%
+    rgba(11, 11, 11, 0.5) 51%
   );
   background-size: 100% 4px;
   will-change: background, background-size;
@@ -127,25 +127,25 @@
 
 @keyframes opacity {
   0% {
-    opacity: 0.6;
-  }
-  20% {
     opacity: 0.3;
   }
+  20% {
+    opacity: 0.15;
+  }
   35% {
-    opacity: 0.5;
+    opacity: 0.25;
   }
   50% {
-    opacity: 0.8;
-  }
-  60% {
     opacity: 0.4;
   }
+  60% {
+    opacity: 0.2;
+  }
   80% {
-    opacity: 0.7;
+    opacity: 0.35;
   }
   100% {
-    opacity: 0.6;
+    opacity: 0.3;
   }
 }
 
