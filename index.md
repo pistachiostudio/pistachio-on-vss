@@ -2,7 +2,7 @@
 
 There is nothing going on. L(@_@;)
 
-[Past Parties>>>](https://dev.pistachiostudio.net/past)
+[Past Parties>>>](/past)
 
 #### 
 
@@ -48,7 +48,7 @@ Our discography on [Discogs>>>](https://www.discogs.com/label/1290260-Pistachio-
 
 #### CBS & Chicken Is Nice
 
-- [pistachiostudio.net/cbscin](https://dev.pistachiostudio.net/cbscin)
+- [pistachiostudio.net/cbscin](/cbscin)
 
 #### supple
 
@@ -60,7 +60,7 @@ Our discography on [Discogs>>>](https://www.discogs.com/label/1290260-Pistachio-
 
 #### Quojama
 
-- [quojama.com](http://quojama.com)
+- [quojama.com](https://quojama.com)
 
 #### ESME MORI
 
