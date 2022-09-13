@@ -1,197 +1,152 @@
-## Past Parties
+### Past Parties
 
 ### 2022
 
-#### May 21
-
-CBS @Fever, Shindaita
+05.21
+  - CBS @Fever, Shindaita
 
 ### 2021
 
-Oh… No party in 2021? L(@_@;)
+Oh… We are close in 2021 L(@_@;)/
 
 ### 2020
 
-#### Feb 23
-
-Pistachio Studio by Pistachio Studio @Citan, Higashinihonbashi.
+02.23
+  - Pistachio Studio by Pistachio Studio @Citan, Higashinihonbashi.
 
 ### 2019
 
-#### Oct 05
+10.05
+  - Chicken Is Nice @Music Salon Foggy, Kumegawa.
 
-Chicken Is Nice @Music Salon Foggy, Kumegawa.
+08.14
+  - CBS & Chicken Is Nice @Bar Chit Chat, Shin-Yurigaoka.
 
-#### Aug 14
+07.07
+  - CBS & Chicken Is Nice live recording session @BIN, Nakameguro.
 
-CBS & Chicken Is Nice @Bar Chit Chat, Shin-Yurigaoka.
+06.22
+  - CBS, mamiko suzuki & Chicken Is Nice @Lush, Shibuya.
 
-#### Jul 07
+05.02
+  - CBS & Chicken Is Nice @Lush, Shibuya.
 
-CBS & Chicken Is Nice live recording session @BIN, Nakameguro.
+02.02
+  - CBS @Batica, Ebisu.
 
-#### Jun 22
-
-CBS, mamiko suzuki & Chicken Is Nice @Lush, Shibuya.
-
-#### Mar 02
-
-CBS & Chicken Is Nice @Lush, Shibuya.
-
-#### Feb 02
-
-CBS @Batica, Ebisu.
-
-#### Jan 06
-
-Chicken Is Nice @Batica, Ebisu.
+01.06
+  - Chicken Is Nice @Batica, Ebisu.
 
 ### 2018
 
-#### Sep 07
+09.07
+  - CBS & Chicken Is Nice @Marz, Shinjuku.
 
-CBS & Chicken Is Nice @Marz, Shinjuku.
+08.25
+  - CBS & Chicken Is Nice @Unit, Daikanyama.
 
-#### Aug 25
+08.15
+  - CBS & Chicken Is Nice @Bar Chit Chat, Shin-Yurigaoka.
 
-CBS & Chicken Is Nice @Unit, Daikanyama.
+08.04
+  - CBS & Chicken Is Nice @Music Salon Foggy, Kumegawa.
 
-#### Aug 15
+07.07
+  - CBS & Chicken Is Nice live recording session @BIN, Nakameguro.
 
-CBS & Chicken Is Nice @Bar Chit Chat, Shin-Yurigaoka.
+05.26
+  - CBS @Bridge, Yokohama.
 
-#### Aug 04
+04.30
+  - CBS / suzuki mamiko / Chicken Is Nice ft. Makoichi / tajima hal band ft. kyoh3i / Toshiki Hayashi @Batica, Ebisu.
 
-CBS & Chicken Is Nice @Music Salon Foggy, Kumegawa.
+04.17
+  - CBS / tajima hal / Toshiki Hayashi @Dommune, Shibuya.
 
-#### July 07
+05.19
+  - CBS & Chicken Is Nice @Home, Shibuya.
 
-CBS & Chicken Is Nice live recording session @BIN, Nakameguro.
+02.04
+  - CBS & Chicken Is Nice / suzuki mamiko & Chicken Is Nice / TOSHIKI HAYASHI(%C) @Powers 2, Motosumiyoshi.
 
-#### May 26
-
-CBS @Bridge, Yokohama.
-
-#### Apr 30
-
-CBS / suzuki mamiko / Chicken Is Nice ft. Makoichi / tajima hal band ft. kyoh3i / Toshiki Hayashi @Batica, Ebisu.
-
-#### Apr 17
-
-CBS / tajima hal / Toshiki Hayashi @Dommune, Shibuya.
-
-#### Mar 19
-
-CBS & Chicken Is Nice @Home, Shibuya.
-
-#### Feb 04
-
-CBS & Chicken Is Nice / suzuki mamiko & Chicken Is Nice / TOSHIKI HAYASHI(%C) @Powers 2, Motosumiyoshi.
-
-#### Jan 28
-
-CBS & Chicken Is Nice / suzuki mamiko & Chicken Is Nice / TOSHIKI HAYASHI(%C) / Tajima Hal @Gardenia, Sagamihara.
+01.28
+  - CBS & Chicken Is Nice / suzuki mamiko & Chicken Is Nice / TOSHIKI HAYASHI(%C) / Tajima Hal @Gardenia, Sagamihara.
 
 ### 2017
 
-#### Dec 13
+12.13
+  - CBS & Chicken Is Nice @Bar Chit Chat, Shin-Yurigaoka.
 
-CBS & Chicken Is Nice @Bar Chit Chat, Shin-Yurigaoka.
+12.02
+  - CBS & Chicken Is Nice @Bird Land, Sendai.
 
-#### Dec 2
+11.18
+  - CBS & Chicken Is Nice @Batica, Ebisu.
 
-CBS & Chicken Is Nice @Bird Land, Sendai.
+11.05
+  - CBS & Chicken Is Nice @Powers 2, Motosumiyoshi.
 
-#### Nov 18
+11.04
+  - CBS & Chicken Is Nice @duo MUSIC EXCHANGE, Shibuya.
 
-CBS & Chicken Is Nice @Batica, Ebisu.
+10.07
+  - CBS & Chicken Is Nice @Lush, Shibuya.
 
-#### Nov 05
+10.01
+  - Pistachio Studio Special Party @Batica, Ebisu.
 
-CBS & Chicken Is Nice @Powers 2, Motosumiyoshi.
+09.10
+  - CBS & Chicken Is Nice @Three/Basement Bar, Shimokitazawa.
 
-#### Nov 04
+08.26
+  - CBS @Batica, Ebisu.
 
-CBS & Chicken Is Nice @duo MUSIC EXCHANGE, Shibuya.
+08.06
+  - CBS & Chicken Is Nice @Manhattan Records, Shibuya.
 
-#### Oct 07
+08.05
+  - CBS & Chicken Is Nice @Three, Shimokitazawa.
 
-CBS & Chicken Is Nice @Lush, Shibuya.
+07.23
+  - CBS @O-nest, Shibuya.
 
-#### Oct 01
+07.08
+  - CBS & Chicken Is Nice @Roots, Shibuya.
 
-Pistachio Studio Special Party @Batica, Ebisu.
+06.03
+  - CBS & Chicken Is Nice @Dope Music Bar Foggy, Kumegawa.
 
-#### Sep 10
+04.16
+  - CBS & Chicken Is Nice @Ruby Room, Shibuya.
 
-CBS & Chicken Is Nice @Three/Basement Bar, Shimokitazawa.
+05.19
+  - CBS @Batica, Ebisu.
 
-#### Aug 26
+05.10
+  - CBS @Solfa, Nakameguro.
 
-CBS @Batica, Ebisu.
-
-#### Aug 06
-
-CBS & Chicken Is Nice @Manhattan Records, Shibuya.
-
-#### Aug 05
-
-CBS & Chicken Is Nice @Three, Shimokitazawa.
-
-#### Jul 23
-
-CBS @O-nest, Shibuya.
-
-#### Jul 08
-
-CBS & Chicken Is Nice @Roots, Shibuya.
-
-#### Jun 03
-
-CBS & Chicken Is Nice @Dope Music Bar Foggy, Kumegawa.
-
-#### Apr 16
-
-CBS & Chicken Is Nice @Ruby Room, Shibuya.
-
-#### Mar 19
-
-CBS @Batica, Ebisu.
-
-#### Mar 10
-
-CBS @Solfa, Nakameguro.
-
-#### Jan 29
-
-CBS & Chicken Is Nice ft. Makoichi from OYAT / tajima hal @Batica, Ebisu.
+01.29
+  - CBS & Chicken Is Nice ft. Makoichi from OYAT / tajima hal @Batica, Ebisu.
 
 ### 2016
 
-#### Dec 23
+12.23
+  - CBS @Batica, Ebisu.
 
-CBS @Batica, Ebisu.
+10.15
+  - Manju (Hooliganz) With Chicken Is Nice @Surfers, Zushi.
 
-#### Oct 15
+09.22
+  - CBS @Solfa, Nakameguro.
 
-Manju (Hooliganz) With Chicken Is Nice @Surfers, Zushi.
+09.19
+  - CBS & Chicken Is Nice / TOSHIKI HAYASHI @Ruby Room, Shibuya.
 
-#### Sep 22
+09.02
+  - CBS & Chicken Is Nice @Lounge Neo, Shibuya.
 
-CBS @Solfa, Nakameguro.
+07.30
+  - CBS & Chicken Is Nice @Marz, Shinjuku.
 
-#### Sep 19
-
-CBS & Chicken Is Nice / TOSHIKI HAYASHI @Ruby Room, Shibuya.
-
-#### Sep 02
-
-CBS & Chicken Is Nice @Lounge Neo, Shibuya.
-
-#### Jul 30
-
-CBS & Chicken Is Nice @Marz, Shinjuku.
-
-#### May 14
-
-CBS & Chicken Is Nice @Oppa-la, Enoshima.
+05.14
+  - CBS & Chicken Is Nice @Oppa-la, Enoshima.
