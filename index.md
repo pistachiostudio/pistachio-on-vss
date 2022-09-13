@@ -1,7 +1,11 @@
 ### Upcoming Party
 
-There is nothing going on. L(@_@;)
+#### 2022.10.15
 
+CBS @Batica, Ebisu.
+
+<!-- There is nothing going on. L(@_@;) -->
+#### 
 [Past Parties>>>](/past)
 
 #### 
@@ -10,11 +14,11 @@ If you want more information, follow us on Instagram or Twitter!!
 
 ### News
 
-#### Oct 25, 2021
+#### 2021.10.25
 
 CBS' lyrics on [GitHub](https://github.com/pistachiostudio/lyrics)
 
-#### Jul 27, 2021
+#### 2021.07.27
 
 Pistachio Minecraft server launched!
 
@@ -22,23 +26,15 @@ You can join any editions! (Bedrock or Java)
 
 [Check on wiki>>>](https://github.com/pistachiostudio/gaming/wiki/Pistachio-Minecraft-server)
 
-#### Jul 24, 2021
+#### 2021.07.24
 
 Home-made MV "break down"
 
 [Watch on YouTube>>>](https://youtu.be/PfU5vtTAxZE)
 
-#### Nov 18, 2019
+#### 
 
-MV "All I Can Say"
-
-[Watch on YouTube>>>](https://youtu.be/qjopZ2wYMFI)
-
-#### Oct 22, 2019
-
-Minato Tape on subscribe
-
-[Listen!>>>](https://linkco.re/73Q6rgVB)
+[Old News>>>](/oldnews)
 
 #### 
 
