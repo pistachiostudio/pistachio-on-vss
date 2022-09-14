@@ -38,7 +38,7 @@ Home-made MV "break down"
 
 #### 
 
-Our discography on [Discogs>>>](https://www.discogs.com/label/1290260-Pistachio-Studio-2)
+Our discography on [Discogs](https://www.discogs.com/label/1290260-Pistachio-Studio-2)
 
 ### Members
 
@@ -69,6 +69,7 @@ Our discography on [Discogs>>>](https://www.discogs.com/label/1290260-Pistachio-
 #### tajima hal
 
 - [tajimahal.bandcamp.com](https://tajimahal.bandcamp.com)
+- [hermitcityrecordings.bandcamp.com](https://hermitcityrecordings.bandcamp.com/)
 
 #### mamiko suzuki
 
@@ -77,7 +78,7 @@ Our discography on [Discogs>>>](https://www.discogs.com/label/1290260-Pistachio-
 
 #### Antz aka Tsuyoshi Ando
 
-- [www.twitch.tv/tsuyoshi_ando](https://www.twitch.tv/tsuyoshi_ando)
+- [twitch.tv/tsuyoshi_ando](https://www.twitch.tv/tsuyoshi_ando)
 
 #### Terrapin Audio
 
