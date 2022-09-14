@@ -60,11 +60,11 @@ Our discography on [Discogs>>>](https://www.discogs.com/label/1290260-Pistachio-
 
 #### ESME MORI
 
-- [soundcloud.com/esme_mori](https://soundcloud.com/esme_mori)
+- [esmemori.com](https://esmemori.com/)
 
 #### TOSHIKI HAYASHI
 
-- [percentc.bandcamp.com](https://percentc.bandcamp.com)
+- [toshikihayashi.com](https://toshikihayashi.com/)
 
 #### tajima hal
 
