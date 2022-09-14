@@ -94,3 +94,7 @@ Our discography on [Discogs>>>](https://www.discogs.com/label/1290260-Pistachio-
 #### Timotei Oh! Oh!
 
 - [youtube.com/watch?v=qhJkEV48OX4](https://www.youtube.com/watch?v=qhJkEV48OX4)
+
+#### 
+
+[Check social list >>>](/social)
