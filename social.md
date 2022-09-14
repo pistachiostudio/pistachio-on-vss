@@ -2,6 +2,7 @@
 
 - [pistachiostudio.net](https://pistachiostudio.net/)
 - [toshikihayashi.com](https://toshikihayashi.com/)
+- [esmemori.com](https://esmemori.com/)
 - [suzukimamiko.com](https://suzukimamiko.com/)
 - [quojama.com](https://quojama.com/)
 
