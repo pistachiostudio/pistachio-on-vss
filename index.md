@@ -2,7 +2,7 @@
 
 #### 2022.10.15 [>>>](https://twitter.com/MikanShena/status/1569250498175442944)
 
-CBS @TimeOut Cafe, Ebisu.
+CBS / TOSHIKI HAYASHI(%C) @TimeOut Cafe, Ebisu.
 
 #### 2022.11.13 [>>>](https://craftrock.jp/cir2022/)
 
@@ -73,7 +73,7 @@ Our discography on [Discogs](https://www.discogs.com/label/1290260-Pistachio-Stu
 - [esmemori.com](https://esmemori.com/)
 - [Spotify](https://open.spotify.com/artist/76H8LGZ7isj2XG6ZRMYpzK)
 
-#### TOSHIKI HAYASHI
+#### TOSHIKI HAYASHI(%C)
 
 - [toshikihayashi.com](https://toshikihayashi.com/)
 - [Spotify](https://open.spotify.com/artist/2BSv9udyrO0Mm0ckZAkQSI)
