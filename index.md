@@ -62,7 +62,7 @@ Our discography on [Discogs](https://www.discogs.com/label/1290260-Pistachio-Stu
 
 #### ryo takahashi
 
-- [soundcloud.com/aaairyo](https://soundcloud.com/aaairyo)
+- [twitter.com/aaairyo](https://twitter.com/aaairyo)
 
 #### Quojama
 
