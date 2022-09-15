@@ -46,7 +46,12 @@ Our discography on [Discogs](https://www.discogs.com/label/1290260-Pistachio-Stu
 
 ### Members
 
-#### CBS & Chicken Is Nice
+#### CBS: Kyon boi, Takaya & Basho
+
+- [cbsmusic.bandcamp.com/](https://cbsmusic.bandcamp.com/)
+- [Spotify](https://open.spotify.com/artist/7AHhB1P3XhzSw4oPT2unag)
+
+#### Chicken Is Nice
 
 - [pistachiostudio.net/cbscin](/cbscin)
 
@@ -83,7 +88,7 @@ Our discography on [Discogs](https://www.discogs.com/label/1290260-Pistachio-Stu
 
 - [Spotify](https://open.spotify.com/artist/6JavWK8JRQbZ3oX9nrkSyb)
 
-#### mamiko suzuki
+#### suzuki mamiko
 
 - [suzukimamiko.com](https://suzukimamiko.com/)
 - [chelmico.com](http://chelmico.com/)
