@@ -1,12 +1,12 @@
 ### Upcoming Party
 
-#### 2022.10.15
+#### 2022.10.15 [>>>](https://twitter.com/MikanShena/status/1569250498175442944)
 
 CBS @TimeOut Cafe, Ebisu.
 
-#### 2022.11.13
+#### 2022.11.13 [>>>](https://craftrock.jp/cir2022/)
 
-CBS & Chicken Is Nice / suzuki mamiko @Craftrock Circuit, Kichijoji
+CBS & Chicken Is Nice / suzuki mamiko @Craftrock Circuit, Kichijoji.
 
 <!-- There is nothing going on. L(@_@;) -->
 #### 
