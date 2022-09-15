@@ -2,7 +2,11 @@
 
 #### 2022.10.15
 
-CBS @Batica, Ebisu.
+CBS @TimeOut Cafe, Ebisu.
+
+#### 2022.11.13
+
+CBS & Chicken Is Nice / suzuki mamiko @Craftrock Circuit, Kichijoji
 
 <!-- There is nothing going on. L(@_@;) -->
 #### 
@@ -49,6 +53,7 @@ Our discography on [Discogs](https://www.discogs.com/label/1290260-Pistachio-Stu
 #### supple
 
 - [soundcloud.com/supple](https://soundcloud.com/supple)
+- [Spotify](https://open.spotify.com/artist/2uEVJZxMFmlMHktYPBCDa9)
 
 #### ryo takahashi
 
@@ -61,24 +66,37 @@ Our discography on [Discogs](https://www.discogs.com/label/1290260-Pistachio-Stu
 #### ESME MORI
 
 - [esmemori.com](https://esmemori.com/)
+- [Spotify](https://open.spotify.com/artist/76H8LGZ7isj2XG6ZRMYpzK)
 
 #### TOSHIKI HAYASHI
 
 - [toshikihayashi.com](https://toshikihayashi.com/)
+- [Spotify](https://open.spotify.com/artist/2BSv9udyrO0Mm0ckZAkQSI)
 
 #### tajima hal
 
 - [tajimahal.bandcamp.com](https://tajimahal.bandcamp.com)
 - [hermitcityrecordings.bandcamp.com](https://hermitcityrecordings.bandcamp.com/)
+- [Spotify](https://open.spotify.com/artist/5SuPIkCZe2U5TZCqYX4mcI)
+
+#### TiMT
+
+- [Spotify](https://open.spotify.com/artist/6JavWK8JRQbZ3oX9nrkSyb)
 
 #### mamiko suzuki
 
 - [suzukimamiko.com](https://suzukimamiko.com/)
 - [chelmico.com](http://chelmico.com/)
+- [Spotify](https://open.spotify.com/artist/21bkNzNX7do9qb8SM9wFQF)
 
-#### Antz aka Tsuyoshi Ando
+#### Shinobu Achiha
+
+- [instagram.com/ac40v](https://www.instagram.com/ac40v/)
+
+#### Tsuyoshi Ando aka ANTz
 
 - [twitch.tv/tsuyoshi_ando](https://www.twitch.tv/tsuyoshi_ando)
+- [soundcloud.com/tsuyoshi_ando](https://soundcloud.com/tsuyoshi_ando)
 
 #### Terrapin Audio
 
