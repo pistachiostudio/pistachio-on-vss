@@ -20,7 +20,9 @@ If you want more information, follow us on Instagram or Twitter!!
 
 #### 2022.09.16
 
-Rebuild pistachiostudio.net see [GitHub repo](https://github.com/pistachiostudio/pistachio-on-vss)
+Rebuild pistachiostudio.net
+
+[Check GitHub repo>>>](https://github.com/pistachiostudio/pistachio-on-vss)
 
 #### 2021.10.25
 
@@ -32,13 +34,13 @@ Pistachio Minecraft server launched!
 
 You can join any editions! (Bedrock or Java)
 
-[Check on wiki>>>](https://github.com/pistachiostudio/gaming/wiki/Pistachio-Minecraft-server)
+[Check wiki>>>](https://github.com/pistachiostudio/gaming/wiki/Pistachio-Minecraft-server)
 
 #### 2021.07.24
 
 Home-made MV "break down"
 
-[Watch on YouTube>>>](https://youtu.be/PfU5vtTAxZE)
+[Watch YouTube>>>](https://youtu.be/PfU5vtTAxZE)
 
 #### 
 
