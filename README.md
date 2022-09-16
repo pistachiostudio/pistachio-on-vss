@@ -4,7 +4,7 @@
 
 pistachiostudio.net on VSS static site generator
 
-[https://dev.pistachiostudio.net/](https://dev.pistachiostudio.net/)
+[https://pistachiostudio.net/](https://pistachiostudio.net/)
 
 ## VSS
 
