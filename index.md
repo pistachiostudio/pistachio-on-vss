@@ -18,6 +18,10 @@ If you want more information, follow us on Instagram or Twitter!!
 
 ### News
 
+#### 2022.09.16
+
+Rebuild pistachiostudio.net see [GitHub repo](https://github.com/pistachiostudio/pistachio-on-vss)
+
 #### 2021.10.25
 
 CBS' lyrics on [GitHub](https://github.com/pistachiostudio/lyrics)
