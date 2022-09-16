@@ -7,7 +7,7 @@
 
 ### 2021
 
-Oh… We are close in 2021 L(@_@;)/
+Oh… We closed in 2021 L(@_@;)/
 
 ### 2020
 
