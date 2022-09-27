@@ -1,2 +1,5 @@
 title = "Pistachio Studio"
 description = "Neighborhood recording crew Kngw, Japan."
+
+[build]
+ignore_files = ["howtoupdate.md"]
