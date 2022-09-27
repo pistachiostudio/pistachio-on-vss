@@ -4,6 +4,10 @@
 
 CBS / TOSHIKI HAYASHI(%C) @TimeOut Cafe, Ebisu.
 
+#### 2022.10.22 [>>>](https://twitter.com/kinz_up/status/1574715688648081408)
+
+CBS @LUSH, Shibuya.
+
 #### 2022.11.13 [>>>](https://craftrock.jp/cir2022/)
 
 CBS & Chicken Is Nice / suzuki mamiko @Craftrock Circuit, Kichijoji.
