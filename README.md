@@ -48,7 +48,7 @@ triggered by...
 - Custom domains
     - [GitHub Pages サイトのカスタムドメインを管理する - GitHub Docs](https://docs.github.com/ja/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain)
 
-## Acknowledgements
+## Acknowledgments
 
 - [VSS: Easy-to-use static site generator](https://github.com/vssio/vss) by [zzktkm](https://github.com/zztkm)
 - [t.js: Lightweight $.Hypertext.Typewriter](https://github.com/mntn-dev/t.js) by [mntn-dev](https://github.com/mntn-dev)
