@@ -20,10 +20,6 @@ CBS & Chicken Is Nice / suzuki mamiko @Craftrock Circuit, Kichijoji.
 #### 
 [Past Parties>>>](/past)
 
-#### 
-
-If you want more information, follow us on Instagram or Twitter!!
-
 ### News
 
 #### 2022.09.16
