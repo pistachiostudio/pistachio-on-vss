@@ -8,6 +8,10 @@ CBS / TOSHIKI HAYASHI(%C) @TimeOut Cafe, Ebisu.
 
 CBS @LUSH, Shibuya.
 
+#### 2022.10.30 [>>>](https://setagaya-panmatsuri.com/contents/pan-radio/)
+
+CBS & Chiecken Is Nice @Setagaya-Park.
+
 #### 2022.11.13 [>>>](https://craftrock.jp/cir2022/)
 
 CBS & Chicken Is Nice / suzuki mamiko @Craftrock Circuit, Kichijoji.
