@@ -1,13 +1,5 @@
 ### Upcoming Party
 
-#### 2022.10.15 [>>>](https://twitter.com/MikanShena/status/1569250498175442944)
-
-CBS / TOSHIKI HAYASHI(%C) @TimeOut Cafe, Ebisu.
-
-#### 2022.10.22 [>>>](https://twitter.com/kinz_up/status/1574715688648081408)
-
-CBS @LUSH, Shibuya.
-
 #### 2022.10.30 [>>>](https://setagaya-panmatsuri.com/contents/pan-radio/)
 
 CBS & Chiecken Is Nice @Setagaya-Park.

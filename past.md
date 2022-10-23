@@ -2,6 +2,12 @@
 
 ### 2022
 
+10.22
+  - CBS @LUSH, Shibuya.
+
+10.15
+  - CBS / TOSHIKI HAYASHI(%C) @TimeOut Cafe, Ebisu.
+
 05.21
   - CBS @Fever, Shindaita
 
