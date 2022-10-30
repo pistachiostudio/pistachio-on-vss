@@ -1,9 +1,5 @@
 ### Upcoming Party
 
-#### 2022.10.30 [>>>](https://setagaya-panmatsuri.com/contents/pan-radio/)
-
-CBS & Chiecken Is Nice @Setagaya-Park.
-
 #### 2022.11.13 [>>>](https://craftrock.jp/cir2022/)
 
 CBS & Chicken Is Nice / suzuki mamiko @Craftrock Circuit, Kichijoji.
@@ -16,7 +12,7 @@ CBS & Chicken Is Nice / suzuki mamiko @Craftrock Circuit, Kichijoji.
 
 #### 2022.09.16
 
-Rebuild pistachiostudio.net
+Rebuilding pistachiostudio.net
 
 [Check GitHub repo>>>](https://github.com/pistachiostudio/pistachio-on-vss)
 

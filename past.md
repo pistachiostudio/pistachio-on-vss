@@ -2,6 +2,10 @@
 
 ### 2022
 
+10.30
+
+  - CBS & Chiecken Is Nice @Setagaya-Park.
+
 10.22
   - CBS @LUSH, Shibuya.
 
