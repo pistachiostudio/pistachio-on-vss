@@ -1,5 +1,6 @@
 title = "Pistachio Studio"
 description = "Neighborhood recording crew Kngw, Japan."
+base_url = 'https://pistachiostudio.net/'
 
 [build]
 ignore_files = ["howtoupdate.md"]

@@ -2,6 +2,10 @@
 
 ### 2022
 
+11.13
+
+  - CBS & Chicken Is Nice / suzuki mamiko @Craftrock Circuit, Kichijoji.
+
 10.30
 
   - CBS & Chiecken Is Nice @Setagaya-Park.

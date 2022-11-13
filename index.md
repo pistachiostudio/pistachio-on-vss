@@ -1,10 +1,7 @@
 ### Upcoming Party
 
-#### 2022.11.13 [>>>](https://craftrock.jp/cir2022/)
+No scheduled L(@_@;)
 
-CBS & Chicken Is Nice / suzuki mamiko @Craftrock Circuit, Kichijoji.
-
-<!-- There is nothing going on. L(@_@;) -->
 #### 
 [Past Parties>>>](/past)
 
@@ -15,24 +12,6 @@ CBS & Chicken Is Nice / suzuki mamiko @Craftrock Circuit, Kichijoji.
 Rebuilding pistachiostudio.net
 
 [Check GitHub repo>>>](https://github.com/pistachiostudio/pistachio-on-vss)
-
-#### 2021.10.25
-
-CBS' lyrics on [GitHub](https://github.com/pistachiostudio/lyrics)
-
-#### 2021.07.27
-
-Pistachio Minecraft server launched!
-
-You can join any editions! (Bedrock or Java)
-
-[Check wiki>>>](https://github.com/pistachiostudio/gaming/wiki/Pistachio-Minecraft-server)
-
-#### 2021.07.24
-
-Home-made MV "break down"
-
-[Watch YouTube>>>](https://youtu.be/PfU5vtTAxZE)
 
 #### 
 
