@@ -5,7 +5,7 @@ check & create your original one here
 https://bcrikko.github.io/css-collection/tool/dotgen/index.html
 */
 
-.dot::before {
+.cc_cat_dot::before {
     content: "";
     position: absolute;
     top: 5px;
