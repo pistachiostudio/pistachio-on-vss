@@ -7,6 +7,12 @@ No scheduled L(@_@;)
 
 ### News
 
+#### 2022.12.03
+
+CBS new album "Classic Brown Sounds 2" on street
+
+[Check on LinkCore>>>](https://linkco.re/HQDd227G)
+
 #### 2022.09.16
 
 Rebuilding pistachiostudio.net

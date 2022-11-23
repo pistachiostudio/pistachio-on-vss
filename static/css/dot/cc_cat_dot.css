@@ -8,8 +8,8 @@ https://bcrikko.github.io/css-collection/tool/dotgen/index.html
 .cc_cat_dot::before {
     content: "";
     position: absolute;
-    top: 5px;
-    left: 5px;
+    top: 4px;
+    left: 4px;
 
     width: 4px;
     height: 4px;
