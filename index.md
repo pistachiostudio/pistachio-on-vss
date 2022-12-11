@@ -1,6 +1,10 @@
 ### Upcoming Party
 
-No scheduled L(@_@;)
+#### 2023.01.15 [>>>](https://twitter.com/percent_c/status/1599328364875378688)
+
+PISTACHIO mtg @TimeOut Cafe, Ebisu
+
+<!-- No scheduled L(@_@;) -->
 
 #### 
 [Past Parties>>>](/past)
