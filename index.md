@@ -4,6 +4,14 @@
 
 PISTACHIO mtg @TimeOut Cafe, Ebisu
 
+#### 2023.02.05
+
+CBS & Chicken Is Nice (TBA)
+
+#### 2023.02.26
+
+(;@_@)<TBA...It's a special!
+
 <!-- No scheduled L(@_@;) -->
 
 #### 
