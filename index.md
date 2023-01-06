@@ -4,7 +4,7 @@
 
 PISTACHIO mtg @TimeOut Cafe, Ebisu
 
-#### 2023.02.05 [>>>](https://twitter.com/BarChitChat/status/1607764424823312384)
+#### 2023.02.05 [>>>](https://twitter.com/BarChitChat/status/1608390455825420289)
 
 CBS & Chicken Is Nice @Bar Chit Chat, Shin-Yurigaoka  
 Thank you, sold out.
