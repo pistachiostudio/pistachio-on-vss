@@ -23,7 +23,7 @@ YOU CAN CHANGE COLORS & WEIGHT HERE! */
   --main-bg-color: #202020;
   /* MAIN FONT SETTINGS */
   --main-font-size: 20px;
-  --main-font-color: #4684b3;
+  --main-font-color: #d0d0d0;
   /* TOP TITLE COLOR */
   --title-color: #E5B62F;
   --title-shadow-color: #4684b3;
@@ -38,7 +38,7 @@ YOU CAN CHANGE COLORS & WEIGHT HERE! */
   --selection-text-color: #ffffff;
   --selection-bg-color: #007338;
   /* DOGGO (TOP *) COLOR */
-  --doggo-color: #ffdb25;
+  --doggo-color: #4684b3;
 }
 
 
