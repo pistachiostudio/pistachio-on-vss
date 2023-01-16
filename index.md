@@ -1,16 +1,12 @@
 ### Upcoming Party
 
-#### 2023.01.15 [>>>](https://twitter.com/percent_c/status/1599328364875378688)
-
-PISTACHIO mtg @TimeOut Cafe, Ebisu
-
 #### 2023.02.05 [>>>](https://twitter.com/BarChitChat/status/1607764424823312384)
 
-CBS & Chicken Is Nice @Bar Chit Chat, Shin-Yurigaoka
+[SOLD] CBS & Chicken Is Nice @Bar Chit Chat, Shin-Yurigaoka
 
-#### 2023.02.26
+#### 2023.02.26 [>>>](https://twitter.com/pstchstd/status/1614522734134059009)
 
-(;@_@)<TBA...It's a special!
+[SOLD] Pistachio Live @Grass Roots, Yokohama
 
 <!-- No scheduled L(@_@;) -->
 

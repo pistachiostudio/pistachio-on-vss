@@ -1,5 +1,11 @@
 ### Past Parties
 
+### 2023
+
+01.15
+
+  - PISTACHIO mtg @TimeOut Cafe, Ebisu
+
 ### 2022
 
 11.13
