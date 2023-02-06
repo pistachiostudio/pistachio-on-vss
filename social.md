@@ -32,7 +32,7 @@
 - [@percent\_c](https://www.instagram.com/percent_c/)
 - [@quojama](https://www.instagram.com/quojama/)
 - [@kyon\_boy](https://www.instagram.com/kyon_boy/)
-- [@bashou\_](https://www.instagram.com/bashou_/)
+- [@basho_cbs](https://www.instagram.com/basho_cbs/)
 - [@takayaman0620](https://www.instagram.com/takayaman0620/)
 - [@kiritoyamada](https://www.instagram.com/kiritoyamada/)
 - [@\_esme\_mori\_](https://www.instagram.com/_esme_mori_/)
@@ -63,6 +63,7 @@
 - [Discord](https://discord.com/invite/pistachiogaming)
 - [GitHub](https://github.com/pistachiostudio)
 - [Twitch](https://www.twitch.tv/pistachiostudio)
+- [Tsuyoshi Ando Twitch](https://www.twitch.tv/tsuyoshi_ando)
 
 ### Inquiry
 

@@ -1,12 +1,8 @@
 ### Upcoming Party
 
-#### 2023.02.05 [>>>](https://twitter.com/BarChitChat/status/1608390455825420289)
-
-[SOLD] CBS & Chicken Is Nice @Bar Chit Chat, Shin-Yurigaoka
-
 #### 2023.02.26 [>>>](https://twitter.com/pstchstd/status/1614522734134059009)
 
-[SOLD] Pistachio Live @Grass Roots, Yokohama
+[SOLD] Pistachio Live @Grass Roots, Yokohama.
 
 <!-- No scheduled L(@_@;) -->
 
@@ -17,7 +13,7 @@
 
 #### 2022.12.03
 
-CBS new album "Classic Brown Sounds 2" on street
+CBS new album "Classic Brown Sounds 2" on street.
 
 [Check on LinkCore>>>](https://linkco.re/HQDd227G)
 

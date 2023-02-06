@@ -2,6 +2,10 @@
 
 ### 2023
 
+02.05
+
+  - CBS & Chicken Is Nice @Bar Chit Chat, Shin-Yurigaoka.
+
 01.15
 
   - PISTACHIO mtg @TimeOut Cafe, Ebisu
