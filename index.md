@@ -4,6 +4,10 @@
 
 [SOLD] Pistachio Live @Grass Roots, Yokohama.
 
+#### 2023.05.28 [>>>](https://craftrock.jp/fes2023/)
+
+CBS & Chicken is Nice @Craftrock Festival '23.
+
 <!-- No scheduled L(@_@;) -->
 
 #### 
