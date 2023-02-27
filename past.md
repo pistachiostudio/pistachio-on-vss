@@ -2,6 +2,10 @@
 
 ### 2023
 
+02.26
+
+  - Pistachio Live @Grass Roots, Yokohama.
+
 02.05
 
   - CBS & Chicken Is Nice @Bar Chit Chat, Shin-Yurigaoka.

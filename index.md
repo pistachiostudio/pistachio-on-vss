@@ -1,9 +1,5 @@
 ### Upcoming Party
 
-#### 2023.02.26 [>>>](https://twitter.com/pstchstd/status/1614522734134059009)
-
-[SOLD] Pistachio Live @Grass Roots, Yokohama.
-
 #### 2023.05.28 [>>>](https://craftrock.jp/fes2023/)
 
 CBS & Chicken is Nice @Craftrock Festival '23.
@@ -113,4 +109,4 @@ Our discography on [Discogs](https://www.discogs.com/label/1290260-Pistachio-Stu
 
 #### 
 
-[Check social list >>>](/social)
+[Check social account list >>>](/social)
