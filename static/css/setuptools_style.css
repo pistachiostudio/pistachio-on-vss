@@ -62,6 +62,12 @@ html {
   text-decoration: underline;
 }
 
+/* DotGothic16 for spacial page contents only */
+.dotgothic16-ja {
+  font-family: 'DotGothic16', sans-serif;
+  font-size: 0.7rem;
+}
+
 /* DOGGO (Dot) SETTING */
 .doggo {
   animation: flash 0.3s linear infinite;
@@ -111,8 +117,8 @@ h4 {
 }
 
 h5 {
-  font-size: 0.75rem;
-  margin: 0.5rem 0 0.5rem 0;
+  font-size: 0.9rem;
+  margin: 1.7rem 0 0.7rem 0;
 }
 
 h6 {
