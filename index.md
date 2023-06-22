@@ -1,8 +1,12 @@
 ### Upcoming Party
 
-#### 2023.05.28 [>>>](https://craftrock.jp/fes2023/)
+#### 2023.07.09
 
-CBS & Chicken is Nice @Craftrock Festival '23.
+CBS @Ruby Room, Shibuya
+
+#### 2023.08.26 [>>>](/20230826)
+
+Pistachio STUDIO @WWW, Shibuya
 
 <!-- No scheduled L(@_@;) -->
 

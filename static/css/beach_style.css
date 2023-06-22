@@ -1,0 +1,213 @@
+/*
+______ _     _             _     _       
+| ___ (_)   | |           | |   (_)      
+| |_/ /_ ___| |_ __ _  ___| |__  _  ___  
+|  __/| / __| __/ _` |/ __| '_ \| |/ _ \ 
+| |   | \__ | || (_| | (__| | | | | (_) |
+\_|   |_|___/\__\__,_|\___|_| |_|_|\___/ 
+     _____ _             _ _             
+    /  ___| |           | (_)            
+    \ `--.| |_ _   _  __| |_  ___        
+     `--. | __| | | |/ _` | |/ _ \       
+    /\__/ | |_| |_| | (_| | | (_) |      
+    \____/ \__|\__,_|\__,_|_|\___/       
+*/
+
+/* IMPORT FONT AWESOME CSS */
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css);
+
+/* ROOT VARIABLES,
+YOU CAN CHANGE COLORS & WEIGHT HERE! */
+:root {
+  /* MAIN BACKGROUND COLOR */
+  --main-bg-color: #17a99a;
+  /* MAIN FONT SETTINGS */
+  --main-font-size: 20px;
+  --main-font-color: #F2BE22;
+  /* TOP TITLE COLOR */
+  --title-color: #F2BE22;
+  --title-shadow-color: #f671a2;
+  /* LINK COLOR SETTINGS */
+  --link-color: #F29727;
+  --link-hover-color: #00ff08;
+  /* SOCIAL ICON SETTINGS */
+  --social-font-size: 1.5rem;
+  --social-button-color: #fa796d;
+  --social-button-hover-color: #00ff08;
+  /* TEXT SELECTION COLOR */
+  --selection-text-color: #ffffff;
+  --selection-bg-color: #F24C3D;
+  /* DOGGO (TOP *) COLOR */
+  --doggo-color: #4684b3;
+}
+
+
+body {
+  background-color: var(--main-bg-color);
+  color: var(--main-font-color);
+  margin: 0rem 0px 5rem 5rem;
+  font-family: "VT323", monospace;
+  margin: 0 auto;
+  max-width: 500px;
+  padding: 1rem;
+}
+
+html {
+  font-size: var(--main-font-size);
+}
+
+/* TITLE SHADOW */
+.h1-title {
+  text-shadow: 0.2rem 0.2rem 0rem var(--title-shadow-color);
+  text-decoration: underline;
+}
+
+/* DotGothic16 for spacial page contents only */
+.dotgothic16-ja {
+  font-family: 'DotGothic16', sans-serif;
+  font-size: 0.7rem;
+}
+
+/* DOGGO (Dot) SETTING */
+.doggo {
+  animation: flash 0.3s linear infinite;
+  margin-top: 2.2rem;
+  color: var(--doggo-color);
+  display: inline-block;
+  _display: inline;
+}
+
+@keyframes flash {
+  50%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* SELECTION COLOR */
+::selection {
+  color: var(--selection-text-color);
+  background-color: var(--selection-bg-color);
+}
+
+/* HEADING */
+h1 {
+  font-size: 3rem;
+  margin: 1.5rem 0 1rem 0;
+  text-decoration: underline;
+}
+
+h2 {
+  font-size: 1.3rem;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+h3 {
+  font-size: 1.3rem;
+  margin: 3rem 0 1rem 0;
+}
+
+h4 {
+  font-size: 1.1rem;
+  margin: 1.2rem 0 0.3rem 0;
+}
+
+h5 {
+  font-size: 0.9rem;
+  margin: 1.7rem 0 0.7rem 0;
+}
+
+h6 {
+  font-size: 0.5rem;
+  margin: 0.5rem 0 0.5rem 0;
+}
+
+ul {
+  list-style-type: square;
+  margin-inline-start: -0.4rem;
+  margin-block-start: 0em;
+  margin-block-end: 1em;
+}
+
+/* PARAGRAPH */
+p {
+  margin: 0.2rem 0 0.3rem 0;
+}
+
+/* LINK & HOVER */
+a:any-link {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+}
+
+a:hover {
+  color: var(--link-hover-color);
+}
+
+#title:any-link {
+  color: var(--title-color);
+  text-decoration: none;
+}
+
+#social:any-link {
+  color: var(--social-button-color);
+  text-decoration: none;
+}
+
+#social:hover {
+  color: var(--social-button-hover-color);
+  text-decoration: none;
+}
+
+/* SOCIAL ICONS */
+.social {
+  list-style: none;
+  margin: 1rem 0 2rem 0;
+  padding: 0;
+}
+
+.social > li {
+  font-size: var(--social-font-size);
+  display: inline-block;
+  padding-inline-end: 8px;
+}
+
+/* FOOTER & COPYRIGHT */
+.footer {
+  text-align: right;
+  font-size: 0.7rem;
+  margin-top: 4rem;
+}
+
+/* RESPONSIVE */
+/* SMART PHONE */
+@media screen and (max-width: 768px) {
+  h1 {
+    margin: 1rem 0rem;
+    font-size: 2.1rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  .social > li {
+    font-size: 1rem;
+  }
+}
+
+/* TABLET */
+@media screen and (min-width: 768px) {
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 767px) and (max-width: 1280px) {
+}

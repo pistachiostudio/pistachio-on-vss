@@ -2,6 +2,10 @@
 
 ### 2023
 
+05.28
+
+  - CBS & Chicken is Nice @Craftrock Festival '23.
+
 02.26
 
   - Pistachio Live @Grass Roots, Yokohama.
