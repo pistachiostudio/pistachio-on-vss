@@ -4,6 +4,10 @@
 
 CBS @Ruby Room, Shibuya
 
+#### 2023.08.05 (Night time)
+
+CBS @City LIghts Ohashi, Ikejiri Ohashi
+
 #### 2023.08.26 [>>>](/20230826)
 
 Pistachio STUDIO @WWW, Shibuya
