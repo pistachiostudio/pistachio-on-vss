@@ -2,6 +2,11 @@
 
 ### 2023
 
+
+07.09
+
+  - CBS @Ruby Room, Shibuya
+
 05.28
 
   - CBS & Chicken is Nice @Craftrock Festival '23.

@@ -1,16 +1,12 @@
 ### Upcoming Party
 
-#### 2023.07.09
-
-CBS @Ruby Room, Shibuya
-
 #### 2023.08.05 (Night time)
 
 CBS @City LIghts Ohashi, Ikejiri Ohashi
 
 #### 2023.08.26 [>>>](/20230826)
 
-Pistachio STUDIO @WWW, Shibuya
+[SOLD] Pistachio STUDIO @WWW, Shibuya
 
 <!-- No scheduled L(@_@;) -->
 
