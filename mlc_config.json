@@ -11,7 +11,7 @@
       },
       {
         "pattern": "^/",
-        "replacement": "{{BASEURL}}/"
+        "replacement": "https://pistachiostudio.net/"
       }
     ],
     "httpHeaders": [
