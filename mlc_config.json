@@ -7,7 +7,7 @@
     "replacementPatterns": [
       {
         "pattern": "^.attachments",
-        "replacement": "file://some/conventional/folder/.attachments"
+        "replacement": "https://pistachiostudio.net/"
       },
       {
         "pattern": "^/",
