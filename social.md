@@ -6,24 +6,24 @@
 - [suzukimamiko.com](https://suzukimamiko.com/)
 - [quojama.com](https://quojama.com/)
 
-### Twitter
+### X
 
-- [@pstchstd](https://twitter.com/pstchstd)
-- [@PIS\_TSUYOSHI](https://twitter.com/PIS_TSUYOSHI)
-- [@hachijihappun](https://twitter.com/hachijihappun)
-- [@\_\_\_\_\_\_mmk\_\_\_\_\_\_](https://twitter.com/______mmk______)
-- [@bonobonotommy](https://twitter.com/bonobonotommy)
-- [@tajimahello](https://twitter.com/tajimahello)
-- [@esme\_mori](https://twitter.com/esme_mori)
-- [@kirit0yamada](https://twitter.com/kirit0yamada)
-- [@6kyohei9](https://twitter.com/6kyohei9)
-- [@suppleee](https://twitter.com/suppleee)
-- [@percent\_c](https://twitter.com/percent_c)
-- [@saaaaaashiiiii](https://twitter.com/saaaaaashiiiii)
-- [@takayaaa0620](https://twitter.com/takayaaa0620)
-- [@basho\_\_\_](https://twitter.com/basho___)
-- [@aaairyo](https://twitter.com/aaairyo)
-- [@quojama](https://twitter.com/quojama)
+- [@pstchstd](https://x.com/pstchstd)
+- [@PIS\_TSUYOSHI](https://x.com/PIS_TSUYOSHI)
+- [@hachijihappun](https://x.com/hachijihappun)
+- [@\_\_\_\_\_\_mmk\_\_\_\_\_\_](https://x.com/______mmk______)
+- [@bonobonotommy](https://x.com/bonobonotommy)
+- [@tajimahello](https://x.com/tajimahello)
+- [@esme\_mori](https://x.com/esme_mori)
+- [@kirit0yamada](https://x.com/kirit0yamada)
+- [@6kyohei9](https://x.com/6kyohei9)
+- [@suppleee](https://x.com/suppleee)
+- [@percent\_c](https://x.com/percent_c)
+- [@saaaaaashiiiii](https://x.com/saaaaaashiiiii)
+- [@takayaaa0620](https://x.com/takayaaa0620)
+- [@basho\_\_\_](https://x.com/basho___)
+- [@aaairyo](https://x.com/aaairyo)
+- [@quojama](https://x.com/quojama)
 
 ### Instagram
 
