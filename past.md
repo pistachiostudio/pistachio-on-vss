@@ -2,6 +2,9 @@
 
 ### 2023
 
+08.05
+
+  - CBS @City LIghts Ohashi, Ikejiri Ohashi
 
 07.09
 
