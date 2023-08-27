@@ -2,6 +2,11 @@
 
 ### 2023
 
+08.26
+
+  - Pistachio STUDIO @WWW, Shibuya
+
+
 08.05
 
   - CBS @City LIghts Ohashi, Ikejiri Ohashi

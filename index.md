@@ -1,10 +1,6 @@
 ### Upcoming Party
 
-#### 2023.08.26 [>>>](/20230826)
-
-[SOLD] Pistachio STUDIO @WWW, Shibuya
-
-<!-- No scheduled L(@_@;) -->
+Nothing on the calendar yet! L(@_@;)
 
 #### 
 [Past Parties>>>](/past)
