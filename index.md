@@ -1,6 +1,14 @@
 ### Upcoming Party
 
-Nothing on the calendar yet! L(@_@;)
+#### 2023.09.17 (Day)
+
+CBS @BUZZ, Sagamihara.
+
+#### 2023.11.05 (Day) [>>>](https://goldfish.jabbklab.com/2023/)
+
+CBS & mmk @Zepp Fukuoka, Fukuoka.
+
+<!-- Nothing on the calendar yet! L(@_@;) -->
 
 #### 
 [Past Parties>>>](/past)
