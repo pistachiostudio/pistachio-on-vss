@@ -2,6 +2,10 @@
 
 ### 2023
 
+09.17
+
+  - CBS @BUZZ, Sagamihara.
+
 08.26
 
   - Pistachio STUDIO @WWW, Shibuya
