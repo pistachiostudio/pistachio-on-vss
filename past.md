@@ -2,6 +2,9 @@
 
 ### 2023
 
+10.14
+  - CBS @TimeOut Cafe, Ebisu
+
 09.17
 
   - CBS @BUZZ, Sagamihara.
