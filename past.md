@@ -2,7 +2,12 @@
 
 ### 2023
 
+11.05
+
+  - CBS & mmk @Zepp Fukuoka, Fukuoka.
+
 10.14
+
   - CBS @TimeOut Cafe, Ebisu
 
 09.17
