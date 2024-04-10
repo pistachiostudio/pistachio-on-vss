@@ -8,26 +8,9 @@ pistachiostudio.net on VSS static site generator
 
 ## VSS
 
-[VSS: Easy-to-use static site generator](https://github.com/vssio/vss) by [zzktkm](https://github.com/zztkm)
+[vssio/go\-vss: Easy\-to\-use static site generator](https://github.com/vssio/go-vss)
 
-### Installing VSS
-
-#### For Windows PowerShell
-
-```shell
-irm https://raw.githubusercontent.com/vssio/vss_install/main/install.ps1 | iex
-```
-
-#### For Mac/Linux
-
-[see here](https://github.com/vssio/vss#installation)
-
-### Commands
-
-```shell
-$ vss serve
-$ vss build
-```
+Documentation: [vss.veltiosoft.dev/](https://vss.veltiosoft.dev/)
 
 ## Deploy
 
@@ -50,7 +33,7 @@ triggered by...
 
 ## Acknowledgments
 
-- [VSS: Easy-to-use static site generator](https://github.com/vssio/vss) by [zzktkm](https://github.com/zztkm)
+- [go-vss: Easy-to-use static site generator](https://github.com/vssio/go-vss) by [zzktkm](https://github.com/zztkm)
 - [t.js: Lightweight $.Hypertext.Typewriter](https://github.com/mntn-dev/t.js) by [mntn-dev](https://github.com/mntn-dev)
 - [VHS Retro](https://codepen.io/pbitos/pen/zypwVr) by [pbitos](https://codepen.io/pbitos)
 - [Font Awesome](https://fontawesome.com/)
