@@ -1,5 +1,5 @@
-title = "Pistachio Studio"
-description = "Neighborhood recording crew Kngw, Japan."
+site_title = "Pistachio Studio"
+site_description = "Neighborhood recording crew Kngw, Japan."
 base_url = "https://pistachiostudio.net/"
 
 [build]
