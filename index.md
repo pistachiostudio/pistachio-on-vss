@@ -1,8 +1,6 @@
 ### Upcoming Party
 
-#### 2024.04.20
-
-CBS & Chicken is Nice @THUMBS UP, Yokohama [>>>](https://www.stovesyokohama.com/2024/04/?post_type=thumbsup_live)
+Nothing on the calendar yet! L(@_@;)
 
 <!-- Nothing on the calendar yet! L(@_@;) -->
 

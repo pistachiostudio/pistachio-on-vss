@@ -1,5 +1,16 @@
 ### Past Parties
 
+### 2024
+
+05.25
+
+  - CBS & Chicken Is Nice @TimeOut Cafe, Ebisu.
+
+04.20
+
+  - CBS & Chicken Is Nice @THUMBS UP, Yokohama.
+
+
 ### 2023
 
 11.05
