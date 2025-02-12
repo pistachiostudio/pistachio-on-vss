@@ -2,6 +2,10 @@
 
 ### 2024
 
+12.29
+
+  - Pistachio MTG @TimeOut Cafe, Ebisu.
+
 05.25
 
   - CBS & Chicken Is Nice @TimeOut Cafe, Ebisu.

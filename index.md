@@ -1,29 +1,12 @@
 ### Upcoming Party
 
-Nothing on the calendar yet! L(@_@;)
+- [2025/3/8 Pistachio Studio @WWW, Shibuya](https://www-shibuya.jp/schedule/018687.php)
 
 <!-- Nothing on the calendar yet! L(@_@;) -->
 
 #### 
 [Past Parties>>>](/past)
 
-### News
-
-#### 2022.12.03
-
-CBS new album "Classic Brown Sounds 2" on street.
-
-[Check on LinkCore>>>](https://linkco.re/HQDd227G)
-
-#### 2022.09.16
-
-Rebuilding pistachiostudio.net
-
-[Check GitHub repo>>>](https://github.com/pistachiostudio/pistachio-on-vss)
-
-#### 
-
-[Old News>>>](/oldnews)
 
 #### 
 
@@ -100,10 +83,6 @@ Our discography on [Discogs](https://www.discogs.com/label/1290260-Pistachio-Stu
 #### Matsuo & Basho
 
 - [soundcloud.com/matsuo-and-basho](https://soundcloud.com/matsuo-and-basho)
-
-#### Timotei Oh! Oh!
-
-- [youtube.com/watch?v=qhJkEV48OX4](https://www.youtube.com/watch?v=qhJkEV48OX4)
 
 #### 
 
