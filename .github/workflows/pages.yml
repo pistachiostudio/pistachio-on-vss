@@ -46,8 +46,9 @@ jobs:
       - name: Build with vss
         run: make build
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-artifact@v4
         with:
+          name: build-output
           path: ./dist
 
   # Deployment job
