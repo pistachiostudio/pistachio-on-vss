@@ -1,6 +1,6 @@
 ### Upcoming Party
 
-- [2025/3/8 Pistachio Studio @WWW, Shibuya](https://www-shibuya.jp/schedule/018687.php)
+Nothing on the calendar yet! L(@_@;)
 
 <!-- Nothing on the calendar yet! L(@_@;) -->
 

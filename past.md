@@ -1,5 +1,11 @@
 ### Past Parties
 
+### 2025
+
+03.08
+
+  - Pistachio Studio @WWW, Shibuya
+
 ### 2024
 
 12.29
