@@ -1,6 +1,7 @@
 ## Yuki Koyama aka quojama 1987~
 
 - 📸[Instagram](https://www.instagram.com/quojama/)
+- 🌨️[Sora](https://sora.chatgpt.com/profile/quojama)
 - 🕷️[GitHub](https://github.com/quojama)
 - 🎞️[Filmarks](https://filmarks.com/users/quojama)
 - 🏃[Strava](https://www.strava.com/athletes/186208570)
