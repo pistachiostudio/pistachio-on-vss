@@ -4,3 +4,9 @@ base_url = "https://pistachiostudio.net/"
 
 [build]
 ignore_files = ["howtoupdate.md"]
+
+[build.markdown]
+# この設定を true にすることで Markdown 内に記載した HTML のコメントアウトが有効になります
+# この設定が false だとコメントアウトは文字列として処理されてしまいます
+allow_dangerous_html = true
+
