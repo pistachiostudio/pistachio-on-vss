@@ -26,13 +26,22 @@ jobs:
         uses: actions/checkout@v4
         with:
           submodules: recursive
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v1
+
       - name: Install vss cli
-        run: make setup
+        run: |
+          make setup
+          curl -L -o vss_linux_amd64.tar.gz https://github.com/veltiosoft/vss/releases/latest/download/vss_linux_amd64.tar.gz
+          tar -xzf vss_linux_amd64.tar.gz
+          chmod +x vss
+          sudo mv vss /usr/local/bin/
+
       - name: Build with vss
-        run: make build
+        run: vss build
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
