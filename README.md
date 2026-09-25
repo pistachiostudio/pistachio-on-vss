@@ -23,26 +23,35 @@ make build       # dist/ に生成される
 
 ## カラーテーマの切り替え方
 
-サイトの配色は `static/css/themes.css` に1テーマ分だけまとまっていて、
-`layouts/*.html` の `<body data-theme="...">` でそれを有効にする仕組みになっている
-(色は全部CSS変数で、構造用CSSの `static/css/style.css` / `static/css/vhs.css` 側は
-一切いじらなくていい)。
+現在のテーマは **Neon Drive**(ダークパープル背景 × ネオンピンク/シアン)です。
 
-テーマ替えは都度Claudeに頼めばよい。Claudeが `static/css/themes.css` の中身と、
-3つのレイアウト (`default.html` / `quojama.html` / `20230826.html`) にある
-`data-theme` 属性・左上のドットアイコン・ヘッダーの "Theme: ..." 表記をまとめて
-書き換える。
+### 仕組み
 
-過去に使ったテーマのCSSは残していない。名前だけ `static/css/themes.css` の
-コメントに記録してある(Meditation for blue / Beach / SETUPTOOLS /
-Classic Brown Sounds 2 / Merry Xmas)。過去のテーマを復活させたいときも、
-名前を伝えてClaudeに作り直してもらう想定。
+- 配色は `static/css/themes.css` に、有効なテーマ1つ分だけ書かれています。中身はCSS変数(`--main-bg-color`など)の上書きのみです。
+- どのテーマを使うかは `layouts/*.html` の `<body data-theme="neon">` で指定します。
+- 構造用のCSS(`static/css/style.css` / `static/css/vhs.css`)は色を持たないので、テーマを変えても触る必要はありません。
 
-左上のドットアイコンも色・柄ともに変更可能。今の猫の形は
-`static/css/dot/cat.css` にCSSの `box-shadow` でドット絵として書かれていて、
-色は `--dot-color-a` / `--dot-color-b` の2変数(themes.css側)で決まる。
-形自体を変えたい場合は新しいドット絵を用意する必要があるので、それもClaudeに
-相談すればよい。
+### テーマを変えたいとき
+
+ファイルを直接編集する代わりに、Claudeに「テーマを変えて」と頼んでください。Claudeは以下をまとめて書き換えます。
+
+1. `static/css/themes.css` の配色ブロック
+2. 3つのレイアウト(`layouts/default.html` / `quojama.html` / `20230826.html`)の `data-theme` 属性
+3. 同じくレイアウトにある、ヘッダーの "Theme: ..." 表記
+4. 必要であれば左上のドットアイコン(下記参照)
+
+過去に使ったテーマのCSSはあえて残していません。名前だけ `static/css/themes.css` の
+コメントに記録してあります(Meditation for blue / Beach / SETUPTOOLS /
+Classic Brown Sounds 2 / Merry Xmas)。復活させたいときも、名前を伝えれば
+Claudeが作り直します。
+
+### 左上のドットアイコンを変えたいとき
+
+今の猫の形は `static/css/dot/cat.css` に、CSSの `box-shadow` でドット絵として
+書かれています。色は `--dot-color-a` / `--dot-color-b` の2変数(`themes.css`側)
+で決まるので、色だけならテーマ切り替えと一緒に自動で変わります。形そのもの
+(猫以外のモチーフにする等)を変えたい場合は新しいドット絵が必要なので、
+これもClaudeに相談してください。
 
 ## Deploy
 
