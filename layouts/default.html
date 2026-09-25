@@ -14,6 +14,7 @@ ______ _     _             _     _
 -->
 
 <!DOCTYPE html>
+<html lang="ja">
 
 <head>
     <!-- Google tag (gtag.js) -->
@@ -28,12 +29,12 @@ ______ _     _             _     _
     <meta charset="utf-8" />
     <!-- TITLE & META DESCRIPTION -->
     <title>{{title}}</title>
-    <meta name=”description“ content="@description" />
+    <meta name="description" content="{{site_description}}" />
     <!-- SNS LINK PREVIEW METADATA OGP -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="Pistachio Studio" />
-    <meta property="og:description" content="Neighborhood recording crew Kngw, Japan." />
-    <meta property="og:url" content="https://pistachiostudio.net/" />
+    <meta property="og:title" content="{{site_title}}" />
+    <meta property="og:description" content="{{site_description}}" />
+    <meta property="og:url" content="{{base_url}}" />
     <meta property="og:image" content="https://pistachiostudio.net/og_image_banana_maru.png" />
     <!-- FAVICON MAY BE NEED ABSOLUTE PATH -->
     <link rel="icon" sizes="16x16" href="favicon.ico" />
@@ -41,23 +42,25 @@ ______ _     _             _     _
     <link rel="icon" sizes="48x48" href="favicon.ico" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <link rel="manifest" href="manifest.json" />
-    <!-- CSS IMPORT -->
-    <link rel="stylesheet" href="css/mforblue_vhs.css" />
-    <link rel="stylesheet" href="css/mforblue_style.css" />
-    <link rel="stylesheet" href="css/dot/cc_cat_dot_mforblue.css" />
+    <!-- CSS IMPORT (theme-independent: color scheme comes from css/themes.css,
+         picked by <body data-theme>. Ask Claude to update it.) -->
+    <link rel="stylesheet" href="css/vhs.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/themes.css" />
+    <link rel="stylesheet" href="css/dot/cat.css" />
     <!-- GOOGLE FONT IMPORT FROM CDN -->
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
     <!-- VIEWPORT FOR RESPONSIVE -->
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 </head>
 
-<body>
+<body data-theme="neon">
 
     <!-- BACKGROUND LINE NOISE -->
     <div class="lines"></div>
 
-    <!-- LEFT TOP DOT ICON, IF YOU WANT EDIT SEE "dot.css" -->
-    <div class="cc_cat_dot_mforblue"></div>
+    <!-- LEFT TOP DOT ICON, IF YOU WANT TO EDIT SEE "dot/" -->
+    <div class="dot-cat" id="dot-icon"></div>
 
 
     <!-- MAIN RGB NOISE -->
@@ -67,9 +70,7 @@ ______ _     _             _     _
 
             <!-- TOP INFORMATION -->
             <div class="doggo">*</div>
-            <span class="typew">Theme: Meditation for blue</span>
-
-            </span>
+            <span class="typew">Theme: Neon Drive</span>
 
             <h1>
                 <a id="title" href="/">Pistachio Studio!</a>
@@ -80,39 +81,39 @@ ______ _     _             _     _
             <!-- SOCIAL ICONS USING FONT AWESOME -->
             <ul class="social">
                 <li>
-                    <a id="social" href="https://instagram.com/pistachiostudio" target="_blank"><i
+                    <a class="social-link" href="https://instagram.com/pistachiostudio" target="_blank"><i
                             class="fa-brands fa-instagram fa-shake"></i></a>
                 </li>
                 <li>
-                    <a id="social" href="https://x.com/pstchstd" target="_blank"><i
+                    <a class="social-link" href="https://x.com/pstchstd" target="_blank"><i
                             class="fa-brands fa-x-twitter fa-shake"></i></a>
                 </li>
                 <li>
-                    <a id="social" href="https://www.youtube.com/c/pistachiostudiokngw" target="_blank">
+                    <a class="social-link" href="https://www.youtube.com/c/pistachiostudiokngw" target="_blank">
                         <i class="fa-brands fa-youtube fa-shake"></i></a>
                 </li>
                 <li>
-                    <a id="social" href="https://soundcloud.com/pistachio-studio" target="_blank">
+                    <a class="social-link" href="https://soundcloud.com/pistachio-studio" target="_blank">
                         <i class="fa-brands fa-soundcloud fa-shake"></i></a>
                 </li>
                 <li>
-                    <a id="social"
+                    <a class="social-link"
                         href="https://open.spotify.com/user/2wf7ulo34ef46fu3awnq984wj?si=mm3fQfatR1OF2Kgr_uieGw"
                         target="_blank"><i class="fa-brands fa-spotify fa-shake"></i></a>
                 </li>
                 <li>
-                    <a id="social" href="https://discord.gg/cX2yAMuZ" target="_blank">
+                    <a class="social-link" href="https://discord.gg/cX2yAMuZ" target="_blank">
                         <i class="fa-brands fa-discord fa-shake"></i></a>
                 </li>
                 <li>
-                    <a id="social" href="https://github.com/pistachiostudio" target="_blank">
+                    <a class="social-link" href="https://github.com/pistachiostudio" target="_blank">
                         <i class="fa-brands fa-github fa-shake"></i></a>
                 </li>
                 <li>
-                    <a id="social" href="/social"><i class="fa-sharp fa-solid fa-share-nodes fa-shake"></i></a>
+                    <a class="social-link" href="/social"><i class="fa-sharp fa-solid fa-share-nodes fa-shake"></i></a>
                 </li>
                 <li>
-                    <a id="social" href="/contact"><i class="fa-regular fa-envelope fa-shake"></i></a>
+                    <a class="social-link" href="/contact"><i class="fa-regular fa-envelope fa-shake"></i></a>
                 </li>
             </ul>
 
@@ -165,10 +166,10 @@ ______ _     _             _     _
                 Acknowledgments: <a href="https://github.com/veltiosoft/vss" target="_blank">VSS</a>,
                 <a href="https://mntn-dev.github.io/t.js/" target="_blank">t.js</a>,
                 <a href="https://codepen.io/pbitos/pen/zypwVr" target="_blank">VHS Retro</a>,
-                <a href="https://fontawesome.com/" target="_blank">Font Awesome</a></br>
+                <a href="https://fontawesome.com/" target="_blank">Font Awesome</a><br>
                 GitHub repository: <a href="https://github.com/pistachiostudio/pistachio-on-vss"
-                    target="_blank">pistachio-on-vss</a></br>
-                Hosted by: <a href="https://pages.github.com/" target="_blank">GitHub Pages</a></br>
+                    target="_blank">pistachio-on-vss</a><br>
+                Hosted by: <a href="https://pages.github.com/" target="_blank">GitHub Pages</a><br>
                 <script type="text/javascript">
                     var today = new Date();
                     var y = today.getFullYear();
@@ -179,3 +180,4 @@ ______ _     _             _     _
         </div>
     </div>
 </body>
+</html>

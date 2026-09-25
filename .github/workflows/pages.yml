@@ -1,4 +1,3 @@
-# Sample workflow for building and deploying a Hugo site to GitHub Pages
 name: Deploy vss site to Pages
 
 on:
@@ -34,8 +33,6 @@ jobs:
       - name: Install vss cli
         run: |
           make setup
-          curl -L -o vss_linux_amd64.tar.gz https://github.com/veltiosoft/vss/releases/latest/download/vss_linux_amd64.tar.gz
-          tar -xzf vss_linux_amd64.tar.gz
           chmod +x vss
           sudo mv vss /usr/local/bin/
 
