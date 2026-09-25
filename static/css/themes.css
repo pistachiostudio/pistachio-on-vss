@@ -1,0 +1,32 @@
+/*
+COLOR THEME
+===========
+This file holds the current color scheme as CSS custom property
+overrides, keyed by <body data-theme="..."> (set in layouts/*.html).
+It only ever overrides variables declared as defaults in style.css /
+vhs.css - no structural rule lives here.
+
+Past themes are not kept around as code - just as names, for the
+record: Meditation for blue, Beach, SETUPTOOLS, Classic Brown Sounds 2
+(padres), Merry Xmas. When the look changes again, ask Claude to
+rewrite this file (and the matching data-theme / dot icon / "Theme: .."
+label in layouts/*.html) rather than reviving an old block.
+*/
+
+/* Neon Drive - dark synthwave palette, leans into the VHS scanline effect */
+body[data-theme="neon"] {
+  --main-bg-color: #0d0221;
+  --main-font-color: #f5f0ff;
+  --title-color: #00fff0;
+  --link-color: #ff00c8;
+  --link-hover-color: #00fff0;
+  --social-button-color: #00fff0;
+  --social-button-hover-color: #ff00c8;
+  --selection-text-color: #0d0221;
+  --selection-bg-color: #00fff0;
+  --doggo-color: #ff00c8;
+  --vhs-noise-color: rgb(0, 0, 0);
+  --vhs-scanline-color: rgba(0, 255, 240, 0.35);
+  --dot-color-a: #ff00c8;
+  --dot-color-b: #00fff0;
+}

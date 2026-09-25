@@ -1,16 +1,19 @@
 clean:
 	rm -rf ./vss_* ./vss
 
-# for linux
+# for linux (this is what CI uses)
 setup: clean
-	curl -OL https://github.com/vssio/vss/releases/latest/download/vss_linux_amd64.tar.gz
+	curl -OL https://github.com/veltiosoft/vss/releases/latest/download/vss_linux_amd64.tar.gz
 	tar -xvf vss_linux_amd64.tar.gz
-	cp vss_linux_amd64/vss .
 
 setup-win: clean
-	curl -OL https://github.com/vssio/vss/releases/latest/download/vss_windows_amd64.zip
+	curl -OL https://github.com/veltiosoft/vss/releases/latest/download/vss_windows_amd64.zip
 	unzip vss_windows_amd64.zip
-	cp vss_windows_amd64/vss.exe .
+
+# for local dev on Apple Silicon Macs
+setup-mac: clean
+	curl -OL https://github.com/veltiosoft/vss/releases/latest/download/vss_darwin_arm64.tar.gz
+	tar -xvf vss_darwin_arm64.tar.gz
 
 build:
 	./vss build

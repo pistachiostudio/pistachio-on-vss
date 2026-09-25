@@ -1,23 +1,27 @@
 /*
-______ _     _             _     _       
-| ___ (_)   | |           | |   (_)      
-| |_/ /_ ___| |_ __ _  ___| |__  _  ___  
-|  __/| / __| __/ _` |/ __| '_ \| |/ _ \ 
+______ _     _             _     _
+| ___ (_)   | |           | |   (_)
+| |_/ /_ ___| |_ __ _  ___| |__  _  ___
+|  __/| / __| __/ _` |/ __| '_ \| |/ _ \
 | |   | \__ | || (_| | (__| | | | | (_) |
-\_|   |_|___/\__\__,_|\___|_| |_|_|\___/ 
-     _____ _             _ _             
-    /  ___| |           | (_)            
-    \ `--.| |_ _   _  __| |_  ___        
-     `--. | __| | | |/ _` | |/ _ \       
-    /\__/ | |_| |_| | (_| | | (_) |      
-    \____/ \__|\__,_|\__,_|_|\___/       
+\_|   |_|___/\__\__,_|\___|_| |_|_|\___/
+     _____ _             _ _
+    /  ___| |           | (_)
+    \ `--.| |_ _   _  __| |_  ___
+     `--. | __| | | |/ _` | |/ _ \
+    /\__/ | |_| |_| | (_| | | (_) |
+    \____/ \__|\__,_|\__,_|_|\___/
 */
 
 /* IMPORT FONT AWESOME CSS */
 @import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css);
 
-/* ROOT VARIABLES,
-YOU CAN CHANGE COLORS & WEIGHT HERE! */
+/*
+ROOT VARIABLES - THIS IS THE DEFAULT (FALLBACK) COLOR SCHEME.
+To change the whole site's look, don't edit this file: pick or add a
+theme in css/themes.css instead and set <body data-theme="..."> in the
+layouts. See README.md "カラーテーマの切り替え方" for the full workflow.
+*/
 :root {
   /* MAIN BACKGROUND COLOR */
   --main-bg-color: #0432ff;
@@ -26,7 +30,6 @@ YOU CAN CHANGE COLORS & WEIGHT HERE! */
   --main-font-color: #dbdbdb;
   /* TOP TITLE COLOR */
   --title-color: #dbdbdb;
-  --title-shadow-color: #000000;
   /* LINK COLOR SETTINGS */
   --link-color: #ffdb25;
   --link-hover-color: #ffffff;
@@ -39,13 +42,22 @@ YOU CAN CHANGE COLORS & WEIGHT HERE! */
   --selection-bg-color: #37ff00;
   /* DOGGO (TOP *) COLOR */
   --doggo-color: #ffdb25;
+  /* VHS SCANLINE / NOISE COLORS (see vhs.css) */
+  --vhs-noise-color: rgba(11, 11, 11, 0.5);
+  --vhs-scanline-color: rgba(0, 0, 0, 0.5);
+  /* LEFT-TOP CAT DOT ICON COLORS (see dot/cat.css) */
+  --dot-color-a: #2c527a;
+  --dot-color-b: #ffffff;
+  /* PER-THEME LAYOUT TWEAKS */
+  --h5-font-size: 0.75rem;
+  --h5-margin: 0.5rem 0 0.5rem 0;
+  --h1-text-decoration: underline;
 }
 
 
 body {
   background-color: var(--main-bg-color);
   color: var(--main-font-color);
-  margin: 0rem 0px 5rem 5rem;
   font-family: "VT323", monospace;
   margin: 0 auto;
   max-width: 500px;
@@ -56,10 +68,10 @@ html {
   font-size: var(--main-font-size);
 }
 
-/* TITLE SHADOW */
-.h1-title {
-  text-shadow: 0.2rem 0.2rem 0rem var(--title-shadow-color);
-  text-decoration: underline;
+/* DotGothic16 for special page contents only */
+.dotgothic16-ja {
+  font-family: "DotGothic16", sans-serif;
+  font-size: 0.7rem;
 }
 
 /* DOGGO (Dot) SETTING */
@@ -68,17 +80,19 @@ html {
   margin-top: 2.2rem;
   color: var(--doggo-color);
   display: inline-block;
-  _display: inline;
 }
 
 @keyframes flash {
-  50%,
-  100% {
+  0% {
     opacity: 1;
   }
 
   50% {
     opacity: 0.4;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
 
@@ -92,7 +106,7 @@ html {
 h1 {
   font-size: 3rem;
   margin: 1.5rem 0 1rem 0;
-  text-decoration: underline;
+  text-decoration: var(--h1-text-decoration);
 }
 
 h2 {
@@ -111,8 +125,8 @@ h4 {
 }
 
 h5 {
-  font-size: 0.75rem;
-  margin: 0.5rem 0 0.5rem 0;
+  font-size: var(--h5-font-size);
+  margin: var(--h5-margin);
 }
 
 h6 {
@@ -142,21 +156,17 @@ a:hover {
   color: var(--link-hover-color);
 }
 
-a:hover {
-  color: var(--link-hover-color);
-}
-
 #title:any-link {
   color: var(--title-color);
   text-decoration: none;
 }
 
-#social:any-link {
+.social-link:any-link {
   color: var(--social-button-color);
   text-decoration: none;
 }
 
-#social:hover {
+.social-link:hover {
   color: var(--social-button-hover-color);
   text-decoration: none;
 }
@@ -196,12 +206,4 @@ a:hover {
   .social > li {
     font-size: 1rem;
   }
-}
-
-/* TABLET */
-@media screen and (min-width: 768px) {
-}
-
-/* DESKTOP */
-@media only screen and (min-width: 767px) and (max-width: 1280px) {
 }
