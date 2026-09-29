@@ -2,75 +2,94 @@
 
 [![Deploy vss site to Pages](https://github.com/pistachiostudio/pistachio-on-vss/actions/workflows/pages.yml/badge.svg)](https://github.com/pistachiostudio/pistachio-on-vss/actions/workflows/pages.yml)
 
-pistachiostudio.net on VSS static site generator
+Pistachio Studio の公式サイト → **https://pistachiostudio.net/**
 
-[https://pistachiostudio.net/](https://pistachiostudio.net/)
+このリポジトリは **AI エージェント（Claude Code など）に操作させること**を前提に作っています。
+コードを書ける人も書けない人も、やりたいことを日本語で頼めば、AI が更新・ビルド・確認までやってくれます。
 
-## VSS
+## AI に頼む
 
-[veltiosoft/vss: Easy\-to\-use static site generator](https://github.com/veltiosoft/vss)
+1. このリポジトリを AI エージェントで開く（`git clone` してそのフォルダで起動するだけ）。
+2. やりたいことを日本語で伝える。
 
-Documentation: [vss.veltiosoft.dev/](https://vss.veltiosoft.dev/)
+AI は最初に [`AGENTS.md`](AGENTS.md) を読みます。ファイル構成、コマンド、カラーテーマの仕組み、落とし穴はすべてそこに書いてあるので、人間が細かく説明する必要はありません。
 
-#### ローカルで動かす
+### 頼み方の例
+
+| やりたいこと | 頼み方の例 |
+|---|---|
+| 次のパーティ告知を出す | 「Upcoming Party に 12/20 の告知を載せて。会場は◯◯、開演は◯時」 |
+| 告知を引っ込める | 「Upcoming Party を "Nothing on the calendar yet!" に戻して」 |
+| 過去のパーティを追加 | 「Past Parties の 2025 に 03.08 Pistachio Studio @WWW, Shibuya を追加して」 |
+| メンバーを追加 | 「Members に◯◯さんを追加して。SoundCloud はこれ」 |
+| SNS リンクを追加・修正 | 「social ページに◯◯の X アカウントを足して」 |
+| 配色を変える | 「テーマを変えて」（`theme-swap` スキルが候補を名前つきで出します。気に入ったものを選ぶと全ページに適用） |
+| 変更を確認する | 「ビルドして、`vss serve` で表示を確認して」 |
+| 公開する | 「commit して main に push して」 |
+
+- **`main` への push は、そのまま本番サイトに公開されます。** AI は頼まれない限り commit / push しない決まりになっています。公開したいときは、はっきり頼んでください。
+- 作業内容に自信がなければ、「push はしないで、差分だけ見せて」と頼めば安心です。
+- 公開日時を指定したいときは「その日にマージされるようにして」と頼めます（[マージ予約](#公開の仕組み)）。
+
+### カラーテーマを変えるとき
+
+サイト全体の配色は、`static/css/themes.css` の **有効なテーマ 1 つ分**の CSS 変数で決まります。
+「テーマを変えて」と頼むと、AI は次の順に進めます。
+
+1. 今のテーマを確認して、雰囲気の違う候補を 4〜5 案、**テーマ名つき**で見せる（名前は `Neon Drive` のような 2 単語が基本）。
+2. あなたが選ぶまで、ファイルは書き換えない。
+3. 選ばれたら、次をまとめて書き換える。
+   - `static/css/themes.css` の配色ブロック
+   - 3 つのレイアウト（`layouts/default.html` / `quojama.html` / `20230826.html`）の `data-theme` 属性
+   - ヘッダーの "Theme: ..." 表記
+   - 左上のドット絵アイコンの色（ドットの形そのものを変えたいときは別途相談してください）
+4. `vss build` で確認する。
+
+現在のテーマは **Neon Drive**（ダークパープル背景 × ネオンピンク/シアン）です。
+過去に使ったテーマのコードは残していません。名前だけ `static/css/themes.css` の冒頭コメントに記録してあり、
+復活させたいときは名前を伝えれば AI が作り直します。
+
+## AI を使わずに更新する
+
+ページの中身は、ルートにある Markdown を直接編集するだけです。
+
+| ファイル | 内容 |
+|---|---|
+| `index.md` | トップページ（Upcoming Party、メンバー紹介） |
+| `past.md` | 過去のパーティ一覧 |
+| `social.md` | SNS アカウント一覧 |
+| `contact.md` / `quojama.md` / `cbscin.md` / `game.md` / `oldnews.md` / `20230826.md` | 個別ページ |
+
+- **告知を隠す/出す**: Markdown の HTML コメントアウト `<!-- ... -->` が使えます（`vss.toml` で有効化済み）。`index.md` の Upcoming Party はこの方法で切り替えています。
+- ヘッダー、SNS アイコン、フッターは Markdown ではなく `layouts/*.html` にあります。3 つのレイアウトはほぼ同じ内容の複製なので、共通部分を変えるときは 3 つとも同じ変更が必要です。
+- 色を変えたいときは CSS を直接触らず、上の「カラーテーマを変えるとき」の手順（AI）を使ってください。
+
+## 公開の仕組み
+
+`main` に push → GitHub Actions が `vss build` を実行 → `dist/` を GitHub Pages に公開。
+
+- 静的サイトジェネレーター: [VSS](https://github.com/veltiosoft/vss)（ドキュメント: [vss.veltiosoft.dev](https://vss.veltiosoft.dev/)）
+- ワークフロー: [.github/workflows/pages.yml](https://github.com/pistachiostudio/pistachio-on-vss/blob/main/.github/workflows/pages.yml)
+- `README.md` / `AGENTS.md` / `.claude/**` / `archive/**` だけの変更では、デプロイは走りません。
+- **マージ予約**: PR の説明に `/schedule 日時` と書くと、その時刻に自動でマージされます（[merge-schedule-action](https://github.com/gr2m/merge-schedule-action)）。マージ＝本番公開なので、公開のタイミングを決めたいときに使います。
+- 設定まわりの参考:
+  - [GitHub Pages の公開元を設定する](https://docs.github.com/ja/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow)
+  - [カスタムドメインの管理](https://docs.github.com/ja/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain)
+
+## 手元で動かす準備
+
+AI に作業させる場合も、ビルドと確認のために VSS 本体がローカルに必要です。
 
 ```bash
-make setup-mac   # Apple Silicon Mac の場合。Linuxは `make setup`、Windowsは `make setup-win`
+make setup-mac   # Apple Silicon Mac の場合。Linux は `make setup`、Windows は `make setup-win`
 make build       # dist/ に生成される
+vss serve        # ファイル変更を見ながらプレビュー
 ```
 
-`vss serve` でファイル変更を見ながらプレビューもできる。
+- `make` と `git` が必要です。VSS のバイナリと `dist/` は `.gitignore` 済みなのでコミットされません。
+- 古い VSS だと CI と挙動が変わることがあります。ビルドがおかしいときは `make setup*` で入れ直してください。
 
-## カラーテーマの切り替え方
-
-現在のテーマは **Neon Drive**(ダークパープル背景 × ネオンピンク/シアン)です。
-
-### 仕組み
-
-- 配色は `static/css/themes.css` に、有効なテーマ1つ分だけ書かれています。中身はCSS変数(`--main-bg-color`など)の上書きのみです。
-- どのテーマを使うかは `layouts/*.html` の `<body data-theme="neon">` で指定します。
-- 構造用のCSS(`static/css/style.css` / `static/css/vhs.css`)は色を持たないので、テーマを変えても触る必要はありません。
-
-### テーマを変えたいとき
-
-ファイルを直接編集する代わりに、Claudeに「テーマを変えて」と頼んでください。Claudeは以下をまとめて書き換えます。
-
-1. `static/css/themes.css` の配色ブロック
-2. 3つのレイアウト(`layouts/default.html` / `quojama.html` / `20230826.html`)の `data-theme` 属性
-3. 同じくレイアウトにある、ヘッダーの "Theme: ..." 表記
-4. 必要であれば左上のドットアイコン(下記参照)
-
-過去に使ったテーマのCSSはあえて残していません。名前だけ `static/css/themes.css` の
-コメントに記録してあります(Meditation for blue / Beach / SETUPTOOLS /
-Classic Brown Sounds 2 / Merry Xmas)。復活させたいときも、名前を伝えれば
-Claudeが作り直します。
-
-### 左上のドットアイコンを変えたいとき
-
-今の猫の形は `static/css/dot/cat.css` に、CSSの `box-shadow` でドット絵として
-書かれています。色は `--dot-color-a` / `--dot-color-b` の2変数(`themes.css`側)
-で決まるので、色だけならテーマ切り替えと一緒に自動で変わります。形そのもの
-(猫以外のモチーフにする等)を変えたい場合は新しいドット絵が必要なので、
-これもClaudeに相談してください。
-
-## Deploy
-
-Deployment is automated via GitHub Actions.
-
-triggered by...
-- A push to the main branch (including merges)
-- Changes to `README.md` and `/archive dir` are ignored
-
-#### settings
-
-- GitHub Pages
-    - [Configuring a publishing source for your GitHub Pages site - GitHub Docs](https://docs.github.com/ja/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site#publishing-with-a-custom-github-actions-workflow)
-
-- Actions
-    - [.github/workflows/pages.yml](https://github.com/pistachiostudio/pistachio-on-vss/blob/main/.github/workflows/pages.yml)
-
-- Custom domains
-    - [GitHub Pages サイトのカスタムドメインを管理する - GitHub Docs](https://docs.github.com/ja/pages/configuring-a-custom-domain-for-your-github-pages-site/managing-a-custom-domain-for-your-github-pages-site#configuring-a-subdomain)
+詳細なコマンド、ファイル構成、カラーテーマの仕組み、既知の落とし穴は [`AGENTS.md`](AGENTS.md) にまとまっています。
 
 ## Acknowledgments
 
