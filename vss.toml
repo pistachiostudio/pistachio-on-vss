@@ -3,7 +3,7 @@ site_description = "Neighborhood recording crew Kngw, Japan."
 base_url = "https://pistachiostudio.net/"
 
 [build]
-ignore_files = ["howtoupdate.md"]
+ignore_files = ["howtoupdate.md", "AGENTS.md", "SKILL.md"]
 
 [build.markdown]
 # この設定を true にすることで Markdown 内に記載した HTML のコメントアウトが有効になります
