@@ -1,6 +1,20 @@
 ### Upcoming Party
 
-Nothing on the calendar yet! L(@_@;)
+#### 2026.10.17
+
+CBS & Chicken Is Nice @Futako-Tamagawa
+
+#### 2026.11.21
+
+CBS & Chicken Is Nice @Bar Chit Chat, Shin-Yurigaoka
+
+#### 2026.12.12
+
+(;@_@)<TBA...
+
+#### 2027.01.09
+
+(;@_@)<TBA...
 
 <!-- Nothing on the calendar yet! L(@_@;) -->
 
