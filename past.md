@@ -4,21 +4,29 @@
 
 10.03
 
-  - CBS (DJ set) @heavysick ZERO, Nakano
+  - CBS @heavysick ZERO, Nakano
 
 07.18
 
-  - CBS @Naeba, Niigata
+  - CBS & Chicken Is Nice @Naeba, Niigata
 
 06.13
 
   - CBS & Chicken Is Nice @clubasia, Shibuya
 
+04.19
+
+  - CBS & Chicken Is Nice @Yui no Oto, Yuki
+
 03.28
 
-  - CBS (DJ set) @Shimokitazawa
+  - CBS & Afro @Shimokitazawa
 
 ### 2025
+
+10.04
+
+  - CBS & Chicken Is Nice @JAM, Nishi-Eifuku
 
 03.08
 
