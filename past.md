@@ -1,5 +1,23 @@
 ### Past Parties
 
+### 2026
+
+10.03
+
+  - CBS (DJ set) @heavysick ZERO, Nakano
+
+07.18
+
+  - CBS @Naeba, Niigata
+
+06.13
+
+  - CBS & Chicken Is Nice @clubasia, Shibuya
+
+03.28
+
+  - CBS (DJ set) @Shimokitazawa
+
 ### 2025
 
 03.08

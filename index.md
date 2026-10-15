@@ -2,7 +2,7 @@
 
 #### 2026.10.17
 
-CBS & Chicken Is Nice @Futako-Tamagawa
+CBS & Chicken Is Nice @Futakoshinchi
 
 #### 2026.11.21
 
