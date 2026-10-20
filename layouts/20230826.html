@@ -49,9 +49,13 @@ ______ _     _             _     _
     <link rel="stylesheet" href="css/themes.css" />
     <link rel="stylesheet" href="css/dot/cat.css" />
     <!-- GOOGLE FONT IMPORT FROM CDN -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- FONT AWESOME (SOCIAL ICONS) FROM CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
     <!-- VIEWPORT FOR RESPONSIVE -->
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -59,16 +63,12 @@ ______ _     _             _     _
 
 <body data-theme="neon">
 
-    <!-- BACKGROUND LINE NOISE -->
-    <div class="lines"></div>
-
     <!-- LEFT TOP DOT ICON, IF YOU WANT TO EDIT SEE "dot/" -->
     <div class="dot-cat" id="dot-icon"></div>
 
 
-    <!-- MAIN RGB NOISE -->
+    <!-- MAIN (RGB-SHIFT TEXT, SEE "vhs.css") -->
     <div class="main">
-        <div class="noise"></div>
         <div class="vhs">
 
             <!-- TOP INFORMATION -->
@@ -105,15 +105,11 @@ ______ _     _             _     _
                         target="_blank"><i class="fa-brands fa-spotify fa-shake"></i></a>
                 </li>
                 <li>
-                    <a class="social-link" href="https://discord.gg/pistachiogaming" target="_blank">
-                        <i class="fa-brands fa-discord fa-shake"></i></a>
-                </li>
-                <li>
                     <a class="social-link" href="https://github.com/pistachiostudio" target="_blank">
                         <i class="fa-brands fa-github fa-shake"></i></a>
                 </li>
                 <li>
-                    <a class="social-link" href="/social"><i class="fa-sharp fa-solid fa-share-nodes fa-shake"></i></a>
+                    <a class="social-link" href="/social"><i class="fa-solid fa-share-nodes fa-shake"></i></a>
                 </li>
                 <li>
                     <a class="social-link" href="/contact"><i class="fa-regular fa-envelope fa-shake"></i></a>
@@ -126,18 +122,27 @@ ______ _     _             _     _
             </div>
             <!-- /@CONTENTS -->
 
-            <!-- JQUERY IMPORT FROM CDN HOSTED BY GOOGLE -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <!-- JQUERY (REQUIRED BY t.js) FROM CDN HOSTED BY GOOGLE -->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 
-            <!-- TYPEWRITER EFFECT JS IMPORT -->
+            <!-- TYPEWRITER EFFECT (t.js) -->
             <script src="./js/t.js"></script>
-            <!-- <script src="https://pistachiostudio.github.io/pistachio-on-vss/js/t.js"></script> -->
-
-            <!-- H2 CLASS "typek" TYPEWRITER EFFECT SETTINGS -->
             <script>
                 $(function () {
+                    // TOP MESSAGE ("Theme: ...")
+                    $(".typew").t({
+                        caret: '<span class="caret">]</span>',
+                        speed: 10,
+                        beep: false,
+                        mistype: false,
+                        locale: "en",
+                        speed_vary: true,
+                        blink: true,
+                        delay: 0.1,
+                    });
+                    // SUBTITLE (h2)
                     $(".typek").t({
-                        caret: '<span style="color:pink;">•</span>',
+                        caret: '<span class="caret">•</span>',
                         speed: 25,
                         beep: false,
                         mistype: 10,
@@ -149,24 +154,7 @@ ______ _     _             _     _
                 });
             </script>
 
-            <!-- SPAN CLASS "typew" TYPEWRITER EFFECT SETTINGS
-    (TOP MESSAGE) -->
-            <script>
-                $(function () {
-                    $(".typew").t({
-                        caret: '<span style="color:pink;">]</span>',
-                        speed: 10,
-                        beep: false,
-                        mistype: false,
-                        locale: "en",
-                        speed_vary: true,
-                        blink: true,
-                        delay: 0.1,
-                    });
-                });
-            </script>
-
-            <!-- FOOTER & COPYRIGHT SCRIPT -->
+            <!-- FOOTER & COPYRIGHT -->
             <div class="footer">
                 Acknowledgments: <a href="https://github.com/veltiosoft/vss" target="_blank">VSS</a>,
                 <a href="https://mntn-dev.github.io/t.js/" target="_blank">t.js</a>,
@@ -175,10 +163,9 @@ ______ _     _             _     _
                 GitHub repository: <a href="https://github.com/pistachiostudio/pistachio-on-vss"
                     target="_blank">pistachio-on-vss</a><br>
                 Hosted by: <a href="https://pages.github.com/" target="_blank">GitHub Pages</a><br>
-                <script type="text/javascript">
-                    var today = new Date();
-                    var y = today.getFullYear();
-                    document.write("&copy; 2005-" + y + " Pistachio Studio");
+                &copy; 2005-<span id="copyright-year"></span> Pistachio Studio
+                <script>
+                    document.getElementById("copyright-year").textContent = new Date().getFullYear();
                 </script>
             </div>
 

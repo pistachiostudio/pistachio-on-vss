@@ -28,7 +28,7 @@ vss serve        # ファイル変更を見ながらローカルプレビュー
 - ローカルの vss が古いと CI と挙動が変わることがある(例: 手元が 0.11.0 で CI は最新)。
   `vss --version` を確認し、`make setup*` で更新してから検証すると確実。
 - **ルート直下や `.claude/` 内の `.md` は、そのままだとページとして公開される**
-  (`README.md` は今も `README.html` として出力される)。`AGENTS.md` と `SKILL.md` は
+  `README.md` / `AGENTS.md` / `SKILL.md` は
   `vss.toml` の `ignore_files`(ファイル名一致)で除外している。新しい説明用 `.md` を
   リポジトリに足すときは、公開したくなければ同様に `ignore_files` へ追加すること。
   最新版(0.18.0)で `dist/` に出ないことを確認済み。古い vss(0.11.0)ではこの除外が
@@ -51,7 +51,7 @@ layouts/             HTMLテンプレート。ページと同名のlayoutがあ�
   20230826.html        20230826.md 用
 static/              そのまま dist/ にコピーされる静的ファイル
   css/style.css        構造CSS + 配色のデフォルト値(:root の変数)
-  css/vhs.css          VHS風スキャンライン/ノイズの構造CSS
+  css/vhs.css          本文の文字のRGBずれ演出だけ(走査線・ノイズは廃止済み)
   css/themes.css       ★ 現在のカラーテーマ(CSS変数の上書きだけ)
   css/dot/cat.css      左上のドット絵アイコン(box-shadowで描画)
   js/t.js              タイプライター演出(jQuery プラグイン)
@@ -91,22 +91,27 @@ archive/             CNAME など。変更してもデプロイは走らない(p
 `--main-bg-color` / `--main-font-color` / `--title-color` / `--link-color` /
 `--link-hover-color` / `--social-button-color` / `--social-button-hover-color` /
 `--selection-text-color` / `--selection-bg-color` / `--doggo-color` /
-`--vhs-noise-color` / `--vhs-scanline-color` / `--dot-color-a` / `--dot-color-b`
+`--caret-color` / `--dot-color-a` / `--dot-color-b`
+
+タイプライターのキャレットは `layouts/*.html` の t.js 設定で `<span class="caret">` として出力され、
+色は `--caret-color` で決まる。
 
 ### テーマ外に残っている直書きの色(要注意)
 
-- `layouts/*.html` のタイプライターのキャレット `<span style="color:pink;">`(2か所×3ファイル)。
 - `vhs.css` の `rgbText` アニメーションの `text-shadow`(RGBずれ演出。色相は固定)。
 - `static/manifest.json` の `theme_color` / `background_color`。
-- `static/css/dot/cc_cat_dot.css` はどのレイアウトからも読まれていない旧ファイル。
-  `dot/cat.css` 冒頭コメントには、既に存在しない `padres_dot.css` などへの言及が残っている。
 
 ## 注意点
 
-- フォントは Google Fonts の VT323、アイコンは Font Awesome(`style.css` で CDN から `@import`)。
-  どちらも外部CDN依存で、ローカルにはコピーしていない。
-- `layouts/*.html` に Google Analytics(gtag)と jQuery(Google CDN)が入っている。
-  意図なく外さない。
+- フォントは Google Fonts の VT323、アイコンは Font Awesome 6.x(cdnjs、`integrity` 付き)。
+  どちらも `layouts/*.html` の `<head>` で `<link>` 読み込みしている外部CDN依存で、
+  ローカルにはコピーしていない。Font Awesome は無料版なので `fa-sharp` などの Pro 専用
+  クラスは使わない。バージョンを上げるときは `integrity` のハッシュも差し替えること。
+- `layouts/*.html` に Google Analytics(gtag)と jQuery 3.x(Google CDN)が入っている。
+  意図なく外さない。jQuery は `t.js` が依存しているため。jQuery 4 は API 削除があり
+  `t.js` が動くか未確認なので、上げるなら動作確認してから。
+- `*` の点滅と RGBずれは、OS の「視差効果を減らす」(`prefers-reduced-motion`)が
+  有効なら止まる(`style.css` / `vhs.css` 末尾)。タイプライター(`t.js`)は対象外。
 - `static/js/t.js` はサードパーティ製の minified 風コード。編集しない。
 - 相対パス(`css/...`, `./js/t.js`, `favicon.ico`)でアセットを参照している。
   ページを深いパスに置く場合は壊れるので、今はルート直下に置く運用。
