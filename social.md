@@ -60,7 +60,6 @@
 ### Others
 
 - [SoundCloud](https://soundcloud.com/pistachio-studio)
-- [Discord](https://discord.com/invite/pistachiogaming)
 - [GitHub](https://github.com/pistachiostudio)
 - [Twitch](https://www.twitch.tv/pistachiostudio)
 - [Tsuyoshi Ando Twitch](https://www.twitch.tv/tsuyoshi_ando)

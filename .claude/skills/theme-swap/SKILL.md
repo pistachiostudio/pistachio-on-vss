@@ -47,12 +47,10 @@ description: サイト全体の配色(カラーテーマ)を一括で変える�
    - 配色ブロックを丸ごと新テーマに置き換える(`body[data-theme="<key>"] { ... }`)。
      旧テーマのブロックは **残さない**(コードで溜めない方針)。
    - 冒頭コメントの「過去のテーマ名」リストに、**入れ替える前のテーマ名を1つ追記**する。
-   - 使う変数は下の一覧の14個すべてを埋める(抜けると `style.css` の `:root` の既定色が漏れる)。
+   - 使う変数は下の一覧の13個すべてを埋める(抜けると `style.css` の `:root` の既定色が漏れる)。
 2. **`layouts/default.html` / `layouts/quojama.html` / `layouts/20230826.html`**
    - `<body data-theme="...">` を新しいキーにする。
    - `<span class="typew">Theme: ...</span>` を新しいテーマ名にする。
-   - タイプライターのキャレット `<span style="color:pink;">` が 2か所ある。
-     新テーマと喧嘩する場合は、`--doggo-color` か `--link-color` と同系の色に直す。
    - **3ファイルとも同じ内容にする**。
 3. **ドットアイコンの色**: `--dot-color-a`(本体) / `--dot-color-b`(目・ハイライト)。
    themes.css の変数で決まるので、別ファイルの修正は不要。
@@ -69,7 +67,6 @@ description: サイト全体の配色(カラーテーマ)を一括で変える�
 - `vss build` を実行してエラーがないこと。手元の `vss` が古い場合は `make setup*` で更新。
 - `dist/index.html` などに新しい `data-theme` と "Theme: ..." が入っていることを grep で確認。
 - 可能なら `vss serve` して実際の見た目を見る(ブラウザ系ツールがあればスクリーンショット)。
-  特に、スキャンライン(縦縞)で文字が読みにくくなっていないか確認する。
 - `git diff --stat` を見せて、変更が上の4か所(+必要なら manifest)に収まっていることを報告する。
 
 **コミット・プッシュ・PR作成は頼まれたときだけ。** `main` へのマージは本番に即デプロイされる。
@@ -86,8 +83,7 @@ description: サイト全体の配色(カラーテーマ)を一括で変える�
 | `--social-button-color` / `--social-button-hover-color` | ソーシャルアイコンの通常/hover |
 | `--selection-text-color` / `--selection-bg-color` | テキスト選択時の文字/背景 |
 | `--doggo-color` | 左上付近の点滅する `*` |
-| `--vhs-noise-color` | 背景の横線ノイズ(`.lines`)の色 |
-| `--vhs-scanline-color` | 走査線アニメーションの色 |
+| `--caret-color` | タイプライター演出のカーソル(`•` と `]`)。`--doggo-color` か `--link-color` と同系にすると馴染む |
 | `--dot-color-a` / `--dot-color-b` | 左上の猫ドット絵の2色 |
 
 `--h5-font-size` / `--h5-margin` / `--h1-text-decoration` は配色ではなくレイアウト調整用の変数。
@@ -101,9 +97,6 @@ description: サイト全体の配色(カラーテーマ)を一括で変える�
 - **VHS 演出との相性**: `vhs.css` に RGB ずれの `text-shadow`(赤/緑/青/マゼンタ/シアン系、色は固定)
   が常時かかっている。淡い背景 × 細い文字だとにじんで読みにくいので、ライト系の案は
   文字色を濃くする。
-- **走査線**: `--vhs-noise-color` は背景の上に縞を重ねるので、ダーク背景なら黒系、
-  ライト背景なら背景より少し濃い色にして、目立ちすぎないようにする。
-  `--vhs-scanline-color` は半透明(alpha 0.2〜0.5)が基本。
 - **hover**: `--link-hover-color` は通常色と見分けがつく(明度か色相が違う)こと。
 - 数値でコントラストを出すには、Node があれば次のワンライナーが使える(hex 2色を渡す):
 

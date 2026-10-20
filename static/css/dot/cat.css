@@ -1,8 +1,6 @@
 /*
-This is the left-top dot icon css (shared by mforblue / beach / setuptools,
-which all use the same cat shape and just recolor it via --dot-color-a/-b
-in themes.css). Padres and xmas use their own motif file instead - see
-dot/padres_dot.css, dot/xmas_tree_dot.css, dot/xmas_santa_dot.css.
+This is the left-top dot icon css. The shape is fixed here; its two
+colors come from --dot-color-a/-b in themes.css.
 You can create your own dot icon css here:
 https://bcrikko.github.io/css-collection/tool/dotgen/index.html
 */

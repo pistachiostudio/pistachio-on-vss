@@ -13,7 +13,7 @@ rewrite this file (and the matching data-theme / dot icon / "Theme: .."
 label in layouts/*.html) rather than reviving an old block.
 */
 
-/* Neon Drive - dark synthwave palette, leans into the VHS scanline effect */
+/* Neon Drive - dark synthwave palette */
 body[data-theme="neon"] {
   --main-bg-color: #0d0221;
   --main-font-color: #f5f0ff;
@@ -25,8 +25,7 @@ body[data-theme="neon"] {
   --selection-text-color: #0d0221;
   --selection-bg-color: #00fff0;
   --doggo-color: #ff00c8;
-  --vhs-noise-color: rgb(0, 0, 0);
-  --vhs-scanline-color: rgba(0, 255, 240, 0.35);
+  --caret-color: pink;
   --dot-color-a: #ff00c8;
   --dot-color-b: #00fff0;
 }

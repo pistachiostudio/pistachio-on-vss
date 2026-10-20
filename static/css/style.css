@@ -13,14 +13,13 @@ ______ _     _             _     _
     \____/ \__|\__,_|\__,_|_|\___/
 */
 
-/* IMPORT FONT AWESOME CSS */
-@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css);
+/* Font Awesome (icons) is loaded by a <link> in layouts/*.html */
 
 /*
 ROOT VARIABLES - THIS IS THE DEFAULT (FALLBACK) COLOR SCHEME.
 To change the whole site's look, don't edit this file: pick or add a
 theme in css/themes.css instead and set <body data-theme="..."> in the
-layouts. See README.md "カラーテーマの切り替え方" for the full workflow.
+layouts. See AGENTS.md "カラーテーマの仕組み" for the full workflow.
 */
 :root {
   /* MAIN BACKGROUND COLOR */
@@ -42,9 +41,8 @@ layouts. See README.md "カラーテーマの切り替え方" for the full workf
   --selection-bg-color: #37ff00;
   /* DOGGO (TOP *) COLOR */
   --doggo-color: #ffdb25;
-  /* VHS SCANLINE / NOISE COLORS (see vhs.css) */
-  --vhs-noise-color: rgba(11, 11, 11, 0.5);
-  --vhs-scanline-color: rgba(0, 0, 0, 0.5);
+  /* TYPEWRITER CARET COLOR (the blinking cursor after typed text) */
+  --caret-color: pink;
   /* LEFT-TOP CAT DOT ICON COLORS (see dot/cat.css) */
   --dot-color-a: #2c527a;
   --dot-color-b: #ffffff;
@@ -94,6 +92,11 @@ html {
   100% {
     opacity: 1;
   }
+}
+
+/* TYPEWRITER CARET (markup comes from the t.js "caret" option in layouts) */
+.caret {
+  color: var(--caret-color);
 }
 
 /* SELECTION COLOR */
@@ -189,6 +192,13 @@ a:hover {
   text-align: right;
   font-size: 0.7rem;
   margin-top: 4rem;
+}
+
+/* Respect the OS "reduce motion" setting: stop the blinking */
+@media (prefers-reduced-motion: reduce) {
+  .doggo {
+    animation: none;
+  }
 }
 
 /* RESPONSIVE */

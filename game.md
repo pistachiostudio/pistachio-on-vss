@@ -7,8 +7,3 @@ So let’s all grab and let’s all enjoy.
   
 If the ossan are united!  
 They will never be divided!
-
-#### 
-
-Pistachio Gaming Discord server  
-[discord.gg/pistachiogaming](https://discord.gg/pistachiogaming)
