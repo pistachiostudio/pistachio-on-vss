@@ -1,9 +1,5 @@
 ### Upcoming Party
 
-#### 2026.10.17
-
-CBS & Chicken Is Nice @Futakoshinchi
-
 #### 2026.11.21
 
 CBS & Chicken Is Nice @Bar Chit Chat, Shin-Yurigaoka

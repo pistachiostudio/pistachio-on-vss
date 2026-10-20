@@ -2,6 +2,10 @@
 
 ### 2026
 
+10.17
+
+  - CBS & Chicken Is Nice @Futakoshinchi
+
 10.03
 
   - CBS @heavysick ZERO, Nakano
