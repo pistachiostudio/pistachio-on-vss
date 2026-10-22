@@ -40,7 +40,7 @@ AI は最初に [`AGENTS.md`](AGENTS.md) を読みます。ファイル構成、
 2. あなたが選ぶまで、ファイルは書き換えない。
 3. 選ばれたら、次をまとめて書き換える。
    - `static/css/themes.css` の配色ブロック
-   - 3 つのレイアウト（`layouts/default.html` / `quojama.html` / `20230826.html`）の `data-theme` 属性
+   - 2 つのレイアウト（`layouts/default.html` / `20230826.html`）の `data-theme` 属性
    - ヘッダーの "Theme: ..." 表記
    - 左上のドット絵アイコンの色（ドットの形そのものを変えたいときは別途相談してください）
 4. `vss build` で確認する。
@@ -58,10 +58,10 @@ AI は最初に [`AGENTS.md`](AGENTS.md) を読みます。ファイル構成、
 | `index.md` | トップページ（Upcoming Party、メンバー紹介） |
 | `past.md` | 過去のパーティ一覧 |
 | `social.md` | SNS アカウント一覧 |
-| `contact.md` / `quojama.md` / `cbscin.md` / `game.md` / `oldnews.md` / `20230826.md` | 個別ページ |
+| `contact.md` / `cbscin.md` / `game.md` / `oldnews.md` / `20230826.md` | 個別ページ |
 
 - **告知を隠す/出す**: Markdown の HTML コメントアウト `<!-- ... -->` が使えます（`vss.toml` で有効化済み）。`index.md` の Upcoming Party はこの方法で切り替えています。
-- ヘッダー、SNS アイコン、フッターは Markdown ではなく `layouts/*.html` にあります。3 つのレイアウトはほぼ同じ内容の複製なので、共通部分を変えるときは 3 つとも同じ変更が必要です。
+- ヘッダー、SNS アイコン、フッターは Markdown ではなく `layouts/*.html` にあります。2 つのレイアウトはほぼ同じ内容の複製なので、共通部分を変えるときは 2 つとも同じ変更が必要です。
 - 色を変えたいときは CSS を直接触らず、上の「カラーテーマを変えるとき」の手順（AI）を使ってください。
 
 ## 公開の仕組み

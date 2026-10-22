@@ -44,10 +44,9 @@ vss serve        # ファイル変更を見ながらローカルプレビュー
 ## 構成
 
 ```
-*.md                 各ページの本文(index / past / social / contact / quojama など)
+*.md                 各ページの本文(index / past / social / contact など)
 layouts/             HTMLテンプレート。ページと同名のlayoutがあればそれ、なければ default.html
   default.html         通常ページ用
-  quojama.html         quojama.md 用
   20230826.html        20230826.md 用
 static/              そのまま dist/ にコピーされる静的ファイル
   css/style.css        構造CSS + 配色のデフォルト値(:root の変数)
@@ -63,9 +62,9 @@ archive/             CNAME など。変更してもデプロイは走らない(p
 - `vss.toml` の `allow_dangerous_html = true` により、Markdown 内の HTML コメントアウトが効く。
   (`index.md` の "Upcoming Party" の告知を隠す/出すのにコメントアウトを使っている。)
 - レイアウトのテンプレート構文は `{{title}}` / `{{site_description}}` / `{{{contents}}}` など
-  (VSS 標準)。3つのレイアウトは **ほぼ同じ中身の複製**なので、共通部分(ヘッダー、
+  (VSS 標準)。2つのレイアウトは **ほぼ同じ中身の複製**なので、共通部分(ヘッダー、
   CSS読み込み、フッター、`data-theme`、"Theme: ..." 表記)を変えるときは
-  **3ファイルとも同じ変更を入れる**こと。
+  **2ファイルとも同じ変更を入れる**こと。
 - Markdown 本文は素の Markdown。ソーシャルリンクやヘッダーはレイアウト側にある。
 
 ## カラーテーマの仕組み(重要)
@@ -76,7 +75,7 @@ archive/             CNAME など。変更してもデプロイは走らない(p
 - `static/css/themes.css` に、**有効なテーマ1つ分だけ**が
   `body[data-theme="<key>"] { --xxx: ...; }` として書かれている。
 - 使うテーマは各 `layouts/*.html` の `<body data-theme="<key>">` で選ぶ。
-- ヘッダーに表示される "Theme: <名前>" は各 `layouts/*.html` に直書き(3ファイル)。
+- ヘッダーに表示される "Theme: <名前>" は各 `layouts/*.html` に直書き(2ファイル)。
 - 左上のドット絵の色は `--dot-color-a` / `--dot-color-b`(themes.css側)。形は `dot/cat.css`。
 
 **色を `style.css` / `vhs.css` に直接書かないこと。** 構造CSSは色を持たない方針。
