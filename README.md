@@ -66,7 +66,7 @@ AI は最初に [`AGENTS.md`](AGENTS.md) を読みます。ファイル構成、
 
 ## 公開の仕組み
 
-`main` に push → GitHub Actions が `vss build` を実行 → `dist/` を GitHub Pages に公開。
+`main` に push → GitHub Actions が `vss build` を実行 → `dist/` を GitHub Pages に公開。PR ではビルドだけ走り、壊れていないかを確認します（公開はしません）。
 
 - 静的サイトジェネレーター: [VSS](https://github.com/veltiosoft/vss)（ドキュメント: [vss.veltiosoft.dev](https://vss.veltiosoft.dev/)）
 - ワークフロー: [.github/workflows/pages.yml](https://github.com/pistachiostudio/pistachio-on-vss/blob/main/.github/workflows/pages.yml)
@@ -87,7 +87,7 @@ vss serve        # ファイル変更を見ながらプレビュー
 ```
 
 - `make` と `git` が必要です。VSS のバイナリと `dist/` は `.gitignore` 済みなのでコミットされません。
-- 古い VSS だと CI と挙動が変わることがあります。ビルドがおかしいときは `make setup*` で入れ直してください。
+- VSS のバージョンは `Makefile` の `VSS_VERSION` で固定しています（CI も同じ版を使います）。手元の VSS が違う版だと挙動が変わることがあるので、ビルドがおかしいときは `make setup*` で入れ直してください。
 
 詳細なコマンド、ファイル構成、カラーテーマの仕組み、既知の落とし穴は [`AGENTS.md`](AGENTS.md) にまとまっています。
 
