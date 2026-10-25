@@ -22,11 +22,15 @@ vss serve        # ファイル変更を見ながらローカルプレビュー
 ```
 
 - VSS が既に PATH にある場合(`~/.vss/bin/vss` など)は `vss build` を直接使ってよい。
-- CI(`.github/workflows/pages.yml`)は `make setup`(最新版 vss を取得)→ `vss build` →
-  `dist/` を Pages にアップロード。`README.md` / `AGENTS.md` / `.claude/**` / `archive/**`
-  だけの変更ではデプロイは走らない(`paths-ignore`)。
-- ローカルの vss が古いと CI と挙動が変わることがある(例: 手元が 0.11.0 で CI は最新)。
-  `vss --version` を確認し、`make setup*` で更新してから検証すると確実。
+- CI(`.github/workflows/pages.yml`)は `make setup`(固定した版の vss を取得し SHA256 を検証)→
+  `make build` → `dist/` を Pages にアップロード。`README.md` / `AGENTS.md` / `.claude/**` /
+  `archive/**` だけの変更ではデプロイは走らない(`paths-ignore`)。PR ではビルドだけ走り、
+  デプロイはしない。
+- vss のバージョンは `Makefile` の `VSS_VERSION` で固定している(latest だと破壊的変更が
+  そのまま本番に入るため)。上げるときは `VSS_VERSION` と3つの `VSS_SHA256_*` を一緒に更新し、
+  リリースノートの CHANGE 項目を確認したうえで、旧版と新版で `dist/` を比べるとよい。
+- ローカルの vss が CI と違う版だと挙動が変わることがある(例: 手元が 0.11.0)。
+  `vss --version` を確認し、`make setup*` で入れ直してから検証すると確実。
 - **ルート直下などの `.md` は、そのままだとページとして公開される**
   `README.md` / `AGENTS.md` / `SKILL.md` は
   `vss.toml` の `ignore_files`(ファイル名一致)で除外している。新しい説明用 `.md` を
@@ -36,7 +40,7 @@ vss serve        # ファイル変更を見ながらローカルプレビュー
   なお `SKILL.md` の frontmatter は YAML として不正だと(`description` に `: ` を含めるなど)
   古い vss ではビルドエラーになる。
 - vss 0.21.0 からは `.` 始まりのディレクトリ(`.claude/` など)の `.md` は自動でページ化
-  されない。`SKILL.md` を `ignore_files` に残しているのは、手元の古い vss 向けの保険。
+  されない。`SKILL.md` を `ignore_files` に残しているのは、PATH にある古い vss 向けの保険。
   また 0.21.0 以降はシンボリックリンクがビルド対象外になったので、入力は通常のファイルとして置く。
 - `vss build` は `dist/` を掃除しない。過去のビルドの古いファイル
   (`dist/css/beach_style.css` など)が残っていることがあるが、無視してよい。

@@ -10,6 +10,10 @@ on:
       - ".claude/**"
       - "archive/**"
 
+  # PR ではビルドだけ走らせて壊れていないか確認する(デプロイはしない)
+  pull_request:
+    branches: ["main"]
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -30,24 +34,24 @@ jobs:
 
       - name: Setup Pages
         id: pages
+        if: github.event_name != 'pull_request'
         uses: actions/configure-pages@v5
 
       - name: Install vss cli
-        run: |
-          make setup
-          chmod +x vss
-          sudo mv vss /usr/local/bin/
+        run: make setup
 
       - name: Build with vss
-        run: vss build
+        run: make build
 
       - name: Upload artifact
+        if: github.event_name != 'pull_request'
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist/
 
   # Deployment job
   deploy:
+    if: github.event_name != 'pull_request'
     permissions:
       pages: write
       id-token: write
