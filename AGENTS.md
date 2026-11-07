@@ -118,7 +118,7 @@ prototypes/          (追跡対象外)デザインの試作。コミットしな
 **色は `static/css/style.css` の `:root` のトークンだけで管理する。** canvas もここから色を読む。
 ほかの場所に色を直接書かないこと。新しい色が要るときは `:root` にトークンを足す。
 
-`--bg` / `--fur-dim` / `--fur` / `--white` / `--tongue` / `--scene-dim` / `--scene` / `--water` / `--lamp` / `--lantern`
+`--bg` / `--fur-dim` / `--fur` / `--white` / `--tongue` / `--scene-dim` / `--scene` / `--water` / `--lamp` / `--lantern` / `--float`
 
 例外: `static/manifest.json` の `theme_color` / `background_color` と、レイアウトの
 `<meta name="theme-color">` は `--bg` と同じ値(#202020)を直書きしている。`--bg` を変えたら合わせる。

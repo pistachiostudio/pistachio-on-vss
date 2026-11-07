@@ -11,8 +11,8 @@
     const mixc = (a, b, t) => "rgb(" + a.map((v, i) => Math.round(v + (b[i] - v) * t)).join(",") + ")";
     const [C1, C2, C3] = [tok("fur-dim"), tok("fur"), tok("white")].map(hex);
     const COLORS = [null, mixc(C1, C1, 0), mixc(C1, C2, .5), mixc(C1, C2, 1), mixc(C2, C3, .5), mixc(C2, C3, 1), tok("tongue"),
-        tok("scene-dim"), tok("scene"), tok("water"), tok("lamp"), tok("lantern")];
-    const TONGUE = 6, SC_DIM = 7, SC = 8, WATER = 9, LAMP = 10, LANTERN = 11;
+        tok("scene-dim"), tok("scene"), tok("water"), tok("lamp"), tok("lantern"), tok("float")];
+    const TONGUE = 6, SC_DIM = 7, SC = 8, WATER = 9, LAMP = 10, LANTERN = 11, FLOAT = 12;
     const BG = tok("bg");
     const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -518,7 +518,7 @@
             else put(fx - 2 - k, bank - 1 - k, k === 3 && pull ? "," : "\\", SC_DIM);
         }
         const float = (p, still) => {                                       // ウキ(ゆらゆら)と、その下の小さな波
-            put(p.c, p.r, still || Math.sin(T * 1.7) > .3 ? "'" : ".", LAMP);
+            put(p.c, p.r, still || Math.sin(T * 1.7) > .3 ? "'" : ".", FLOAT);
             if (p.r + 1 < bank) put(p.c, p.r + 1, "-", WATER);
         };
         if (cast) {
@@ -530,7 +530,7 @@
             } else if (v >= 1.55 && v < 2.2) {
                 // 投げる: ウキが弧を描いて飛んでいく
                 const p = (v - 1.55) / .65;
-                put(Math.round(tipC + (to.c - tipC) * p), Math.round(tipR + (to.r - tipR) * p - Math.sin(p * Math.PI) * 2), "'", LAMP);
+                put(Math.round(tipC + (to.c - tipC) * p), Math.round(tipR + (to.r - tipR) * p - Math.sin(p * Math.PI) * 2), "'", FLOAT);
             } else if (v >= 2.2) {
                 // 着水: 小さなしぶき
                 float(to, true);
