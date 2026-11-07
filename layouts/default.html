@@ -1,18 +1,17 @@
 <!--
-______ _     _             _     _       
-| ___ (_)   | |           | |   (_)      
-| |_/ /_ ___| |_ __ _  ___| |__  _  ___  
-|  __/| / __| __/ _` |/ __| '_ \| |/ _ \ 
+______ _     _             _     _
+| ___ (_)   | |           | |   (_)
+| |_/ /_ ___| |_ __ _  ___| |__  _  ___
+|  __/| / __| __/ _` |/ __| '_ \| |/ _ \
 | |   | \__ | || (_| | (__| | | | | (_) |
-\_|   |_|___/\__\__,_|\___|_| |_|_|\___/ 
-     _____ _             _ _             
-    /  ___| |           | (_)            
-    \ `--.| |_ _   _  __| |_  ___        
-     `--. | __| | | |/ _` | |/ _ \       
-    /\__/ | |_| |_| | (_| | | (_) |      
-    \____/ \__|\__,_|\__,_|_|\___/       
+\_|   |_|___/\__\__,_|\___|_| |_|_|\___/
+     _____ _             _ _
+    /  ___| |           | (_)
+    \ `--.| |_ _   _  __| |_  ___
+     `--. | __| | | |/ _` | |/ _ \
+    /\__/ | |_| |_| | (_| | | (_) |
+    \____/ \__|\__,_|\__,_|_|\___/
 -->
-
 <!DOCTYPE html>
 <html lang="ja">
 
@@ -27,146 +26,65 @@ ______ _     _             _     _
     </script>
 
     <meta charset="utf-8" />
-    <!-- TITLE & META DESCRIPTION -->
-    <title>{{title}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- TITLE & META DESCRIPTION (下のページ用。title は各 .md の frontmatter から) -->
+    <title>{{title}} | {{site_title}}</title>
     <meta name="description" content="{{site_description}}" />
+    <meta name="theme-color" content="#202020" />
     <!-- SNS LINK PREVIEW METADATA OGP -->
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="{{site_title}}" />
+    <meta property="og:title" content="{{title}} | {{site_title}}" />
     <meta property="og:description" content="{{site_description}}" />
     <meta property="og:url" content="{{base_url}}" />
     <meta property="og:image" content="https://pistachiostudio.net/og_image_banana_maru.png" />
-    <!-- FAVICON MAY BE NEED ABSOLUTE PATH -->
+    <!-- FAVICON -->
     <link rel="icon" sizes="16x16" href="favicon.ico" />
     <link rel="icon" sizes="32x32" href="favicon.ico" />
     <link rel="icon" sizes="48x48" href="favicon.ico" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png" />
     <link rel="manifest" href="manifest.json" />
-    <!-- CSS IMPORT (theme-independent: color scheme comes from css/themes.css,
-         picked by <body data-theme>. Ask Claude to update it.) -->
-    <link rel="stylesheet" href="css/vhs.css" />
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/themes.css" />
-    <link rel="stylesheet" href="css/dot/cat.css" />
-    <!-- GOOGLE FONT IMPORT FROM CDN -->
+    <!-- FONT (M PLUS 1 Code, SIL OFL 1.1) -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
-    <!-- FONT AWESOME (SOCIAL ICONS) FROM CDN -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
-        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!-- VIEWPORT FOR RESPONSIVE -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@400&display=swap" rel="stylesheet" />
+    <!-- CSS (色は style.css の :root だけ。canvas もそこから読む) -->
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body data-theme="neon">
+<body>
+    <!-- うしろの絵(川べり。下のページに犬はいない)。js/scene.js が描く -->
+    <canvas id="dog" role="img" aria-label="夜の川べり"></canvas>
 
-    <!-- LEFT TOP DOT ICON, IF YOU WANT TO EDIT SEE "dot/" -->
-    <div class="dot-cat" id="dot-icon"></div>
+    <main class="site">
+        <header data-mask>
+            <h1><a href="/">Pistachio Studio</a></h1>
+            <p class="tag">Neighborhood recording crew from kngw, Japan.</p>
+        </header>
 
-
-    <!-- MAIN (RGB-SHIFT TEXT, SEE "vhs.css") -->
-    <div class="main">
-        <div class="vhs">
-
-            <!-- TOP INFORMATION -->
-            <div class="doggo">*</div>
-            <span class="typew">Theme: Neon Drive</span>
-
-            <h1>
-                <a id="title" href="/">Pistachio Studio!</a>
-            </h1>
-
-            <h2 class="typek">Neighborhood recording crew from kngw, Japan.
-            </h2>
-            <!-- SOCIAL ICONS USING FONT AWESOME -->
-            <ul class="social">
-                <li>
-                    <a class="social-link" href="https://instagram.com/pistachiostudio" target="_blank"><i
-                            class="fa-brands fa-instagram fa-shake"></i></a>
-                </li>
-                <li>
-                    <a class="social-link" href="https://x.com/pstchstd" target="_blank"><i
-                            class="fa-brands fa-x-twitter fa-shake"></i></a>
-                </li>
-                <li>
-                    <a class="social-link" href="https://www.youtube.com/c/pistachiostudiokngw" target="_blank">
-                        <i class="fa-brands fa-youtube fa-shake"></i></a>
-                </li>
-                <li>
-                    <a class="social-link" href="https://soundcloud.com/pistachio-studio" target="_blank">
-                        <i class="fa-brands fa-soundcloud fa-shake"></i></a>
-                </li>
-                <li>
-                    <a class="social-link"
-                        href="https://open.spotify.com/user/2wf7ulo34ef46fu3awnq984wj?si=mm3fQfatR1OF2Kgr_uieGw"
-                        target="_blank"><i class="fa-brands fa-spotify fa-shake"></i></a>
-                </li>
-                <li>
-                    <a class="social-link" href="https://github.com/pistachiostudio" target="_blank">
-                        <i class="fa-brands fa-github fa-shake"></i></a>
-                </li>
-                <li>
-                    <a class="social-link" href="/social"><i class="fa-solid fa-share-nodes fa-shake"></i></a>
-                </li>
-                <li>
-                    <a class="social-link" href="/contact"><i class="fa-regular fa-envelope fa-shake"></i></a>
-                </li>
-            </ul>
-
-            <!-- @CONTENTS -->
+        <section data-mask class="md">
+            <p class="back"><a href="/">&larr; Top</a></p>
+            <h2 class="page">{{title}}</h2>
+            <!-- @CONTENTS (各 .md) -->
             {{{contents}}}
             <!-- /@CONTENTS -->
+        </section>
 
-            <!-- JQUERY (REQUIRED BY t.js) FROM CDN HOSTED BY GOOGLE -->
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+        <footer class="foot" data-mask>
+            <p>Acknowledgments: <a href="https://github.com/veltiosoft/vss">VSS</a>,
+                <a href="https://fonts.google.com/specimen/M+PLUS+1+Code">M PLUS 1 Code</a> (SIL OFL 1.1)</p>
+            <p>GitHub repository: <a href="https://github.com/pistachiostudio/pistachio-on-vss">pistachio-on-vss</a></p>
+            <p>Hosted by: <a href="https://pages.github.com/">GitHub Pages</a></p>
+            <p>&copy; 2005-<span id="copyright-year">2026</span> Pistachio Studio</p>
+        </footer>
+    </main>
 
-            <!-- TYPEWRITER EFFECT (t.js) -->
-            <script src="./js/t.js"></script>
-            <script>
-                $(function () {
-                    // TOP MESSAGE ("Theme: ...")
-                    $(".typew").t({
-                        caret: '<span class="caret">]</span>',
-                        speed: 10,
-                        beep: false,
-                        mistype: false,
-                        locale: "en",
-                        speed_vary: true,
-                        blink: true,
-                        delay: 0.1,
-                    });
-                    // SUBTITLE (h2)
-                    $(".typek").t({
-                        caret: '<span class="caret">•</span>',
-                        speed: 25,
-                        beep: false,
-                        mistype: 10,
-                        locale: "en",
-                        speed_vary: true,
-                        blink: true,
-                        delay: 1.4,
-                    });
-                });
-            </script>
-
-            <!-- FOOTER & COPYRIGHT -->
-            <div class="footer">
-                Acknowledgments: <a href="https://github.com/veltiosoft/vss" target="_blank">VSS</a>,
-                <a href="https://mntn-dev.github.io/t.js/" target="_blank">t.js</a>,
-                <a href="https://codepen.io/pbitos/pen/zypwVr" target="_blank">VHS Retro</a>,
-                <a href="https://fontawesome.com/" target="_blank">Font Awesome</a><br>
-                GitHub repository: <a href="https://github.com/pistachiostudio/pistachio-on-vss"
-                    target="_blank">pistachio-on-vss</a><br>
-                Hosted by: <a href="https://pages.github.com/" target="_blank">GitHub Pages</a><br>
-                &copy; 2005-<span id="copyright-year"></span> Pistachio Studio
-                <script>
-                    document.getElementById("copyright-year").textContent = new Date().getFullYear();
-                </script>
-            </div>
-
-        </div>
-    </div>
+    <script>
+        document.getElementById("copyright-year").textContent = new Date().getFullYear();
+        // 外へのリンクは新しいタブで開く
+        document.querySelectorAll('.site a[href^="http"]').forEach((a) => { a.target = "_blank"; a.rel = "noopener"; });
+    </script>
+    <!-- 絵を描くスクリプト(犬のデータ dogs.js は読まないので、景色だけになる) -->
+    <script src="js/scene.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,8 @@
+- [Instagram](https://instagram.com/pistachiostudio)
+- [X](https://x.com/pstchstd)
+- [YouTube](https://www.youtube.com/c/pistachiostudiokngw)
+- [SoundCloud](https://soundcloud.com/pistachio-studio)
+- [Spotify Playlists](https://open.spotify.com/user/2wf7ulo34ef46fu3awnq984wj)
+- [GitHub](https://github.com/pistachiostudio)
+- [Discogs](https://www.discogs.com/label/1290260-Pistachio-Studio-2)
+- [Mail](/contact)

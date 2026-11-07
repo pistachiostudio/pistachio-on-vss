@@ -1,0 +1,128 @@
+<!--
+______ _     _             _     _
+| ___ (_)   | |           | |   (_)
+| |_/ /_ ___| |_ __ _  ___| |__  _  ___
+|  __/| / __| __/ _` |/ __| '_ \| |/ _ \
+| |   | \__ | || (_| | (__| | | | | (_) |
+\_|   |_|___/\__\__,_|\___|_| |_|_|\___/
+     _____ _             _ _
+    /  ___| |           | (_)
+    \ `--.| |_ _   _  __| |_  ___
+     `--. | __| | | |/ _` | |/ _ \
+    /\__/ | |_| |_| | (_| | | (_) |
+    \____/ \__|\__,_|\__,_|_|\___/
+-->
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5W20EVMG6T"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-5W20EVMG6T');
+    </script>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- TITLE & META DESCRIPTION (トップページ用。下のページは default.html) -->
+    <title>{{site_title}}</title>
+    <meta name="description" content="{{site_description}}" />
+    <meta name="theme-color" content="#202020" />
+    <!-- SNS LINK PREVIEW METADATA OGP -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="{{site_title}}" />
+    <meta property="og:description" content="{{site_description}}" />
+    <meta property="og:url" content="{{base_url}}" />
+    <meta property="og:image" content="https://pistachiostudio.net/og_image_banana_maru.png" />
+    <!-- FAVICON -->
+    <link rel="icon" sizes="16x16" href="favicon.ico" />
+    <link rel="icon" sizes="32x32" href="favicon.ico" />
+    <link rel="icon" sizes="48x48" href="favicon.ico" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+    <link rel="manifest" href="manifest.json" />
+    <!-- FONT (M PLUS 1 Code, SIL OFL 1.1) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@400&display=swap" rel="stylesheet" />
+    <!-- CSS (色は style.css の :root だけ。canvas もそこから読む) -->
+    <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+    <!-- うしろの絵(川べりと犬)。js/scene.js が描く -->
+    <canvas id="dog" role="img" aria-label="川べりの黒い犬"></canvas>
+
+    <main class="site">
+        <header data-mask>
+            <h1><a href="/">Pistachio Studio</a></h1>
+            <p class="tag">Neighborhood recording crew from kngw, Japan.</p>
+        </header>
+
+        <!-- 中身は partials/ の .md。ファイルが空(またはない)ときは、そのブロックごと出ない -->
+        {{#partials.ひとこと}}
+        <section data-mask class="lately">
+            <h2>ひとこと</h2>
+            {{{partials.ひとこと}}}
+        </section>
+        {{/partials.ひとこと}}
+
+        <section data-mask class="shows">
+            <h2>NEXT SHOWS</h2>
+            {{#partials.next_shows}}
+            <div class="gigs">{{{partials.next_shows}}}</div>
+            {{/partials.next_shows}}
+            {{^partials.next_shows}}
+            <p class="tba">Nothing on the calendar yet! L(@_@;)</p>
+            {{/partials.next_shows}}
+            <p class="all"><a href="/past">Past shows &rarr;</a></p>
+        </section>
+
+        <section data-mask class="members">
+            <h2>MEMBERS</h2>
+            {{{partials.members}}}
+        </section>
+
+        <section data-mask class="find-us">
+            <h2>FIND US</h2>
+            {{{partials.find_us}}}
+            <p class="all"><a href="/social">All accounts &rarr;</a></p>
+        </section>
+
+        {{{contents}}}
+
+        <footer class="foot" data-mask>
+            <p>Acknowledgments: <a href="https://github.com/veltiosoft/vss">VSS</a>,
+                <a href="https://fonts.google.com/specimen/M+PLUS+1+Code">M PLUS 1 Code</a> (SIL OFL 1.1)</p>
+            <p>GitHub repository: <a href="https://github.com/pistachiostudio/pistachio-on-vss">pistachio-on-vss</a></p>
+            <p>Hosted by: <a href="https://pages.github.com/">GitHub Pages</a></p>
+            <p>&copy; 2005-<span id="copyright-year">2026</span> Pistachio Studio</p>
+        </footer>
+    </main>
+
+    <script>
+        document.getElementById("copyright-year").textContent = new Date().getFullYear();
+        // MEMBERS: 名前の下にリンクが並んでいる人は、押すと開く形にする(スクリプトがないときは入れ子のリストのまま)
+        document.querySelectorAll(".members > ul > li").forEach((li) => {
+            const sub = li.querySelector(":scope > ul");
+            if (!sub) return;
+            const d = document.createElement("details"), s = document.createElement("summary"), links = document.createElement("span");
+            s.textContent = li.firstChild.textContent.trim();
+            links.className = "sub";
+            sub.querySelectorAll("a").forEach((a, i) => { if (i) links.append(" · "); links.append(a); });
+            d.append(s, links);
+            li.replaceChildren(d);
+        });
+        // NEXT SHOWS: TBA で始まる回は暗く
+        document.querySelectorAll(".gigs li").forEach((li) => { if (li.textContent.trim().startsWith("TBA")) li.classList.add("tba"); });
+        // 外へのリンクは新しいタブで開く
+        document.querySelectorAll('.site a[href^="http"]').forEach((a) => { a.target = "_blank"; a.rel = "noopener"; });
+    </script>
+    <!-- 犬のデータ(トップだけ)と、絵を描くスクリプト -->
+    <script src="js/dogs.js"></script>
+    <script src="js/scene.js"></script>
+</body>
+
+</html>

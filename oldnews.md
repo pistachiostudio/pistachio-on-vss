@@ -1,5 +1,6 @@
-### Old News
-
+---
+title: Old News
+---
 #### 2021.10.25
 
 CBS' lyrics on [GitHub](https://github.com/pistachiostudio/lyrics)

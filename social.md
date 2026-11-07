@@ -1,3 +1,6 @@
+---
+title: Social
+---
 ### Main
 
 - [pistachiostudio.net](https://pistachiostudio.net/)
