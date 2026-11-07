@@ -11,8 +11,8 @@
     const mixc = (a, b, t) => "rgb(" + a.map((v, i) => Math.round(v + (b[i] - v) * t)).join(",") + ")";
     const [C1, C2, C3] = [tok("fur-dim"), tok("fur"), tok("white")].map(hex);
     const COLORS = [null, mixc(C1, C1, 0), mixc(C1, C2, .5), mixc(C1, C2, 1), mixc(C2, C3, .5), mixc(C2, C3, 1), tok("tongue"),
-        tok("scene-dim"), tok("scene"), tok("water"), tok("lamp")];
-    const TONGUE = 6, SC_DIM = 7, SC = 8, WATER = 9, LAMP = 10;
+        tok("scene-dim"), tok("scene"), tok("water"), tok("lamp"), tok("lantern")];
+    const TONGUE = 6, SC_DIM = 7, SC = 8, WATER = 9, LAMP = 10, LANTERN = 11;
     const BG = tok("bg");
     const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -369,7 +369,7 @@
                 const c = L.c + Math.round(Math.sin(r * .8 + T * 2.2 + L.c) * (.3 + p * 1.3));
                 if (c < 0 || c >= cols) continue;
                 const i = c + r * cols;
-                ch[i] = 45; cls[i] = f > .45 ? LAMP : WATER;
+                ch[i] = 45; cls[i] = f > .45 ? L.cl || LAMP : WATER;
             }
         }
         drawBoat(null);                                                      // 映り込みが船に重ならないように、もう一度上から描く
@@ -377,11 +377,14 @@
     }
 
     // ===== ときどき通るもの: 屋形船 / 懐中電灯で散歩する人。どちらも一度に1つだけ =====
+    // 屋形船は、ページを見ているあいだが 5 分たつごとに 1 回通る(タブが裏のあいだは数えない)
+    // 散歩する人は保留中: ?walk を付けたときだけ出る
     // ?boat / ?walk ですぐ出る(確かめる用)
+    const BOAT_EVERY = 300;
     const BOATART = [" _,========,_ ", " |o:o:o:o:o:| ", " \\__________/ "];
     const BOATW = BOATART[0].length;
-    let boat = null, boatAt = QS.has("boat") ? 1 : 50 + Math.random() * 70;
-    let walker = null, walkAt = QS.has("walk") ? 1.5 : 90 + Math.random() * 100;
+    let boat = null, boatAt = QS.has("boat") ? 1 : BOAT_EVERY;
+    let walker = null, walkAt = QS.has("walk") ? 1.5 : Infinity;
     function stepVisitors(dt) {
         if (!SCN.ch) return;
         if (!boat && !walker && T > boatAt) {
@@ -395,13 +398,13 @@
         if (boat) {
             boat.x += boat.v * dt;
             if (boat.dir > 0 ? boat.x > S.cols : boat.x < -BOATW) {
-                boat = null; boatAt = T + (QS.has("boat") ? 3 : 100 + Math.random() * 140); walkAt = Math.max(walkAt, T + (QS.has("walk") ? 3 : 25));
+                boat = null; boatAt = QS.has("boat") ? T + 3 : boatAt + BOAT_EVERY; walkAt = Math.max(walkAt, T + (QS.has("walk") ? 3 : 25));
             }
         }
         if (walker) {
             walker.x += walker.v * dt;
             if (walker.dir > 0 ? walker.x > S.cols + 14 : walker.x < -14) {
-                walker = null; walkAt = T + (QS.has("walk") ? 3 : 120 + Math.random() * 160); boatAt = Math.max(boatAt, T + (QS.has("boat") ? 3 : 25));
+                walker = null; walkAt = T + 3; boatAt = Math.max(boatAt, T + (QS.has("boat") ? 3 : 25));
             }
         }
     }
@@ -417,8 +420,8 @@
                 const t = line.charCodeAt(cc), c = x0 + cc;
                 if (t === 32 || c < 0 || c >= cols) continue;
                 const i = c + r * cols;
-                ch[i] = t; cls[i] = t === 111 ? LAMP : rr === 2 ? SC_DIM : SC;
-                if (t === 111 && lights) lights.push({ c, m: hull + 1, len: .35 });
+                ch[i] = t; cls[i] = t === 111 ? LANTERN : rr === 2 ? SC_DIM : SC;
+                if (t === 111 && lights) lights.push({ c, m: hull + 1, len: .35, cl: LANTERN });
             }
         }
     }
@@ -447,38 +450,76 @@
         put(x + d, y - 1, "*", LAMP);                                        // 懐中電灯
     }
 
-    // ===== 手前の岸で釣りをしている人(いつもいる)。ウキは光る電気ウキ。たまに魚が釣れる =====
-    // ?fish ですぐ釣れる(確かめる用)
-    let fish = null, fishAt = QS.has("fish") ? 2.5 : 40 + Math.random() * 50;
+    // ===== 手前の岸で釣りをしている人(いつもいる)。ウキは光る電気ウキ =====
+    // ときどき竿を振り直して、投げ直す(ウキの位置が少し変わる)。
+    // 魚が釣れるのは、ページを見ているあいだが 10 分たつごとに 1 回だけ(タブが裏のあいだは数えない)。
+    // 釣れたあとはウキが上がっているので、少しして投げ直す
+    // ?fish ですぐ釣れる / ?cast ですぐ投げ直す(確かめる用)
+    const FISH_EVERY = 600, CAST_LEN = 2.6;
+    let fish = null, fishAt = QS.has("fish") ? 2.5 : FISH_EVERY;
+    let cast = null, castAt = QS.has("cast") ? 1.5 : 30 + Math.random() * 40;
+    let bobber = { dc: 0, dr: 0 };                                           // ウキの位置(ふだんの位置から、左へ dc・奥へ dr)。null は上げてある
     function stepFish() {
-        if (!fish && T > fishAt) fish = { t0: T };
-        if (fish && T - fish.t0 > 3.4) { fish = null; fishAt = T + (QS.has("fish") ? 5 : 60 + Math.random() * 90); }
+        if (!fish && !cast && bobber && T > fishAt) fish = { t0: T };
+        if (fish && T - fish.t0 > 3.4) {
+            fish = null; bobber = null;
+            fishAt = QS.has("fish") ? T + 8 : fishAt + FISH_EVERY;
+            castAt = T + 2 + Math.random() * 3;
+        }
+        if (!fish && !cast && T > castAt) cast = { t0: T, from: bobber, to: { dc: (Math.random() * 5) | 0, dr: Math.random() < .4 ? 1 : 0 } };
+        if (cast && T - cast.t0 > CAST_LEN) { bobber = cast.to; cast = null; castAt = T + (QS.has("cast") ? 4 : 40 + Math.random() * 60); }
     }
     function drawFisher() {
         if (!SCN.ch) return;
-        const { cols, rows, ch, cls } = S, { bank } = SCN;
+        const { cols, rows, ch, cls } = S, { hz, bank } = SCN;
         const fx = Math.min(cols - 2, Math.round(cols * .93));
         const put = (c, r, t, cl) => { if (c >= 0 && c < cols && r >= 0 && r < rows) { ch[c + r * cols] = t.charCodeAt(0); cls[c + r * cols] = cl; } };
-        const u = fish ? T - fish.t0 : -1;
-        const pull = u >= 0 && u < 1.4;                                      // 引いているあいだは竿がしなる
+        const u = fish ? T - fish.t0 : -1, v = cast ? T - cast.t0 : -1;
+        const tipC = fx - 5, tipR = bank - 3;
+        const at = (b) => ({ c: tipC - 1 - b.dc, r: Math.max(hz + 1, tipR - b.dr) });   // ウキが浮いているマス
         // 人: 岸のふちに背を向けて座っている
         put(fx, bank, "o", SC_DIM);
         put(fx, bank + 1, "A", SC_DIM);
-        // 竿: 手もとから左上の川へ
-        for (let k = 1; k <= 4; k++) put(fx - k, bank + 1 - k, k === 4 && pull ? "," : "\\", SC_DIM);
-        const tipC = fx - 5, tipR = bank - 3;
+        // 竿: ふだんは手もとから左上の川へ。投げ直すときは、立てて → 後ろへ振りかぶって → 前へ振る
+        const pull = u >= 0 && u < 1.4;                                      // 魚を引いているあいだは竿がしなる
+        const pose = v < 0 ? "\\" : v < .7 ? "\\" : v < 1 ? "|" : v < 1.4 ? "/" : v < 1.55 ? "|" : "\\";
+        for (let k = 1; k <= 4; k++) {
+            if (pose === "|") put(fx - 1, bank + 1 - k, "|", SC_DIM);
+            else if (pose === "/") put(fx - 2 + k, bank + 1 - k, "/", SC_DIM);
+            else put(fx - k, bank + 1 - k, k === 4 && pull ? "," : "\\", SC_DIM);
+        }
+        const float = (p, still) => {                                       // ウキ(ゆらゆら)と、その下の小さな波
+            put(p.c, p.r, still || Math.sin(T * 1.7) > .3 ? "'" : ".", LAMP);
+            if (p.r + 1 < bank) put(p.c, p.r + 1, "-", WATER);
+        };
+        if (cast) {
+            const to = at(cast.to);
+            if (v < .7 && cast.from) {
+                // 巻き取る: ウキが竿先のほうへ寄ってくる
+                const f = at(cast.from), p = v / .7;
+                float({ c: Math.round(f.c + (tipC - f.c) * p), r: Math.round(f.r + (tipR - f.r) * p) }, true);
+            } else if (v >= 1.55 && v < 2.2) {
+                // 投げる: ウキが弧を描いて飛んでいく
+                const p = (v - 1.55) / .65;
+                put(Math.round(tipC + (to.c - tipC) * p), Math.round(tipR + (to.r - tipR) * p - Math.sin(p * Math.PI) * 2), "'", LAMP);
+            } else if (v >= 2.2) {
+                // 着水: 小さなしぶき
+                float(to, true);
+                put(to.c - 1, to.r, "~", WATER); put(to.c + 1, to.r, "~", WATER);
+            }
+            return;
+        }
+        if (!bobber) return;                                                 // 釣れたあと、投げ直すまではウキがない
+        const b = at(bobber);
         // ウキ: ふだんはゆらゆら。かかると沈み、水しぶき
-        if (u < 0 || u > 2.6) {
-            const bob = Math.sin(T * 1.7) > .3;
-            put(tipC - 1, tipR, bob ? "'" : ".", LAMP);
-            put(tipC - 1, tipR + 1, "-", WATER);
-        } else if (u < .5) {
-            put(tipC - 1, tipR, "~", WATER); put(tipC - 2, tipR, "~", WATER); put(tipC, tipR, "~", WATER);
+        if (u < 0) float(b);
+        else if (u < .5) {
+            put(b.c, b.r, "~", WATER); put(b.c - 1, b.r, "~", WATER); put(b.c + 1, b.r, "~", WATER);
         } else if (u < 2.2) {
             // 魚が跳ねて、放物線を描いて手もとへ
-            const p = (u - .5) / 1.7, c = Math.round(tipC - 1 + (fx - tipC + 1) * p), r = Math.round(tipR - Math.sin(p * Math.PI) * 4 + (bank + 1 - tipR) * p);
+            const p = (u - .5) / 1.7, c = Math.round(b.c + (fx - b.c) * p), r = Math.round(b.r - Math.sin(p * Math.PI) * 4 + (bank + 1 - b.r) * p);
             for (let q = 0; q < 3; q++) put(c - 1 + q, r, "><>"[q], 5);          // 手もと(右)へ向かう
-            if (u < .9) { put(tipC - 2, tipR, "*", WATER); put(tipC, tipR, "*", WATER); }
+            if (u < .9) { put(b.c - 1, b.r, "*", WATER); put(b.c + 1, b.r, "*", WATER); }
         }
     }
 
