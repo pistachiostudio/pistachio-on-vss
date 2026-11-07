@@ -92,6 +92,15 @@ canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 1
 .past > p { color: var(--white); }
 .past > p:not(:has(+ ul)) { grid-column: 1 / -1; color: var(--fur-dim); }
 .past li > p { margin: 0; }
+/* contact.md: メールアドレス(ただの文字)の横の copy ボタンと、押したあとに出る copied! */
+.mail .addr { color: var(--white); }
+.copy {
+    margin-left: 10px; padding: 0 8px; border: 1px solid var(--scene); border-radius: 2px; background: none; cursor: pointer;
+    font: inherit; font-size: 11px; line-height: 1.7; color: var(--fur);
+}
+.copy:hover, .copy:focus-visible { color: var(--white); border-color: var(--fur); outline: none; }
+.copied { margin-left: 8px; font-size: 11px; color: var(--fur); visibility: hidden; opacity: 0; transition: opacity .2s; }
+.copied.on { visibility: visible; opacity: 1; }
 
 .foot { margin-top: 72px; font-size: 9.5px; line-height: 1.8; letter-spacing: .03em; color: var(--fur-dim); }
 .foot a { color: var(--fur); text-decoration-color: var(--scene); }

@@ -62,6 +62,7 @@ static/              そのまま dist/ にコピーされる静的ファイル
   css/style.css        すべての CSS。色は :root のトークンだけ
   js/scene.js          うしろの canvas に、夜の川べり(と犬)を文字で描く
   js/dogs.js           犬の濃淡と形のデータ(写真から作ったもの。約 220KB。手で編集しない)
+  js/copy.js           data-copy のボタンでコピーして copied! を出す(contact.md のメールアドレス。default.html が読む)
 vss.toml             サイト設定(title / description / base_url / build設定)
 archive/             CNAME など。変更してもデプロイは走らない(paths-ignore)。基本触らない
 .claude/skills/      プロジェクト用スキル(live-update)
