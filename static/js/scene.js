@@ -381,8 +381,29 @@
     // 散歩する人は保留中: ?walk を付けたときだけ出る
     // ?boat / ?walk ですぐ出る(確かめる用)
     const BOAT_EVERY = 300;
-    const BOATART = [" _,========,_ ", " |o:o:o:o:o:| ", " \\__________/ "];
-    const BOATW = BOATART[0].length;
+    // 屋形船の形(右へ進む向き。左へ進むときは左右を反転する)。
+    // 上から: 屋上の手すり / 反った屋根 / 軒下に並ぶ提灯 / 明かりのついた座敷と人影 / 船べり / 船底。へさきは少し反り上がる
+    const BOATW = 52;
+    const BOATR = (() => {
+        const rows = Array.from({ length: 6 }, () => Array.from({ length: BOATW }, () => [32, 0]));
+        const set = (r, c, t, cl) => { rows[r][c] = [t.charCodeAt(0), cl]; };
+        const WIN = ":.o.:.:o.::.o:.:.:o.:.:o.::.o:.:.";               // 座敷の明かり(: .)と人影(o)。33 マス
+        for (let c = 9; c <= 41; c++) {
+            set(0, c, (c - 9) % 3 === 1 ? "|" : "_", SC_DIM);
+            set(1, c, "_", SC);
+            if ((c - 9) % 3 === 1) set(2, c, "o", LANTERN);
+            const w = WIN[c - 9]; set(3, c, w, w === "o" ? SC_DIM : LAMP);
+        }
+        set(1, 6, "_", SC); set(1, 7, "_", SC); set(1, 8, "/", SC); set(1, 42, "\\", SC); set(1, 43, "_", SC); set(1, 44, "_", SC);
+        set(2, 8, "|", SC_DIM); set(2, 42, "|", SC_DIM);
+        for (const c of [5, 6, 7, 43, 44, 45, 46, 47, 48, 49, 50]) set(3, c, "_", SC);
+        set(3, 8, "|", SC); set(3, 42, "|", SC); set(3, 51, ",", SC);
+        set(4, 5, "\\", SC); for (let c = 6; c <= 49; c++) set(4, c, "=", SC); set(4, 50, "/", SC);
+        set(5, 6, "`", SC_DIM); for (let c = 7; c <= 47; c++) set(5, c, "-", SC_DIM); set(5, 48, "'", SC_DIM);
+        return rows;
+    })();
+    const FLIP = { 47: 92, 92: 47, 96: 39, 39: 96 };                        // / ↔ \、` ↔ '
+    const BOATL = BOATR.map((row) => row.slice().reverse().map(([t, cl]) => [FLIP[t] || t, cl]));
     let boat = null, boatAt = QS.has("boat") ? 1 : BOAT_EVERY;
     let walker = null, walkAt = QS.has("walk") ? 1.5 : Infinity;
     function stepVisitors(dt) {
@@ -408,20 +429,20 @@
             }
         }
     }
-    // 屋形船: 屋根と、提灯の並んだ窓と、船体。提灯の明かりは川に映る
+    // 屋形船: 提灯の明かりは川に映る
     function drawBoat(lights) {
         if (!boat) return;
         const { cols, ch, cls } = S, { hz, bank } = SCN;
-        const hull = Math.min(bank - 2, Math.max(hz + 2, hz + Math.round((bank - hz) * .38)));
-        const x0 = Math.round(boat.x);
-        for (let rr = 0; rr < 3; rr++) {
-            const line = BOATART[rr], r = hull - 2 + rr;
-            for (let cc = 0; cc < line.length; cc++) {
-                const t = line.charCodeAt(cc), c = x0 + cc;
+        const hull = Math.min(bank - 2, Math.max(hz + 6, hz + Math.round((bank - hz) * .42)));
+        const x0 = Math.round(boat.x), art = boat.dir > 0 ? BOATR : BOATL;
+        for (let rr = 0; rr < 6; rr++) {
+            const r = hull - 5 + rr;
+            for (let cc = 0; cc < BOATW; cc++) {
+                const [t, cl] = art[rr][cc], c = x0 + cc;
                 if (t === 32 || c < 0 || c >= cols) continue;
                 const i = c + r * cols;
-                ch[i] = t; cls[i] = t === 111 ? LANTERN : rr === 2 ? SC_DIM : SC;
-                if (t === 111 && lights) lights.push({ c, m: hull + 1, len: .35, cl: LANTERN });
+                ch[i] = t; cls[i] = cl;
+                if (cl === LANTERN && lights) lights.push({ c, m: hull + 1, len: .5, cl: LANTERN });
             }
         }
     }
@@ -472,21 +493,26 @@
     function drawFisher() {
         if (!SCN.ch) return;
         const { cols, rows, ch, cls } = S, { hz, bank } = SCN;
-        const fx = Math.min(cols - 2, Math.round(cols * .93));
+        const fx = Math.min(cols - 7, Math.round(cols * .91));               // 頭の位置。右にクーラーボックスを置くぶん空ける
         const put = (c, r, t, cl) => { if (c >= 0 && c < cols && r >= 0 && r < rows) { ch[c + r * cols] = t.charCodeAt(0); cls[c + r * cols] = cl; } };
         const u = fish ? T - fish.t0 : -1, v = cast ? T - cast.t0 : -1;
-        const tipC = fx - 5, tipR = bank - 3;
-        const at = (b) => ({ c: tipC - 1 - b.dc, r: Math.max(hz + 1, tipR - b.dr) });   // ウキが浮いているマス
-        // 人: 岸のふちに背を向けて座っている
-        put(fx, bank, "o", SC_DIM);
-        put(fx, bank + 1, "A", SC_DIM);
+        const tipC = fx - 6, tipR = bank - 4;                                // 竿先
+        const at = (b) => ({ c: tipC - 1 - b.dc, r: Math.max(hz + 1, tipR + 1 - b.dr) });   // ウキが浮いているマス
+        // 人: 岸のふちに、川のほうを向いて座っている(後ろ姿)。右に小さなクーラーボックス
+        //    \_o
+        //     /|\ [_]
+        //     /_\
+        put(fx - 1, bank - 1, "_", SC_DIM); put(fx, bank - 1, "o", SC_DIM);   // 竿を持つ手と頭
+        put(fx - 1, bank, "/", SC_DIM); put(fx, bank, "|", SC_DIM); put(fx + 1, bank, "\\", SC_DIM);
+        put(fx - 1, bank + 1, "/", SC_DIM); put(fx, bank + 1, "_", SC_DIM); put(fx + 1, bank + 1, "\\", SC_DIM);
+        put(fx + 3, bank, "[", SC_DIM); put(fx + 4, bank, "_", SC_DIM); put(fx + 5, bank, "]", SC_DIM);
         // 竿: ふだんは手もとから左上の川へ。投げ直すときは、立てて → 後ろへ振りかぶって → 前へ振る
         const pull = u >= 0 && u < 1.4;                                      // 魚を引いているあいだは竿がしなる
         const pose = v < 0 ? "\\" : v < .7 ? "\\" : v < 1 ? "|" : v < 1.4 ? "/" : v < 1.55 ? "|" : "\\";
-        for (let k = 1; k <= 4; k++) {
-            if (pose === "|") put(fx - 1, bank + 1 - k, "|", SC_DIM);
-            else if (pose === "/") put(fx - 2 + k, bank + 1 - k, "/", SC_DIM);
-            else put(fx - k, bank + 1 - k, k === 4 && pull ? "," : "\\", SC_DIM);
+        for (let k = 0; k < 4; k++) {
+            if (pose === "|") put(fx - 1, bank - 2 - k, "|", SC_DIM);
+            else if (pose === "/") put(fx - 1 + k, bank - 2 - k, "/", SC_DIM);
+            else put(fx - 2 - k, bank - 1 - k, k === 3 && pull ? "," : "\\", SC_DIM);
         }
         const float = (p, still) => {                                       // ウキ(ゆらゆら)と、その下の小さな波
             put(p.c, p.r, still || Math.sin(T * 1.7) > .3 ? "'" : ".", LAMP);
@@ -517,7 +543,7 @@
             put(b.c, b.r, "~", WATER); put(b.c - 1, b.r, "~", WATER); put(b.c + 1, b.r, "~", WATER);
         } else if (u < 2.2) {
             // 魚が跳ねて、放物線を描いて手もとへ
-            const p = (u - .5) / 1.7, c = Math.round(b.c + (fx - b.c) * p), r = Math.round(b.r - Math.sin(p * Math.PI) * 4 + (bank + 1 - b.r) * p);
+            const p = (u - .5) / 1.7, c = Math.round(b.c + (fx - 2 - b.c) * p), r = Math.round(b.r - Math.sin(p * Math.PI) * 4 + (bank - 1 - b.r) * p);
             for (let q = 0; q < 3; q++) put(c - 1 + q, r, "><>"[q], 5);          // 手もと(右)へ向かう
             if (u < .9) { put(b.c - 1, b.r, "*", WATER); put(b.c + 1, b.r, "*", WATER); }
         }
