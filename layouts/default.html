@@ -83,6 +83,8 @@ ______ _     _             _     _
         // 外へのリンクは新しいタブで開く
         document.querySelectorAll('.site a[href^="http"]').forEach((a) => { a.target = "_blank"; a.rel = "noopener"; });
     </script>
+    <!-- data-copy のボタン(contact.md のメールアドレスのコピー) -->
+    <script src="js/copy.js"></script>
     <!-- 絵を描くスクリプト(犬のデータ dogs.js は読まないので、景色だけになる) -->
     <script src="js/scene.js"></script>
 </body>
