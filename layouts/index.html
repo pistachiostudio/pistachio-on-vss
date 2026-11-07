@@ -115,8 +115,8 @@ ______ _     _             _     _
             d.append(s, links);
             li.replaceChildren(d);
         });
-        // NEXT SHOWS: 中身が TBA だけの回は暗く
-        document.querySelectorAll(".gigs li").forEach((li) => { if (li.textContent.trim() === "TBA") li.classList.add("tba"); });
+        // NEXT SHOWS: TBA で始まる回は暗く
+        document.querySelectorAll(".gigs li").forEach((li) => { if (li.textContent.trim().startsWith("TBA")) li.classList.add("tba"); });
         // 外へのリンクは新しいタブで開く
         document.querySelectorAll('.site a[href^="http"]').forEach((a) => { a.target = "_blank"; a.rel = "noopener"; });
     </script>

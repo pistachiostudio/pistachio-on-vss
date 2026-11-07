@@ -65,7 +65,7 @@ description: トップページの NEXT SHOWS(partials/next_shows.md)にライ�
 
 2026.12.12
 
-  - TBA
+  - TBA (;@_@)
 ```
 
 - 日付は `YYYY.MM.DD`。曜日は書かない。その下に空行、スペース2つ + `- ` で中身。
@@ -75,7 +75,7 @@ description: トップページの NEXT SHOWS(partials/next_shows.md)にライ�
 - 告知ページ(X、Instagram、会場のスケジュールページなど)があれば、行末に ` [>>>](URL)` を付ける
   (外部リンクは自動で新しいタブで開く)。
 - 売り切れたら中身の先頭に `[SOLD] ` を付ける。
-- 詳細が決まっていない回は `  - TBA`(TBA だけの行は自動で暗く表示される)。
+- 詳細が決まっていない回は `  - TBA (;@_@)`(TBA で始まる行は自動で暗く表示される)。
 - 出演者名は過去の表記に合わせる(`CBS & Chicken Is Nice`、`CBS`、`Pistachio Studio` など)。
   分からないときは推測で埋めず、ユーザーに確認する。
 

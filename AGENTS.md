@@ -85,7 +85,7 @@ prototypes/          (追跡対象外)デザインの試作。コミットしな
 | ファイル | ブロック | 書き方 |
 |---|---|---|
 | `partials/ひとこと.md` | ひとこと | 普通の文章。話題ごとに空行で区切る。空にするとブロックごと消える |
-| `partials/next_shows.md` | NEXT SHOWS | past.md と同じ。`YYYY.MM.DD` の行、空行、`  - 出演 @会場, 地名`。詳細未定は `  - TBA`。空にすると "Nothing on the calendar yet!" |
+| `partials/next_shows.md` | NEXT SHOWS | past.md と同じ。`YYYY.MM.DD` の行、空行、`  - 出演 @会場, 地名`。詳細未定は `  - TBA (;@_@)`。空にすると "Nothing on the calendar yet!" |
 | `partials/members.md` | MEMBERS | `- [名前](URL)`。リンクが複数ある人は `- 名前` の下に `  - [web](URL)` のように字下げして並べる(押すと開く形になる) |
 | `partials/find_us.md` | FIND US | `- [名前](URL)` のリスト |
 
