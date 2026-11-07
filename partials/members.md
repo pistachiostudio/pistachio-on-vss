@@ -1,0 +1,33 @@
+- CBS
+  - [bandcamp](https://cbsmusic.bandcamp.com/)
+  - [spotify](https://open.spotify.com/artist/7AHhB1P3XhzSw4oPT2unag)
+- [Chicken Is Nice](/cbscin)
+- supple
+  - [soundcloud](https://soundcloud.com/supple)
+  - [spotify](https://open.spotify.com/artist/2uEVJZxMFmlMHktYPBCDa9)
+- ryo takahashi
+  - [x](https://x.com/aaairyo)
+  - [spotify](https://open.spotify.com/playlist/7FJOcbpv7g1RETiUAZrJ7Z)
+- [Quojama](https://quojama.com)
+- ESME MORI
+  - [web](https://esmemori.com/)
+  - [spotify](https://open.spotify.com/artist/76H8LGZ7isj2XG6ZRMYpzK)
+- TOSHIKI HAYASHI(%C)
+  - [web](https://toshikihayashi.com/)
+  - [spotify](https://open.spotify.com/artist/2BSv9udyrO0Mm0ckZAkQSI)
+- tajima hal
+  - [bandcamp](https://tajimahal.bandcamp.com)
+  - [hermit city](https://hermitcityrecordings.bandcamp.com/)
+  - [spotify](https://open.spotify.com/artist/5SuPIkCZe2U5TZCqYX4mcI)
+- [TiMT](https://open.spotify.com/artist/6JavWK8JRQbZ3oX9nrkSyb)
+- suzuki mamiko
+  - [web](https://suzukimamiko.com/)
+  - [chelmico](https://chelmico.com/)
+  - [spotify](https://open.spotify.com/artist/21bkNzNX7do9qb8SM9wFQF)
+- [Shinobu Achiha](https://www.instagram.com/ac40v/)
+- Tsuyoshi Ando
+  - [twitch](https://www.twitch.tv/tsuyoshi_ando)
+  - [soundcloud](https://soundcloud.com/tsuyoshi_ando)
+- [Terrapin Audio](https://soundcloud.com/terrapin-audio)
+- [MC wakava](https://soundcloud.com/mcwakava)
+- [Matsuo & Basho](https://soundcloud.com/matsuo-and-basho)

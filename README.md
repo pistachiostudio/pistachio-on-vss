@@ -46,13 +46,16 @@ AI は最初に [`AGENTS.md`](AGENTS.md) を読みます。ファイル構成、
 
 | ファイル | 内容 |
 |---|---|
-| `index.md` | トップページ（ひとこと、NEXT SHOWS、MEMBERS、FIND US） |
+| `partials/ひとこと.md` | トップの「ひとこと」 |
+| `partials/next_shows.md` | トップの NEXT SHOWS（空にすると "Nothing on the calendar yet!"） |
+| `partials/members.md` | トップの MEMBERS |
+| `partials/find_us.md` | トップの FIND US |
 | `past.md` | 過去のパーティ一覧 |
 | `social.md` | SNS アカウント一覧 |
 | `contact.md` / `cbscin.md` / `game.md` / `oldnews.md` / `20230826.md` | 個別ページ |
 
-- `index.md` は Markdown と HTML が混ざっています。「ひとこと」は普通の文章(段落ごとに空行)。NEXT SHOWS・MEMBERS・FIND US は HTML なので、書き方は既存の行をまねてください。HTML の途中に空行を入れると崩れます。
-- **告知を隠す/出す**: Markdown の HTML コメントアウト `<!-- ... -->` が使えます（`vss.toml` で有効化済み）。予定がないときの "Nothing on the calendar yet!" はこの方法で切り替えます。
+- トップページは、ブロックごとに `partials/` の Markdown に分かれています。どれも HTML なしの普通の Markdown です。書き方は既存の行をまねてください。
+- **告知を隠す/出す**: Markdown の HTML コメントアウト `<!-- ... -->` が使えます（`vss.toml` で有効化済み）。
 - 各ページの先頭の `title:`(frontmatter)が、ブラウザのタブとページの見出しになります。
 - ヘッダーとフッターは Markdown ではなく `layouts/*.html` にあります。トップ用の `index.html` と下のページ用の `default.html` はほぼ同じ内容なので、共通部分を変えるときは 2 つとも同じ変更が必要です。
 

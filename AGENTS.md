@@ -52,8 +52,9 @@ vss serve        # ファイル変更を見ながらローカルプレビュー
 
 ```
 *.md                 各ページの本文。先頭の frontmatter `title:` がタブと見出しになる
-  index.md             トップ(ひとこと / NEXT SHOWS / MEMBERS / FIND US)。Markdown と HTML の混在
+  index.md             トップ。タイトルだけで、中身は partials/ にある
   past.md              過去の公演。<div class="past"> の中に年・日付・出演を書く
+partials/            トップの各ブロックの中身(ひとこと / next_shows / members / find_us)。単独のページにはならない
 layouts/             HTMLテンプレート。ページと同名のlayoutがあればそれ、なければ default.html
   index.html           トップ用(犬のデータ dogs.js も読む)
   default.html         下のページ用(景色だけ。"← Top" とページ見出しを出す)
@@ -67,7 +68,7 @@ archive/             CNAME など。変更してもデプロイは走らない(p
 prototypes/          (追跡対象外)デザインの試作。コミットしない
 ```
 
-- `vss.toml` の `allow_dangerous_html = true` により、Markdown 内の HTML とコメントアウトが効く。
+- `vss.toml` の `allow_dangerous_html = true` により、Markdown 内の HTML とコメントアウトが効く(partials/ にも効く)。
 - レイアウトのテンプレート構文は `{{title}}` / `{{site_title}}` / `{{site_description}}` /
   `{{base_url}}` / `{{{contents}}}`(VSS 標準)。`{{title}}` は各 .md の frontmatter `title:`。
   書き忘れるとタブのタイトルが空になる(以前は全ページ空だった)。
@@ -76,18 +77,24 @@ prototypes/          (追跡対象外)デザインの試作。コミットしな
 - スクリプトや長い CSS はレイアウトに直書きせず `static/` に置く(テンプレートの `{{ }}` と
   ぶつからないように)。
 
-### index.md の書き方(落とし穴)
+### トップページの中身(partials/)
 
-- 各セクションは `<section data-mask ...>` で囲み、その中に `## 見出し` を書く。
-  `data-mask` の付いた要素の文字の下は、canvas の絵が空く。
-- 「ひとこと」(`.lately`)は普通の Markdown 段落。1 つの話題ごとに空行で区切る(区切らないと 1 段落につながる)。
-- NEXT SHOWS(`<dl class="gigs">`)、MEMBERS(`<ul class="members">`)、FIND US(`<ul class="links">`)は HTML。
-  **HTML の途中に空行を入れない**(空行で HTML ブロックが切れ、続きが Markdown として読まれる。
-  4 文字以上字下げした行はコードブロックになる)。
-- MEMBERS: リンクが 1 つの人は `<li><a href="...">名前</a></li>`、2 つ以上の人は
-  `<details><summary>名前</summary><span class="sub">リンク · リンク</span></details>`。2 列に並ぶ。
+トップの4ブロックは、VSS の Markdown パーシャル機能で `partials/` の .md から差し込んでいる。
+`partials/` の .md は単独のページにならない。`index.md` 自体はタイトルだけで、中身はない。
+
+| ファイル | ブロック | 書き方 |
+|---|---|---|
+| `partials/ひとこと.md` | ひとこと | 普通の文章。話題ごとに空行で区切る。空にするとブロックごと消える |
+| `partials/next_shows.md` | NEXT SHOWS | past.md と同じ。`YYYY.MM.DD` の行、空行、`  - 出演 @会場, 地名`。詳細未定は `  - TBA`。空にすると "Nothing on the calendar yet!" |
+| `partials/members.md` | MEMBERS | `- [名前](URL)`。リンクが複数ある人は `- 名前` の下に `  - [web](URL)` のように字下げして並べる(押すと開く形になる) |
+| `partials/find_us.md` | FIND US | `- [名前](URL)` のリスト |
+
+- 見出し、`<section>`、「Past parties」「All accounts →」のリンク、空のときの文は `layouts/index.html` にある。
+- レイアウトでは `{{{partials.名前}}}` で差し込み、`{{#partials.名前}}…{{/partials.名前}}` はファイルが空なら出ない、
+  `{{^partials.名前}}…{{/partials.名前}}` は空のときだけ出る。名前は `partials/` からの相対パスで拡張子なし。
+  ramhorns の `{{>file}}` は使えない(ビルドエラー)。
+- MEMBERS の開閉と、NEXT SHOWS の TBA を暗くするのは `layouts/index.html` の短いスクリプト。
 - 外部リンク(`http` で始まる href)は、レイアウトのスクリプトが自動で新しいタブで開くようにする。
-  `target` を手で書く必要はない。
 
 ## 見た目の仕組み(重要)
 

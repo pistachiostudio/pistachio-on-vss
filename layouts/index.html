@@ -61,9 +61,37 @@ ______ _     _             _     _
             <p class="tag">Neighborhood recording crew from kngw, Japan.</p>
         </header>
 
-        <!-- @CONTENTS (index.md) -->
+        <!-- 中身は partials/ の .md。ファイルが空(またはない)ときは、そのブロックごと出ない -->
+        {{#partials.ひとこと}}
+        <section data-mask class="lately">
+            <h2>ひとこと</h2>
+            {{{partials.ひとこと}}}
+        </section>
+        {{/partials.ひとこと}}
+
+        <section data-mask class="shows">
+            <h2>NEXT SHOWS</h2>
+            {{#partials.next_shows}}
+            <div class="gigs">{{{partials.next_shows}}}</div>
+            {{/partials.next_shows}}
+            {{^partials.next_shows}}
+            <p class="tba">Nothing on the calendar yet! L(@_@;)</p>
+            {{/partials.next_shows}}
+            <p><a href="/past">Past parties</a></p>
+        </section>
+
+        <section data-mask class="members">
+            <h2>MEMBERS</h2>
+            {{{partials.members}}}
+        </section>
+
+        <section data-mask class="find-us">
+            <h2>FIND US</h2>
+            {{{partials.find_us}}}
+            <p class="all"><a href="/social">All accounts &rarr;</a></p>
+        </section>
+
         {{{contents}}}
-        <!-- /@CONTENTS -->
 
         <footer class="foot" data-mask>
             <p>Acknowledgments: <a href="https://github.com/veltiosoft/vss">VSS</a>,
@@ -76,6 +104,19 @@ ______ _     _             _     _
 
     <script>
         document.getElementById("copyright-year").textContent = new Date().getFullYear();
+        // MEMBERS: 名前の下にリンクが並んでいる人は、押すと開く形にする(スクリプトがないときは入れ子のリストのまま)
+        document.querySelectorAll(".members > ul > li").forEach((li) => {
+            const sub = li.querySelector(":scope > ul");
+            if (!sub) return;
+            const d = document.createElement("details"), s = document.createElement("summary"), links = document.createElement("span");
+            s.textContent = li.firstChild.textContent.trim();
+            links.className = "sub";
+            sub.querySelectorAll("a").forEach((a, i) => { if (i) links.append(" · "); links.append(a); });
+            d.append(s, links);
+            li.replaceChildren(d);
+        });
+        // NEXT SHOWS: 中身が TBA だけの回は暗く
+        document.querySelectorAll(".gigs li").forEach((li) => { if (li.textContent.trim() === "TBA") li.classList.add("tba"); });
         // 外へのリンクは新しいタブで開く
         document.querySelectorAll('.site a[href^="http"]').forEach((a) => { a.target = "_blank"; a.rel = "noopener"; });
     </script>
