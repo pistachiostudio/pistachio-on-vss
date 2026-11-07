@@ -338,6 +338,7 @@
             const i = c + r * cols;
             if (ch[i] === 39 && vnoise(c * .06 - T * .5, r * .3) > .62) ch[i] = 96;
         }
+        drawWalker();
         if (train) {
             const x0 = Math.floor(train.x);
             for (let l = 0; l < train.len; l++) {
@@ -358,6 +359,7 @@
                 if (n > .63) { const i = c + r * cols; ch[i] = n > .72 ? 126 : 45; cls[i] = WATER; }
             }
         }
+        drawBoat(lights);
         // 明かりの映り込み: 真下に、切れ切れの横線が縦に伸びる。手前ほど揺れて薄れる
         for (const L of lights) {
             const end = Math.min(bank - 1, L.m + Math.round(span * L.len));
@@ -369,6 +371,114 @@
                 const i = c + r * cols;
                 ch[i] = 45; cls[i] = f > .45 ? LAMP : WATER;
             }
+        }
+        drawBoat(null);                                                      // 映り込みが船に重ならないように、もう一度上から描く
+        drawFisher();
+    }
+
+    // ===== ときどき通るもの: 屋形船 / 懐中電灯で散歩する人。どちらも一度に1つだけ =====
+    // ?boat / ?walk ですぐ出る(確かめる用)
+    const BOATART = [" _,========,_ ", " |o:o:o:o:o:| ", " \\__________/ "];
+    const BOATW = BOATART[0].length;
+    let boat = null, boatAt = QS.has("boat") ? 1 : 50 + Math.random() * 70;
+    let walker = null, walkAt = QS.has("walk") ? 1.5 : 90 + Math.random() * 100;
+    function stepVisitors(dt) {
+        if (!SCN.ch) return;
+        if (!boat && !walker && T > boatAt) {
+            const dir = side();
+            boat = { dir, x: dir > 0 ? -BOATW : S.cols, v: dir * S.cols / (45 + Math.random() * 20) };   // 45〜65 秒で渡る
+        }
+        if (!boat && !walker && T > walkAt) {
+            const dir = side();
+            walker = { dir, x: dir > 0 ? -14 : S.cols + 14, v: dir * S.cols / (32 + Math.random() * 10), t0: T };
+        }
+        if (boat) {
+            boat.x += boat.v * dt;
+            if (boat.dir > 0 ? boat.x > S.cols : boat.x < -BOATW) {
+                boat = null; boatAt = T + (QS.has("boat") ? 3 : 100 + Math.random() * 140); walkAt = Math.max(walkAt, T + (QS.has("walk") ? 3 : 25));
+            }
+        }
+        if (walker) {
+            walker.x += walker.v * dt;
+            if (walker.dir > 0 ? walker.x > S.cols + 14 : walker.x < -14) {
+                walker = null; walkAt = T + (QS.has("walk") ? 3 : 120 + Math.random() * 160); boatAt = Math.max(boatAt, T + (QS.has("boat") ? 3 : 25));
+            }
+        }
+    }
+    // 屋形船: 屋根と、提灯の並んだ窓と、船体。提灯の明かりは川に映る
+    function drawBoat(lights) {
+        if (!boat) return;
+        const { cols, ch, cls } = S, { hz, bank } = SCN;
+        const hull = Math.min(bank - 2, Math.max(hz + 2, hz + Math.round((bank - hz) * .38)));
+        const x0 = Math.round(boat.x);
+        for (let rr = 0; rr < 3; rr++) {
+            const line = BOATART[rr], r = hull - 2 + rr;
+            for (let cc = 0; cc < line.length; cc++) {
+                const t = line.charCodeAt(cc), c = x0 + cc;
+                if (t === 32 || c < 0 || c >= cols) continue;
+                const i = c + r * cols;
+                ch[i] = t; cls[i] = t === 111 ? LAMP : rr === 2 ? SC_DIM : SC;
+                if (t === 111 && lights) lights.push({ c, m: hull + 1, len: .35 });
+            }
+        }
+    }
+    // 懐中電灯の人: 姿はぼんやり。手もとの明かりと、前の草を照らす光の輪が目立つ
+    function drawWalker() {
+        if (!walker) return;
+        const { cols, rows, ch, cls } = S, { bank } = SCN;
+        const y = Math.min(rows - 1, bank + 3), x = Math.round(walker.x), d = walker.dir;
+        const step = Math.floor((T - walker.t0) * 2.2) % 2;
+        const put = (c, r, t, cl) => { if (c >= 0 && c < cols && r >= 0 && r < rows) { ch[c + r * cols] = t.charCodeAt(0); cls[c + r * cols] = cl; } };
+        // 光の輪: 少し先の地面を、手前ほど明るく。手が揺れるので輪も少し揺れる
+        const sway = Math.sin(T * 2.2 * Math.PI) * .6;
+        for (let k = 2; k <= 13; k++) {
+            const c = x + d * k, half = .6 + k * .22;
+            for (let r = y - 1; r <= y + 2; r++) {
+                const off = r - (y + .5 + sway * k / 13);
+                if (Math.abs(off) > half || c < 0 || c >= cols || r < 0 || r >= rows) continue;
+                const i = c + r * cols, near = k < 7 && Math.abs(off) < half * .6;
+                if (ch[i] === 32) { if (hash(c, r) < .55) { ch[i] = hash(r, c) < .5 ? 46 : 44; cls[i] = near ? LAMP : SC; } }
+                else if (cls[i] === SC_DIM) cls[i] = near ? LAMP : SC;
+            }
+        }
+        put(x, y - 2, "o", SC_DIM);
+        put(x, y - 1, "|", SC_DIM);
+        put(x, y, step ? "^" : "|", SC_DIM);
+        put(x + d, y - 1, "*", LAMP);                                        // 懐中電灯
+    }
+
+    // ===== 手前の岸で釣りをしている人(いつもいる)。ウキは光る電気ウキ。たまに魚が釣れる =====
+    // ?fish ですぐ釣れる(確かめる用)
+    let fish = null, fishAt = QS.has("fish") ? 2.5 : 40 + Math.random() * 50;
+    function stepFish() {
+        if (!fish && T > fishAt) fish = { t0: T };
+        if (fish && T - fish.t0 > 3.4) { fish = null; fishAt = T + (QS.has("fish") ? 5 : 60 + Math.random() * 90); }
+    }
+    function drawFisher() {
+        if (!SCN.ch) return;
+        const { cols, rows, ch, cls } = S, { bank } = SCN;
+        const fx = Math.min(cols - 2, Math.round(cols * .93));
+        const put = (c, r, t, cl) => { if (c >= 0 && c < cols && r >= 0 && r < rows) { ch[c + r * cols] = t.charCodeAt(0); cls[c + r * cols] = cl; } };
+        const u = fish ? T - fish.t0 : -1;
+        const pull = u >= 0 && u < 1.4;                                      // 引いているあいだは竿がしなる
+        // 人: 岸のふちに背を向けて座っている
+        put(fx, bank, "o", SC_DIM);
+        put(fx, bank + 1, "A", SC_DIM);
+        // 竿: 手もとから左上の川へ
+        for (let k = 1; k <= 4; k++) put(fx - k, bank + 1 - k, k === 4 && pull ? "," : "\\", SC_DIM);
+        const tipC = fx - 5, tipR = bank - 3;
+        // ウキ: ふだんはゆらゆら。かかると沈み、水しぶき
+        if (u < 0 || u > 2.6) {
+            const bob = Math.sin(T * 1.7) > .3;
+            put(tipC - 1, tipR, bob ? "'" : ".", LAMP);
+            put(tipC - 1, tipR + 1, "-", WATER);
+        } else if (u < .5) {
+            put(tipC - 1, tipR, "~", WATER); put(tipC - 2, tipR, "~", WATER); put(tipC, tipR, "~", WATER);
+        } else if (u < 2.2) {
+            // 魚が跳ねて、放物線を描いて手もとへ
+            const p = (u - .5) / 1.7, c = Math.round(tipC - 1 + (fx - tipC + 1) * p), r = Math.round(tipR - Math.sin(p * Math.PI) * 4 + (bank + 1 - tipR) * p);
+            for (let q = 0; q < 3; q++) put(c - 1 + q, r, "><>"[q], 5);          // 手もと(右)へ向かう
+            if (u < .9) { put(tipC - 2, tipR, "*", WATER); put(tipC, tipR, "*", WATER); }
         }
     }
 
@@ -513,6 +623,8 @@
 
         stepTrain(dt);
         stepShoot();
+        stepVisitors(dt);
+        stepFish();
         // しぐさの切り替え。カーソルを見ているあいだは、見回すことが多い
         if (!(QS.has("act") && act) && (!act || T - act.t0 > act.len)) begin(watching && Math.random() < .6 ? "look" : pick());
         if (act.a.run) act.a.run(T - act.t0, act.len);
