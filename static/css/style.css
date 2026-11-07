@@ -31,7 +31,9 @@ ______ _     _             _     _
 }
 html { background: var(--bg); }
 body { margin: 0; min-height: 100%; }
-canvas { position: fixed; inset: 0; width: 100%; height: 100%; display: block; touch-action: pan-y; }
+/* 高さはアドレスバーが引っ込んだときの画面(100lvh)で固定する。スマホでスクロールしてバーが出入りしても
+   絵の大きさが変わらず、犬が跳ねない(バーが出ているあいだは、いちばん下が少し隠れるだけ) */
+canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100lvh; display: block; touch-action: pan-y; }
 
 /* 文字は左の列に。下の絵は、文字のある行だけ空ける(canvas 側) */
 .site {

@@ -159,7 +159,8 @@
     }
     function resize() {
         const dpr = Math.min(devicePixelRatio || 1, 2);
-        S.W = innerWidth; S.H = innerHeight;
+        // canvas の実際の大きさ(CSS で高さを 100lvh に固定)。アドレスバーの出入りでは変わらない
+        S.W = canvas.clientWidth || innerWidth; S.H = canvas.clientHeight || innerHeight;
         canvas.width = S.W * dpr; canvas.height = S.H * dpr;
         g.setTransform(dpr, 0, 0, dpr, 0, 0);
         // 頭から胸までを肖像のように大きく。胸から下は画面の下で切れる
@@ -749,7 +750,11 @@
         : Promise.resolve();
     fontReady.catch(() => {}).then(() => {
         resize();
-        addEventListener("resize", () => { resize(); if (REDUCE) draw(); });
+        // 大きさが本当に変わったとき(回転、ウィンドウの幅を変えたときなど)だけ作り直す
+        addEventListener("resize", () => {
+            if (canvas.clientWidth === S.W && canvas.clientHeight === S.H) return;
+            resize(); if (REDUCE) draw();
+        });
         addEventListener("scroll", () => { buildMask(); if (REDUCE) draw(); }, { passive: true });
         document.querySelectorAll(".site details").forEach((d) => d.addEventListener("toggle", () => { buildMask(); if (REDUCE) draw(); }));
         // リンクにカーソルが乗ると、耳がぴくっと上がる
