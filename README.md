@@ -21,7 +21,7 @@ AI は最初に [`AGENTS.md`](AGENTS.md) を読みます。ファイル構成、
 | 「ひとこと」を書き換える | 「ひとことを『◯◯』に変えて」「ひとことに 1 行足して」 |
 | 次のパーティ告知を出す | 「NEXT SHOWS に 12/20 の告知を載せて。会場は◯◯」 |
 | 告知を引っ込める | 「NEXT SHOWS を "Nothing on the calendar yet!" に戻して」 |
-| 過去のパーティを追加 | 「Past Parties の 2025 に 03.08 Pistachio Studio @WWW, Shibuya を追加して」 |
+| 過去のライブを追加 | 「PAST SHOWS の 2025 に 03.08 Pistachio Studio @WWW, Shibuya を追加して」 |
 | メンバーを追加 | 「Members に◯◯さんを追加して。SoundCloud はこれ」 |
 | SNS リンクを追加・修正 | 「social ページに◯◯の X アカウントを足して」 |
 | 変更を確認する | 「ビルドして、`vss serve` で表示を確認して」 |

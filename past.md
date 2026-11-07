@@ -1,5 +1,5 @@
 ---
-title: Past Parties
+title: Past Shows
 ---
 <!-- 年の見出し(### YYYY)、日付(MM.DD)、出演(  - ...)の順。<div> の中に書く -->
 <div class="past">

@@ -89,7 +89,7 @@ prototypes/          (追跡対象外)デザインの試作。コミットしな
 | `partials/members.md` | MEMBERS | `- [名前](URL)`。リンクが複数ある人は `- 名前` の下に `  - [web](URL)` のように字下げして並べる(押すと開く形になる) |
 | `partials/find_us.md` | FIND US | `- [名前](URL)` のリスト |
 
-- 見出し、`<section>`、「Past parties」「All accounts →」のリンク、空のときの文は `layouts/index.html` にある。
+- 見出し、`<section>`、「Past shows」「All accounts →」のリンク、空のときの文は `layouts/index.html` にある。
 - レイアウトでは `{{{partials.名前}}}` で差し込み、`{{#partials.名前}}…{{/partials.名前}}` はファイルが空なら出ない、
   `{{^partials.名前}}…{{/partials.名前}}` は空のときだけ出る。名前は `partials/` からの相対パスで拡張子なし。
   ramhorns の `{{>file}}` は使えない(ビルドエラー)。

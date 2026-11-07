@@ -1,11 +1,11 @@
 ---
 name: live-update
-description: トップページの NEXT SHOWS(partials/next_shows.md)にライブ情報を追加し、終わった公演を past.md の Past Parties に移すスキル。書式は既存の告知に合わせ、まずサンプルを見せてから反映する。「ライブ情報を追加して」「NEXT SHOWS を更新」「Upcoming Party を更新」「終わったライブを past に移して」「ライブ予定を整理して」などで使う。
+description: トップページの NEXT SHOWS(partials/next_shows.md)にライブ情報を追加し、終わった公演を past.md の PAST SHOWS に移すスキル。書式は既存の告知に合わせ、まずサンプルを見せてから反映する。「ライブ情報を追加して」「NEXT SHOWS を更新」「Upcoming Party を更新」「終わったライブを past に移して」「PAST SHOWS に移して」「ライブ予定を整理して」などで使う。
 ---
 
 # live-update — ライブ告知の追加と Past への移動
 
-トップページの "NEXT SHOWS"(`partials/next_shows.md`)と、`past.md` の "Past Parties" を管理する。
+トップページの "NEXT SHOWS"(`partials/next_shows.md`)と、`past.md` の "PAST SHOWS"(/past)を管理する。
 トップの「ひとこと」(`partials/ひとこと.md`)に公演の話が書いてあれば、終わった公演の話は消すか書き換えるかをユーザーに確認する。
 このスキルは **現在日時を確認 → 終わった公演を洗い出す → 新しい公演を足す → サンプルを見せる → 反映** の流れを担当する。
 
@@ -83,7 +83,7 @@ description: トップページの NEXT SHOWS(partials/next_shows.md)にライ�
 
 - 予定が1件もなくなったら、`partials/next_shows.md` を空のファイルにする(消さない)。
   レイアウトが自動で "Nothing on the calendar yet! L(@_@;)" を出す。
-- 「Past parties」へのリンクはレイアウト側にあるので、触らなくてよい。
+- 「Past shows」へのリンクはレイアウト側にあるので、触らなくてよい。
 
 ### 5. サンプルを見せる(ここで一度止まる)
 
