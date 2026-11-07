@@ -6,3 +6,4 @@ dist
 vss_*.tar.gz
 vss_*.zip
 .vscode
+prototypes/
