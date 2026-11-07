@@ -382,24 +382,27 @@
     // ?boat / ?walk ですぐ出る(確かめる用)
     const BOAT_EVERY = 300;
     // 屋形船の形(右へ進む向き。左へ進むときは左右を反転する)。
-    // 上から: 屋上の手すり / 反った屋根 / 軒下に並ぶ提灯 / 明かりのついた座敷と人影 / 船べり / 船底。へさきは少し反り上がる
-    const BOATW = 52;
+    // 上から: 反った屋根 / 軒下に並ぶ提灯 / 明かりのついた座敷と人影 / 船べり。へさきは少し反り上がる
+    // 大きさは向こう岸の電車(1両 8 マス × 2 行)とつり合うように、30 マス × 4 行にしてある
+    //     __/_____________________\__
+    //       | o  o  o  o  o  o  o |
+    //    ___|:.o.:.:o.::.o:.:.:o.:|___,
+    //    \===========================/
+    const BOATW = 30, BOATH = 4;
     const BOATR = (() => {
-        const rows = Array.from({ length: 6 }, () => Array.from({ length: BOATW }, () => [32, 0]));
+        const rows = Array.from({ length: BOATH }, () => Array.from({ length: BOATW }, () => [32, 0]));
         const set = (r, c, t, cl) => { rows[r][c] = [t.charCodeAt(0), cl]; };
-        const WIN = ":.o.:.:o.::.o:.:.:o.:.:o.::.o:.:.";               // 座敷の明かり(: .)と人影(o)。33 マス
-        for (let c = 9; c <= 41; c++) {
-            set(0, c, (c - 9) % 3 === 1 ? "|" : "_", SC_DIM);
-            set(1, c, "_", SC);
-            if ((c - 9) % 3 === 1) set(2, c, "o", LANTERN);
-            const w = WIN[c - 9]; set(3, c, w, w === "o" ? SC_DIM : LAMP);
+        const WIN = ":.o.:.:o.::.o:.:.:o.:";                           // 座敷の明かり(: .)と人影(o)。21 マス
+        for (let c = 4; c <= 24; c++) {
+            set(0, c, "_", SC);
+            set(1, c, (c - 4) % 3 === 1 ? "o" : " ", LANTERN);                 // 提灯のあいだも空白で塗る(さざなみが透けないように)
+            const w = WIN[c - 4]; set(2, c, w, w === "o" ? SC_DIM : LAMP);
         }
-        set(1, 6, "_", SC); set(1, 7, "_", SC); set(1, 8, "/", SC); set(1, 42, "\\", SC); set(1, 43, "_", SC); set(1, 44, "_", SC);
-        set(2, 8, "|", SC_DIM); set(2, 42, "|", SC_DIM);
-        for (const c of [5, 6, 7, 43, 44, 45, 46, 47, 48, 49, 50]) set(3, c, "_", SC);
-        set(3, 8, "|", SC); set(3, 42, "|", SC); set(3, 51, ",", SC);
-        set(4, 5, "\\", SC); for (let c = 6; c <= 49; c++) set(4, c, "=", SC); set(4, 50, "/", SC);
-        set(5, 6, "`", SC_DIM); for (let c = 7; c <= 47; c++) set(5, c, "-", SC_DIM); set(5, 48, "'", SC_DIM);
+        set(0, 1, "_", SC); set(0, 2, "_", SC); set(0, 3, "/", SC); set(0, 25, "\\", SC); set(0, 26, "_", SC); set(0, 27, "_", SC);
+        set(1, 3, "|", SC_DIM); set(1, 25, "|", SC_DIM);
+        for (const c of [0, 1, 2, 26, 27, 28]) set(2, c, "_", SC);
+        set(2, 3, "|", SC); set(2, 25, "|", SC); set(2, 29, ",", SC);
+        set(3, 0, "\\", SC); for (let c = 1; c <= 27; c++) set(3, c, "=", SC); set(3, 28, "/", SC);
         return rows;
     })();
     const FLIP = { 47: 92, 92: 47, 96: 39, 39: 96 };                        // / ↔ \、` ↔ '
@@ -433,16 +436,16 @@
     function drawBoat(lights) {
         if (!boat) return;
         const { cols, ch, cls } = S, { hz, bank } = SCN;
-        const hull = Math.min(bank - 2, Math.max(hz + 6, hz + Math.round((bank - hz) * .42)));
+        const hull = Math.min(bank - 2, Math.max(hz + BOATH, hz + Math.round((bank - hz) * .42)));
         const x0 = Math.round(boat.x), art = boat.dir > 0 ? BOATR : BOATL;
-        for (let rr = 0; rr < 6; rr++) {
-            const r = hull - 5 + rr;
+        for (let rr = 0; rr < BOATH; rr++) {
+            const r = hull - BOATH + 1 + rr;
             for (let cc = 0; cc < BOATW; cc++) {
                 const [t, cl] = art[rr][cc], c = x0 + cc;
-                if (t === 32 || c < 0 || c >= cols) continue;
+                if ((t === 32 && !cl) || c < 0 || c >= cols) continue;
                 const i = c + r * cols;
                 ch[i] = t; cls[i] = cl;
-                if (cl === LANTERN && lights) lights.push({ c, m: hull + 1, len: .5, cl: LANTERN });
+                if (t === 111 && cl === LANTERN && lights) lights.push({ c, m: hull + 1, len: .5, cl: LANTERN });
             }
         }
     }
