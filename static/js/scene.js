@@ -215,12 +215,23 @@
         return a + (b - a) * u + (c - a) * v + (a - b - c + d) * u * v;
     }
     const SCN = {};
+    // いつも見えている画面の高さ(アドレスバーが出ているときの高さ)。100svh が使えなければ今の高さ
+    function svh() {
+        if (!CSS.supports || !CSS.supports("height", "100svh")) return innerHeight;
+        const e = document.createElement("div");
+        e.style.cssText = "position:absolute;visibility:hidden;height:100svh";
+        document.body.appendChild(e);
+        const h = e.offsetHeight; e.remove();
+        return h || innerHeight;
+    }
     function buildScene() {
         const { cols, rows, chh, k } = S;
         // 犬の首のうしろが向こう岸、胸のうしろが手前の土手
         const rowOf = (py) => Math.round((S.baseOy + (py - 495) / 3 / S.k4) / chh);   // 座っている版の首と胸の高さ
         SCN.hz = Math.max(9, Math.min(rows - 6, rowOf(790)));
-        SCN.bank = Math.max(SCN.hz + 4, Math.min(rows - 1, rowOf(1000)));
+        // canvas は 100lvh なので、スマホでアドレスバーが出ているあいだは下のほうが隠れる。
+        // 手前の岸(釣り人が座る)は、いつも見えている高さ(100svh)より少し上までに収める。広い画面ではふつう変わらない
+        SCN.bank = Math.max(SCN.hz + 8, Math.min(rows - 1, rowOf(1000), Math.floor(svh() / chh) - 4));
         SCN.deck = SCN.hz - 5;
         SCN.ch = new Uint16Array(cols * rows).fill(32); SCN.cls = new Uint8Array(cols * rows);
         const put = (c, r, t, cl) => {
