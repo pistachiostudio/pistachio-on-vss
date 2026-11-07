@@ -12,18 +12,18 @@ Pistachio Studio の公式サイト → **https://pistachiostudio.net/**
 1. このリポジトリを AI エージェントで開く（`git clone` してそのフォルダで起動するだけ）。
 2. やりたいことを日本語で伝える。
 
-AI は最初に [`AGENTS.md`](AGENTS.md) を読みます。ファイル構成、コマンド、カラーテーマの仕組み、落とし穴はすべてそこに書いてあるので、人間が細かく説明する必要はありません。
+AI は最初に [`AGENTS.md`](AGENTS.md) を読みます。ファイル構成、コマンド、見た目の仕組み、落とし穴はすべてそこに書いてあるので、人間が細かく説明する必要はありません。
 
 ### 頼み方の例
 
 | やりたいこと | 頼み方の例 |
 |---|---|
-| 次のパーティ告知を出す | 「Upcoming Party に 12/20 の告知を載せて。会場は◯◯、開演は◯時」 |
-| 告知を引っ込める | 「Upcoming Party を "Nothing on the calendar yet!" に戻して」 |
+| 「ひとこと」を書き換える | 「ひとことを『◯◯』に変えて」「ひとことに 1 行足して」 |
+| 次のパーティ告知を出す | 「NEXT SHOWS に 12/20 の告知を載せて。会場は◯◯」 |
+| 告知を引っ込める | 「NEXT SHOWS を "Nothing on the calendar yet!" に戻して」 |
 | 過去のパーティを追加 | 「Past Parties の 2025 に 03.08 Pistachio Studio @WWW, Shibuya を追加して」 |
 | メンバーを追加 | 「Members に◯◯さんを追加して。SoundCloud はこれ」 |
 | SNS リンクを追加・修正 | 「social ページに◯◯の X アカウントを足して」 |
-| 配色を変える | 「テーマを変えて」（`theme-swap` スキルが候補を名前つきで出します。気に入ったものを選ぶと全ページに適用） |
 | 変更を確認する | 「ビルドして、`vss serve` で表示を確認して」 |
 | 公開する | 「commit して main に push して」 |
 
@@ -31,23 +31,14 @@ AI は最初に [`AGENTS.md`](AGENTS.md) を読みます。ファイル構成、
 - 作業内容に自信がなければ、「push はしないで、差分だけ見せて」と頼めば安心です。
 - 公開日時を指定したいときは「その日にマージされるようにして」と頼めます（[マージ予約](#公開の仕組み)）。
 
-### カラーテーマを変えるとき
+### 見た目の仕組み
 
-サイト全体の配色は、`static/css/themes.css` の **有効なテーマ 1 つ分**の CSS 変数で決まります。
-「テーマを変えて」と頼むと、AI は次の順に進めます。
+夜の川べりと、メンバーの黒い犬を、文字(アスキーアート)で描いています。
 
-1. 今のテーマを確認して、雰囲気の違う候補を 4〜5 案、**テーマ名つき**で見せる（名前は `Neon Drive` のような 2 単語が基本）。
-2. あなたが選ぶまで、ファイルは書き換えない。
-3. 選ばれたら、次をまとめて書き換える。
-   - `static/css/themes.css` の配色ブロック
-   - 2 つのレイアウト（`layouts/default.html` / `20230826.html`）の `data-theme` 属性
-   - ヘッダーの "Theme: ..." 表記
-   - 左上のドット絵アイコンの色（ドットの形そのものを変えたいときは別途相談してください）
-4. `vss build` で確認する。
-
-現在のテーマは **Neon Drive**（ダークパープル背景 × ネオンピンク/シアン）です。
-過去に使ったテーマのコードは残していません。名前だけ `static/css/themes.css` の冒頭コメントに記録してあり、
-復活させたいときは名前を伝えれば AI が作り直します。
+- うしろの絵は `static/js/scene.js` が canvas に描きます。向こう岸の高架をときどき電車が通り、空には星と、たまに流れ星。
+- トップページにだけ犬がいます。開くたびに 10 回に 1 回くらい、寝ている犬が出ます(`?dog=sit` / `?dog=sleep` を URL に付けると選べます)。犬はカーソルを目で追ったり、クリックで首をかしげたりします。
+- 下のページ(past / social など)は、川と電車だけで犬はいません。
+- 色はすべて `static/css/style.css` の `:root` にまとめてあります。
 
 ## AI を使わずに更新する
 
@@ -55,14 +46,15 @@ AI は最初に [`AGENTS.md`](AGENTS.md) を読みます。ファイル構成、
 
 | ファイル | 内容 |
 |---|---|
-| `index.md` | トップページ（Upcoming Party、メンバー紹介） |
+| `index.md` | トップページ（ひとこと、NEXT SHOWS、MEMBERS、FIND US） |
 | `past.md` | 過去のパーティ一覧 |
 | `social.md` | SNS アカウント一覧 |
 | `contact.md` / `cbscin.md` / `game.md` / `oldnews.md` / `20230826.md` | 個別ページ |
 
-- **告知を隠す/出す**: Markdown の HTML コメントアウト `<!-- ... -->` が使えます（`vss.toml` で有効化済み）。`index.md` の Upcoming Party はこの方法で切り替えています。
-- ヘッダー、SNS アイコン、フッターは Markdown ではなく `layouts/*.html` にあります。2 つのレイアウトはほぼ同じ内容の複製なので、共通部分を変えるときは 2 つとも同じ変更が必要です。
-- 色を変えたいときは CSS を直接触らず、上の「カラーテーマを変えるとき」の手順（AI）を使ってください。
+- `index.md` は Markdown と HTML が混ざっています。「ひとこと」は普通の文章(段落ごとに空行)。NEXT SHOWS・MEMBERS・FIND US は HTML なので、書き方は既存の行をまねてください。HTML の途中に空行を入れると崩れます。
+- **告知を隠す/出す**: Markdown の HTML コメントアウト `<!-- ... -->` が使えます（`vss.toml` で有効化済み）。予定がないときの "Nothing on the calendar yet!" はこの方法で切り替えます。
+- 各ページの先頭の `title:`(frontmatter)が、ブラウザのタブとページの見出しになります。
+- ヘッダーとフッターは Markdown ではなく `layouts/*.html` にあります。トップ用の `index.html` と下のページ用の `default.html` はほぼ同じ内容なので、共通部分を変えるときは 2 つとも同じ変更が必要です。
 
 ## 公開の仕組み
 
@@ -89,11 +81,9 @@ vss serve        # ファイル変更を見ながらプレビュー
 - `make` と `git` が必要です。VSS のバイナリと `dist/` は `.gitignore` 済みなのでコミットされません。
 - VSS のバージョンは `Makefile` の `VSS_VERSION` で固定しています（CI も同じ版を使います）。手元の VSS が違う版だと挙動が変わることがあるので、ビルドがおかしいときは `make setup*` で入れ直してください。
 
-詳細なコマンド、ファイル構成、カラーテーマの仕組み、既知の落とし穴は [`AGENTS.md`](AGENTS.md) にまとまっています。
+詳細なコマンド、ファイル構成、見た目の仕組み、既知の落とし穴は [`AGENTS.md`](AGENTS.md) にまとまっています。
 
 ## Acknowledgments
 
-- [go-vss: Easy-to-use static site generator](https://github.com/vssio/go-vss) by [zzktkm](https://github.com/zztkm)
-- [t.js: Lightweight $.Hypertext.Typewriter](https://github.com/mntn-dev/t.js) by [mntn-dev](https://github.com/mntn-dev)
-- [VHS Retro](https://codepen.io/pbitos/pen/zypwVr) by [pbitos](https://codepen.io/pbitos)
-- [Font Awesome](https://fontawesome.com/)
+- [VSS: Easy-to-use static site generator](https://github.com/veltiosoft/vss) by [zztkm](https://github.com/zztkm)
+- [M PLUS 1 Code](https://fonts.google.com/specimen/M+PLUS+1+Code) (SIL Open Font License 1.1)

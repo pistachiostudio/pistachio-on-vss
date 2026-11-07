@@ -51,75 +51,76 @@ vss serve        # ファイル変更を見ながらローカルプレビュー
 ## 構成
 
 ```
-*.md                 各ページの本文(index / past / social / contact など)
+*.md                 各ページの本文。先頭の frontmatter `title:` がタブと見出しになる
+  index.md             トップ(ひとこと / NEXT SHOWS / MEMBERS / FIND US)。Markdown と HTML の混在
+  past.md              過去の公演。<div class="past"> の中に年・日付・出演を書く
 layouts/             HTMLテンプレート。ページと同名のlayoutがあればそれ、なければ default.html
-  default.html         通常ページ用
-  20230826.html        20230826.md 用
+  index.html           トップ用(犬のデータ dogs.js も読む)
+  default.html         下のページ用(景色だけ。"← Top" とページ見出しを出す)
 static/              そのまま dist/ にコピーされる静的ファイル
-  css/style.css        構造CSS + 配色のデフォルト値(:root の変数)
-  css/vhs.css          本文の文字のRGBずれ演出だけ(走査線・ノイズは廃止済み)
-  css/themes.css       ★ 現在のカラーテーマ(CSS変数の上書きだけ)
-  css/dot/cat.css      左上のドット絵アイコン(box-shadowで描画)
-  js/t.js              タイプライター演出(jQuery プラグイン)
+  css/style.css        すべての CSS。色は :root のトークンだけ
+  js/scene.js          うしろの canvas に、夜の川べり(と犬)を文字で描く
+  js/dogs.js           犬の濃淡と形のデータ(写真から作ったもの。約 220KB。手で編集しない)
 vss.toml             サイト設定(title / description / base_url / build設定)
 archive/             CNAME など。変更してもデプロイは走らない(paths-ignore)。基本触らない
-.claude/skills/      プロジェクト用スキル(theme-swap)
+.claude/skills/      プロジェクト用スキル(live-update)
+prototypes/          (追跡対象外)デザインの試作。コミットしない
 ```
 
-- `vss.toml` の `allow_dangerous_html = true` により、Markdown 内の HTML コメントアウトが効く。
-  (`index.md` の "Upcoming Party" の告知を隠す/出すのにコメントアウトを使っている。)
-- レイアウトのテンプレート構文は `{{title}}` / `{{site_description}}` / `{{{contents}}}` など
-  (VSS 標準)。2つのレイアウトは **ほぼ同じ中身の複製**なので、共通部分(ヘッダー、
-  CSS読み込み、フッター、`data-theme`、"Theme: ..." 表記)を変えるときは
-  **2ファイルとも同じ変更を入れる**こと。
-- Markdown 本文は素の Markdown。ソーシャルリンクやヘッダーはレイアウト側にある。
+- `vss.toml` の `allow_dangerous_html = true` により、Markdown 内の HTML とコメントアウトが効く。
+- レイアウトのテンプレート構文は `{{title}}` / `{{site_title}}` / `{{site_description}}` /
+  `{{base_url}}` / `{{{contents}}}`(VSS 標準)。`{{title}}` は各 .md の frontmatter `title:`。
+  書き忘れるとタブのタイトルが空になる(以前は全ページ空だった)。
+- 2つのレイアウトは **ほぼ同じ中身の複製**。共通部分(head の GA・OGP・favicon・フォント、
+  ヘッダー、フッター、外部リンクを新しいタブで開くスクリプト)を変えるときは **2ファイルとも** 直す。
+- スクリプトや長い CSS はレイアウトに直書きせず `static/` に置く(テンプレートの `{{ }}` と
+  ぶつからないように)。
 
-## カラーテーマの仕組み(重要)
+### index.md の書き方(落とし穴)
 
-配色は CSS 変数で一本化されている。
+- 各セクションは `<section data-mask ...>` で囲み、その中に `## 見出し` を書く。
+  `data-mask` の付いた要素の文字の下は、canvas の絵が空く。
+- 「ひとこと」(`.lately`)は普通の Markdown 段落。1 つの話題ごとに空行で区切る(区切らないと 1 段落につながる)。
+- NEXT SHOWS(`<dl class="gigs">`)、MEMBERS(`<ul class="members">`)、FIND US(`<ul class="links">`)は HTML。
+  **HTML の途中に空行を入れない**(空行で HTML ブロックが切れ、続きが Markdown として読まれる。
+  4 文字以上字下げした行はコードブロックになる)。
+- MEMBERS: リンクが 1 つの人は `<li><a href="...">名前</a></li>`、2 つ以上の人は
+  `<details><summary>名前</summary><span class="sub">リンク · リンク</span></details>`。2 列に並ぶ。
+- 外部リンク(`http` で始まる href)は、レイアウトのスクリプトが自動で新しいタブで開くようにする。
+  `target` を手で書く必要はない。
 
-- `static/css/style.css` の `:root` に **フォールバック値**(変数の宣言と既定色)がある。
-- `static/css/themes.css` に、**有効なテーマ1つ分だけ**が
-  `body[data-theme="<key>"] { --xxx: ...; }` として書かれている。
-- 使うテーマは各 `layouts/*.html` の `<body data-theme="<key>">` で選ぶ。
-- ヘッダーに表示される "Theme: <名前>" は各 `layouts/*.html` に直書き(2ファイル)。
-- 左上のドット絵の色は `--dot-color-a` / `--dot-color-b`(themes.css側)。形は `dot/cat.css`。
+## 見た目の仕組み(重要)
 
-**色を `style.css` / `vhs.css` に直接書かないこと。** 構造CSSは色を持たない方針。
-新しい色が必要なら `style.css` の `:root` に変数を足し、`themes.css` で値を与える。
-過去のテーマはコードとして残さず、名前だけ `themes.css` 冒頭コメントに記録する。
+夜の川べりを、文字のマス目で canvas に描いている(`static/js/scene.js`)。文字(HTML)は左の列に重ねる。
 
-テーマを丸ごと変える作業は、専用スキル **`theme-swap`**(`.claude/skills/theme-swap/`)を使う。
-候補の提示 → 選択 → 4か所の一括書き換え → ビルド確認までをカバーしている。
+- 景色: 星(たまに流れ星)、向こう岸の高架と窓の明かり、ときどき通る電車、川のさざなみと映り込み、手前の草。
+- 犬: トップページだけ。`dogs.js` の `window.DOGS` に [0] 座っている犬 / [1] 寝ている犬。
+  開くたびに 10 回に 1 回くらい寝ている犬になる。URL に `?dog=sit` / `?dog=sleep` を付けると選べる。
+  `window.DOGS` がないページ(下のページ)は、犬を描かず景色だけ。
+- 文字のある行は、canvas 側でその下の絵を空ける(テキストの位置を測って毎回マスクを作る)。
+- 広い画面(820px 以上)は犬を右寄り、スマホ幅は真ん中。スマホ幅では中身のあとに 1 画面ぶんの余白があり、
+  下までスクロールすると絵だけになる。ヘッダー(サイト名とタグライン)は上に固定。
+- 動きを減らす設定(`prefers-reduced-motion`)では、絵は 1 コマだけ描いて止まる。
+- 試しに見るときの URL パラメータ: `?shoot`(流れ星をすぐ出す)、`?sim=秒`(乱数を固定して指定秒ぶん進めた絵)。
 
-### 変数の一覧
+### 色
 
-`--main-bg-color` / `--main-font-color` / `--title-color` / `--link-color` /
-`--link-hover-color` / `--social-button-color` / `--social-button-hover-color` /
-`--selection-text-color` / `--selection-bg-color` / `--doggo-color` /
-`--caret-color` / `--dot-color-a` / `--dot-color-b`
+**色は `static/css/style.css` の `:root` のトークンだけで管理する。** canvas もここから色を読む。
+ほかの場所に色を直接書かないこと。新しい色が要るときは `:root` にトークンを足す。
 
-タイプライターのキャレットは `layouts/*.html` の t.js 設定で `<span class="caret">` として出力され、
-色は `--caret-color` で決まる。
+`--bg` / `--fur-dim` / `--fur` / `--white` / `--tongue` / `--scene-dim` / `--scene` / `--water` / `--lamp`
 
-### テーマ外に残っている直書きの色(要注意)
-
-- `vhs.css` の `rgbText` アニメーションの `text-shadow`(RGBずれ演出。色相は固定)。
-- `static/manifest.json` の `theme_color` / `background_color`。
+例外: `static/manifest.json` の `theme_color` / `background_color` と、レイアウトの
+`<meta name="theme-color">` は `--bg` と同じ値(#202020)を直書きしている。`--bg` を変えたら合わせる。
 
 ## 注意点
 
-- フォントは Google Fonts の VT323、アイコンは Font Awesome 6.x(cdnjs、`integrity` 付き)。
-  どちらも `layouts/*.html` の `<head>` で `<link>` 読み込みしている外部CDN依存で、
-  ローカルにはコピーしていない。Font Awesome は無料版なので `fa-sharp` などの Pro 専用
-  クラスは使わない。バージョンを上げるときは `integrity` のハッシュも差し替えること。
-- `layouts/*.html` に Google Analytics(gtag)と jQuery 3.x(Google CDN)が入っている。
-  意図なく外さない。jQuery は `t.js` が依存しているため。jQuery 4 は API 削除があり
-  `t.js` が動くか未確認なので、上げるなら動作確認してから。
-- `*` の点滅と RGBずれは、OS の「視差効果を減らす」(`prefers-reduced-motion`)が
-  有効なら止まる(`style.css` / `vhs.css` 末尾)。タイプライター(`t.js`)は対象外。
-- `static/js/t.js` はサードパーティ製の minified 風コード。編集しない。
-- 相対パス(`css/...`, `./js/t.js`, `favicon.ico`)でアセットを参照している。
+- フォントは Google Fonts の M PLUS 1 Code(SIL OFL 1.1)。`layouts/*.html` の `<head>` で読み込む外部CDN依存。
+  canvas の絵も同じフォントで描くので、フォントを変えると犬の見え方も変わる。
+- `layouts/*.html` に Google Analytics(gtag)が入っている。意図なく外さない。
+- 以前の仕組み(カラーテーマの切り替えと theme-swap スキル、左上のドット絵の猫、t.js と jQuery の
+  タイプライター演出、Font Awesome のアイコン、VHS 風の RGB ずれ)は 2026-11 の作り直しで廃止した。
+- 相対パス(`css/...`, `js/...`, `favicon.ico`)でアセットを参照している。
   ページを深いパスに置く場合は壊れるので、今はルート直下に置く運用。
 - `.github/workflows/merge-schedule.yml` は「マージ予約」用
   ([gr2m/merge-schedule-action](https://github.com/gr2m/merge-schedule-action))。

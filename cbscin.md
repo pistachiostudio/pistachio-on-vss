@@ -1,3 +1,6 @@
+---
+title: CBS & Chicken Is Nice
+---
 ### CBS
 
 #### Kyon Boy, Takaya & Basho.

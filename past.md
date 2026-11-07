@@ -1,4 +1,8 @@
-### Past Parties
+---
+title: Past Parties
+---
+<!-- 年の見出し(### YYYY)、日付(MM.DD)、出演(  - ...)の順。<div> の中に書く -->
+<div class="past">
 
 ### 2026
 
@@ -258,3 +262,5 @@ Oh… We closed in 2021 L(@_@;)/
 
 05.14
   - CBS & Chicken Is Nice @Oppa-la, Enoshima.
+
+</div>

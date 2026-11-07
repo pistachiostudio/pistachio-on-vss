@@ -1,3 +1,6 @@
+---
+title: Game
+---
 #### “If The Ossan Are United!”
 
 For once in my life I’ve got somethin’ to say.  
