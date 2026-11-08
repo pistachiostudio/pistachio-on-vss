@@ -67,6 +67,7 @@ static/              そのまま dist/ にコピーされる静的ファイル
                        (game / oldnews / 20230826 は載せていない)。ページを足したり消したりしたら合わせる
   robots.txt           全部許可と、sitemap.xml の場所
   llms.txt             AI 向けのサイト案内(llmstxt.org の形式)。変わりにくい事実とページへのリンクだけ書く
+  .well-known/security.txt  脆弱性の連絡先(RFC 9116)。`Expires` は 1 年以内が決まり。**期限(今は 2027-11-08)が来る前に日付を延ばす**
 vss.toml             サイト設定(title / description / base_url / build設定)
 archive/             CNAME など。変更してもデプロイは走らない(paths-ignore)。基本触らない
 .claude/skills/      プロジェクト用スキル(live-update)
@@ -159,3 +160,10 @@ prototypes/          (追跡対象外)デザインの試作。コミットしな
   PR説明に `/schedule 日時` を書くとその時刻に squash merge される(1時間ごとに判定)。
   予約マージ = 本番デプロイのタイミングでもあるので、PRを作るとき予約文言を勝手に入れない。
 - `.vscode/` はローカルのログ置き場で、追跡対象外。
+- ワークフローのアクションは、タグではなくコミットの SHA で固定している(`uses: actions/checkout@<SHA> # v4`)。
+  タグを書き換えられる攻撃への対策。更新は `.github/dependabot.yml` が月 1 回まとめて PR を作るので、それをマージする。
+  手で足すときは `gh api repos/<owner>/<repo>/commits/<tag> --jq .sha` で SHA を取る。
+  各ワークフローの `permissions:` は最小にしてある。アクションを足して権限が足りなければ、そのジョブにだけ足す。
+- 予約マージ(GITHUB_TOKEN でのマージ)は、GitHub の仕様で `push` のワークフローを起動しない。
+  つまり予約マージしても pages.yml のデプロイは走らないはず(まだ使われた記録がないので未確認)。
+  使ったら、デプロイが走ったかを Actions で確かめ、走っていなければ Actions タブから手動で実行する。

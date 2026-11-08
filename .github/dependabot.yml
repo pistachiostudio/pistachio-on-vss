@@ -1,0 +1,11 @@
+# GitHub Actions のバージョン(SHA で固定している)を、月に 1 回まとめて更新する PR を作る
+version: 2
+updates:
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    groups:
+      actions:
+        patterns:
+          - "*"

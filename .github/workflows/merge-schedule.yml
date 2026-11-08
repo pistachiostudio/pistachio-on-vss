@@ -10,11 +10,18 @@ on:
     # https://crontab.guru/every-hour
     - cron: '0 * * * *'
 
+# 予約マージに必要な権限だけ(gr2m/merge-schedule-action の README より)
+permissions:
+  contents: write
+  pull-requests: write
+  checks: read
+  statuses: read
+
 jobs:
   merge_schedule:
     runs-on: ubuntu-latest
     steps:
-      - uses: gr2m/merge-schedule-action@v2
+      - uses: gr2m/merge-schedule-action@a9b6ddcf1282dfd66907bda8e7941dff59f03bad # v2
         with:
           # Merge method to use. Possible values are merge, squash or
           # rebase. Default is merge.
