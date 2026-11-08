@@ -1,5 +1,6 @@
 ---
 title: Game
+post_slug: "game"
 ---
 #### “If The Ossan Are United!”
 

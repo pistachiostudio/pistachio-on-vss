@@ -1,0 +1,25 @@
+# Pistachio Studio
+
+> Neighborhood recording crew from kngw, Japan. CBS、Chicken Is Nice、鈴木真海子 などのメンバーで、ライブやパーティをしている。このサイトは、ライブ予定・過去の出演・メンバーとアカウントをまとめた公式サイト。
+
+- 次のライブ予定(NEXT SHOWS)とメンバー(MEMBERS)は、トップページに載っている。
+- Chicken Is Nice は Pistachio Studio のハウスバンド。
+- 連絡先: info@pistachiostudio.net
+
+## Pages
+
+- [Top](https://pistachiostudio.net/): ひとこと、次のライブ予定、メンバー、公式アカウント
+- [Past Shows](https://pistachiostudio.net/past): 2016 年からの出演とパーティの一覧
+- [CBS & Chicken Is Nice](https://pistachiostudio.net/cbscin): 2 つのバンドのメンバーとパート
+- [Social](https://pistachiostudio.net/social): Pistachio Studio とメンバーの Web サイト、X、Instagram などの一覧
+- [Contact](https://pistachiostudio.net/contact): 連絡先
+
+## Official accounts
+
+- [Instagram](https://www.instagram.com/pistachiostudio/)
+- [X](https://x.com/pstchstd)
+- [YouTube](https://www.youtube.com/c/pistachiostudiokngw)
+- [SoundCloud](https://soundcloud.com/pistachio-studio)
+- [Spotify Playlists](https://open.spotify.com/user/2wf7ulo34ef46fu3awnq984wj)
+- [GitHub](https://github.com/pistachiostudio)
+- [Discogs](https://www.discogs.com/label/1290260-Pistachio-Studio-2)

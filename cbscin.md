@@ -1,5 +1,7 @@
 ---
 title: CBS & Chicken Is Nice
+description: "CBS と、Pistachio Studio のハウスバンド Chicken Is Nice のメンバーとパート。"
+post_slug: "cbscin"
 ---
 ### CBS
 

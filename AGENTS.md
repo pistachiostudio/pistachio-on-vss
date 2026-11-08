@@ -66,6 +66,7 @@ static/              そのまま dist/ にコピーされる静的ファイル
   sitemap.xml          Search Console に送るサイトマップ。手書き。サイト内からリンクのあるページだけ載せている
                        (game / oldnews / 20230826 は載せていない)。ページを足したり消したりしたら合わせる
   robots.txt           全部許可と、sitemap.xml の場所
+  llms.txt             AI 向けのサイト案内(llmstxt.org の形式)。変わりにくい事実とページへのリンクだけ書く
 vss.toml             サイト設定(title / description / base_url / build設定)
 archive/             CNAME など。変更してもデプロイは走らない(paths-ignore)。基本触らない
 .claude/skills/      プロジェクト用スキル(live-update)
@@ -76,10 +77,27 @@ prototypes/          (追跡対象外)デザインの試作。コミットしな
 - レイアウトのテンプレート構文は `{{title}}` / `{{site_title}}` / `{{site_description}}` /
   `{{base_url}}` / `{{{contents}}}`(VSS 標準)。`{{title}}` は各 .md の frontmatter `title:`。
   書き忘れるとタブのタイトルが空になる(以前は全ページ空だった)。
+
 - 2つのレイアウトは **ほぼ同じ中身の複製**。共通部分(head の GA・OGP・favicon・フォント、
   ヘッダー、フッター、外部リンクを新しいタブで開くスクリプト)を変えるときは **2ファイルとも** 直す。
 - スクリプトや長い CSS はレイアウトに直書きせず `static/` に置く(テンプレートの `{{ }}` と
   ぶつからないように)。
+
+### 検索まわり(SEO と AI 向け)
+
+- 各 .md の frontmatter に `title:` のほか `description:`(検索結果の説明文。引用符で囲む)と
+  `post_slug:`(`.html` なしのファイル名。`"20230826"` のように引用符で囲む)を書いている。
+  - `description` がないページは `vss.toml` の `site_description` を使う。
+  - `post_slug` から `<link rel="canonical">` と `og:url` を作る(`https://pistachiostudio.net/past` の形。
+    サイト内リンクや sitemap.xml と同じ `.html` なしの URL)。ないページには出さない。
+    `post_slug` は出力先を変えないので、ファイル名と必ず同じにする(違うと検索エンジンに別の URL を教えてしまう)。
+- **ページを足すときは `title` / `description` / `post_slug` を書き、`static/sitemap.xml` にも足す。**
+- トップ(`layouts/index.html`)の `<head>` には JSON-LD(WebSite と Organization)を直書きしている。
+  公式アカウントの一覧は `partials/find_us.md`・JSON-LD の `sameAs`・`static/llms.txt` の 3 か所にある。
+  find_us.md を変えたら残りの 2 つも合わせる。`}}` が続くと Mustache とぶつかるので、
+  閉じかっこは行を分けて書く。変えたら `dist/index.html` の JSON が読めるかを確かめる。
+- Search Console はドメインプロパティで確認済み(DNS の TXT)。DNS には以前からの
+  `google-site-verification` の TXT も残している。Google Workspace(MX)の確認用かもしれないので消さない。
 
 ### トップページの中身(partials/)
 

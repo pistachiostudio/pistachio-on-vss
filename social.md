@@ -1,5 +1,7 @@
 ---
 title: Social
+description: "Pistachio Studio とメンバーの Web サイト、X、Instagram などのアカウント一覧。"
+post_slug: "social"
 ---
 ### Main
 
