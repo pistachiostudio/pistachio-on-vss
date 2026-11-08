@@ -114,7 +114,6 @@ Makefile             VSS の取得(版と SHA256 を固定)とビルド
 .claude/
   skills/live-update/  プロジェクト用スキル。NEXT SHOWS の追加と、終わった公演の past.md への移動
   launch.json          プレビュー用の dev サーバー設定
-archive/             CNAME など昔のファイル。変更してもデプロイは走らない(paths-ignore)。基本触らない
 prototypes/          (追跡対象外)デザインの試作。コミットしない
 ```
 
@@ -301,11 +300,10 @@ post_slug: "past"
 - `main` へのプッシュで動く。PR ではビルドだけ走り、`configure-pages` / `upload-pages-artifact` / `deploy` は飛ばす。
   **そのため、ワークフローの権限やアクションの不具合は PR の CI では見つからない。** ワークフローを変えたら、マージ後のデプロイの成功を必ず確かめる。
   失敗しても、前に公開したものがそのまま残る。
-- `README.md` / `AGENTS.md` / `.claude/**` / `archive/**` だけの変更ではデプロイは走らない(`paths-ignore`)。
+- `README.md` / `AGENTS.md` / `.claude/**` だけの変更ではデプロイは走らない(`paths-ignore`)。
 - **`upload-pages-artifact` に `include-hidden-files: true` を付けている。** v4 からドットで始まるファイルが既定で外れるため。
   消すと `.well-known/security.txt` が本番から消える。
 - 本番のドメインは GitHub Pages の設定のカスタムドメイン(`pistachiostudio.net`)。HTTPS は強制、`www.` と `http://` は `https://pistachiostudio.net/` に 301 で転送される。
-  `archive/CNAME` は昔のファイルで、今の設定には使っていない。
 
 ### アクションの固定と更新
 
