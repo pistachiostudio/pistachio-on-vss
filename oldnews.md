@@ -1,5 +1,6 @@
 ---
 title: Old News
+post_slug: "oldnews"
 ---
 #### 2021.10.25
 

@@ -1,5 +1,7 @@
 ---
 title: Past Shows
+description: "Pistachio Studio、CBS、Chicken Is Nice のこれまでの出演とパーティの一覧(2016 年から)。"
+post_slug: "past"
 ---
 <!-- 年の見出し(### YYYY)、日付(MM.DD)、出演(  - ...)の順。<div> の中に書く -->
 <div class="past">

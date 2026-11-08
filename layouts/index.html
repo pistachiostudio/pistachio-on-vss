@@ -29,14 +29,54 @@ ______ _     _             _     _
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- TITLE & META DESCRIPTION (トップページ用。下のページは default.html) -->
     <title>{{site_title}}</title>
-    <meta name="description" content="{{site_description}}" />
+    <!-- description は index.md の frontmatter。なければ vss.toml の site_description -->
+    <meta name="description" content="{{#description}}{{description}}{{/description}}{{^description}}{{site_description}}{{/description}}" />
+    <link rel="canonical" href="{{base_url}}" />
     <meta name="theme-color" content="#202020" />
     <!-- SNS LINK PREVIEW METADATA OGP -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{site_title}}" />
+    <meta property="og:locale" content="ja_JP" />
     <meta property="og:title" content="{{site_title}}" />
-    <meta property="og:description" content="{{site_description}}" />
+    <meta property="og:description" content="{{#description}}{{description}}{{/description}}{{^description}}{{site_description}}{{/description}}" />
     <meta property="og:url" content="{{base_url}}" />
     <meta property="og:image" content="https://pistachiostudio.net/og_image_banana_maru.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@pstchstd" />
+    <!-- 検索エンジン向けの構造化データ(トップだけ)。sameAs は partials/find_us.md の公式アカウントと合わせる -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebSite",
+                "@id": "https://pistachiostudio.net/#website",
+                "name": "Pistachio Studio",
+                "url": "https://pistachiostudio.net/",
+                "inLanguage": "ja",
+                "publisher": { "@id": "https://pistachiostudio.net/#organization" }
+            },
+            {
+                "@type": "Organization",
+                "@id": "https://pistachiostudio.net/#organization",
+                "name": "Pistachio Studio",
+                "description": "Neighborhood recording crew from kngw, Japan.",
+                "url": "https://pistachiostudio.net/",
+                "logo": "https://pistachiostudio.net/og_image_banana_maru.png",
+                "email": "info@pistachiostudio.net",
+                "sameAs": [
+                    "https://www.instagram.com/pistachiostudio/",
+                    "https://x.com/pstchstd",
+                    "https://www.youtube.com/c/pistachiostudiokngw",
+                    "https://soundcloud.com/pistachio-studio",
+                    "https://open.spotify.com/user/2wf7ulo34ef46fu3awnq984wj",
+                    "https://github.com/pistachiostudio",
+                    "https://www.discogs.com/label/1290260-Pistachio-Studio-2"
+                ]
+            }
+        ]
+    }
+    </script>
     <!-- FAVICON -->
     <link rel="icon" sizes="16x16" href="favicon.ico" />
     <link rel="icon" sizes="32x32" href="favicon.ico" />

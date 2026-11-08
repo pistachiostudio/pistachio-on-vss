@@ -29,14 +29,21 @@ ______ _     _             _     _
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- TITLE & META DESCRIPTION (下のページ用。title は各 .md の frontmatter から) -->
     <title>{{title}} | {{site_title}}</title>
-    <meta name="description" content="{{site_description}}" />
+    <!-- description は各 .md の frontmatter。なければ vss.toml の site_description -->
+    <meta name="description" content="{{#description}}{{description}}{{/description}}{{^description}}{{site_description}}{{/description}}" />
+    <!-- canonical と og:url は各 .md の frontmatter の post_slug(.html なしのファイル名)から。ないページには出さない -->
+    {{#post_slug}}<link rel="canonical" href="{{base_url}}{{post_slug}}" />{{/post_slug}}
     <meta name="theme-color" content="#202020" />
     <!-- SNS LINK PREVIEW METADATA OGP -->
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="{{site_title}}" />
+    <meta property="og:locale" content="ja_JP" />
     <meta property="og:title" content="{{title}} | {{site_title}}" />
-    <meta property="og:description" content="{{site_description}}" />
-    <meta property="og:url" content="{{base_url}}" />
+    <meta property="og:description" content="{{#description}}{{description}}{{/description}}{{^description}}{{site_description}}{{/description}}" />
+    {{#post_slug}}<meta property="og:url" content="{{base_url}}{{post_slug}}" />{{/post_slug}}
     <meta property="og:image" content="https://pistachiostudio.net/og_image_banana_maru.png" />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@pstchstd" />
     <!-- FAVICON -->
     <link rel="icon" sizes="16x16" href="favicon.ico" />
     <link rel="icon" sizes="32x32" href="favicon.ico" />
