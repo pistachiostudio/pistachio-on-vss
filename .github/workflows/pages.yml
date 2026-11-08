@@ -8,7 +8,6 @@ on:
       - "README.md"
       - "AGENTS.md"
       - ".claude/**"
-      - "archive/**"
 
   # PR ではビルドだけ走らせて壊れていないか確認する(デプロイはしない)
   pull_request:

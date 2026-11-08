@@ -96,20 +96,20 @@ ______ _     _             _     _
     <canvas id="dog" role="img" aria-label="川べりの黒い犬"></canvas>
 
     <main class="site">
-        <header data-mask>
+        <header>
             <h1><a href="/">Pistachio Studio</a></h1>
             <p class="tag">Neighborhood recording crew from kngw, Japan.</p>
         </header>
 
         <!-- 中身は partials/ の .md。ファイルが空(またはない)ときは、そのブロックごと出ない -->
         {{#partials.ひとこと}}
-        <section data-mask class="lately">
+        <section class="lately">
             <h2>ひとこと</h2>
             {{{partials.ひとこと}}}
         </section>
         {{/partials.ひとこと}}
 
-        <section data-mask class="shows">
+        <section class="shows">
             <h2>NEXT SHOWS</h2>
             {{#partials.next_shows}}
             <div class="gigs">{{{partials.next_shows}}}</div>
@@ -120,12 +120,12 @@ ______ _     _             _     _
             <p class="all"><a href="/past">Past shows &rarr;</a></p>
         </section>
 
-        <section data-mask class="members">
+        <section class="members">
             <h2>MEMBERS</h2>
             {{{partials.members}}}
         </section>
 
-        <section data-mask class="find-us">
+        <section class="find-us">
             <h2>FIND US</h2>
             {{{partials.find_us}}}
             <p class="all"><a href="/social">All accounts &rarr;</a></p>
@@ -133,7 +133,7 @@ ______ _     _             _     _
 
         {{{contents}}}
 
-        <footer class="foot" data-mask>
+        <footer class="foot">
             <p>Acknowledgments: <a href="https://github.com/veltiosoft/vss">VSS</a>,
                 <a href="https://fonts.google.com/specimen/M+PLUS+1+Code">M PLUS 1 Code</a> (SIL OFL 1.1)</p>
             <p>GitHub repository: <a href="https://github.com/pistachiostudio/pistachio-on-vss">pistachio-on-vss</a></p>
