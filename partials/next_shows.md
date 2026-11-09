@@ -4,7 +4,7 @@
 
 2026.12.12
 
-  - TBA (;@_@)
+  - AFRO with CBS & Chicken Is Nice @Spotify O-EAST, Shibuya [>>>](https://eplus.jp/afro/)
 
 2027.01.09
 
