@@ -8,4 +8,4 @@
 
 2027.01.09
 
-  - TBA (;@_@)
+  - WWW presents PISTACHIO STUDIO @WWW, Shibuya [>>>](https://eplus.jp/pistachiostudio/)
