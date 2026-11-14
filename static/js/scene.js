@@ -486,23 +486,34 @@
     }
 
     // ===== 手前の岸で釣りをしている人(いつもいる)。ウキは光る電気ウキ =====
-    // ときどき竿を振り直して、投げ直す(ウキの位置が少し変わる)。
+    // 川は左が上流で、右へ流れている。ウキは上流(左)へ投げ、流れにのってゆっくり右へ流れていく
+    // (画面の右はしから出てしまってもよい)。流れたところで、また上流へ投げ直す。
     // 魚が釣れるのは、ページを見ているあいだが 8 分たつごとに 1 回だけ(タブが裏のあいだは数えない)。
+    // ウキが画面の外にあるあいだは釣れず、見えるところに戻るまで待つ。
     // 釣れたあとはウキが上がっているので、少しして投げ直す
     // ?fish ですぐ釣れる / ?cast ですぐ投げ直す(確かめる用)
     const FISH_EVERY = 480, CAST_LEN = 2.6;
     let fish = null, fishAt = QS.has("fish") ? 2.5 : FISH_EVERY;
-    let cast = null, castAt = QS.has("cast") ? 1.5 : 30 + Math.random() * 40;
-    let bobber = { dc: 0, dr: 0 };                                           // ウキの位置(ふだんの位置から、左へ dc・奥へ dr)。null は上げてある
+    let cast = null, castAt = QS.has("cast") ? 1.5 : Infinity;
+    // ウキ: 竿先から x マス右(左はマイナス)・奥へ dr の位置に着水し、毎秒 v マスずつ右へ流れる。
+    // x が until をこえたら投げ直す。null は上げてある
+    const newBobber = (x0, t0) => ({ x0, t0, dr: Math.random() < .4 ? 1 : 0, v: .15 + Math.random() * .12, until: 3 + Math.random() * 18 });
+    let bobber = newBobber(-18 + Math.random() * 16, 0), bobberSeen = true;
+    const bx = (b) => b.x0 + b.v * (T - b.t0);                             // いまの x
     function stepFish() {
-        if (!fish && !cast && bobber && T > fishAt) fish = { t0: T };
+        if (!fish && !cast && bobber && bobberSeen && T > fishAt) fish = { t0: T };
         if (fish && T - fish.t0 > 3.4) {
             fish = null; bobber = null;
             fishAt = QS.has("fish") ? T + 8 : fishAt + FISH_EVERY;
             castAt = T + 2 + Math.random() * 3;
         }
-        if (!fish && !cast && T > castAt) cast = { t0: T, from: bobber, to: { dc: (Math.random() * 5) | 0, dr: Math.random() < .4 ? 1 : 0 } };
-        if (cast && T - cast.t0 > CAST_LEN) { bobber = cast.to; cast = null; castAt = T + (QS.has("cast") ? 4 : 40 + Math.random() * 60); }
+        if (!fish && !cast && (T > castAt || (bobber && bx(bobber) > bobber.until))) {
+            cast = { t0: T, from: bobber && { x: bx(bobber), dr: bobber.dr }, to: newBobber(-(10 + Math.random() * 12), 0) };
+        }
+        if (cast && T - cast.t0 > CAST_LEN) {
+            bobber = cast.to; bobber.t0 = T; cast = null;
+            castAt = QS.has("cast") ? T + 4 : Infinity;
+        }
     }
     function drawFisher() {
         if (!SCN.ch) return;
@@ -511,7 +522,7 @@
         const put = (c, r, t, cl) => { if (c >= 0 && c < cols && r >= 0 && r < rows) { ch[c + r * cols] = t.charCodeAt(0); cls[c + r * cols] = cl; } };
         const u = fish ? T - fish.t0 : -1, v = cast ? T - cast.t0 : -1;
         const tipC = fx - 6, tipR = bank - 4;                                // 竿先
-        const at = (b) => ({ c: tipC - 1 - b.dc, r: Math.max(hz + 1, tipR + 1 - b.dr) });   // ウキが浮いているマス
+        const at = (b) => ({ c: tipC + Math.round(b.x), r: Math.max(hz + 1, tipR + 1 - b.dr) });   // ウキが浮いているマス
         // 人: 岸のふちに、川のほうを向いて座っている(後ろ姿)。右に小さなクーラーボックス
         //    \_o
         //     /|\ [_]
@@ -533,7 +544,7 @@
             if (p.r + 1 < bank) put(p.c, p.r + 1, "-", WATER);
         };
         if (cast) {
-            const to = at(cast.to);
+            const to = at({ x: cast.to.x0, dr: cast.to.dr });
             if (v < .7 && cast.from) {
                 // 巻き取る: ウキが竿先のほうへ寄ってくる
                 const f = at(cast.from), p = v / .7;
@@ -550,7 +561,9 @@
             return;
         }
         if (!bobber) return;                                                 // 釣れたあと、投げ直すまではウキがない
-        const b = at(bobber);
+        // かかったら、その場で止まる(流されない)
+        const b = at({ x: fish ? bobber.x0 + bobber.v * (fish.t0 - bobber.t0) : bx(bobber), dr: bobber.dr });
+        bobberSeen = b.c < cols - 1;
         // ウキ: ふだんはゆらゆら。かかると沈み、水しぶき
         if (u < 0) float(b);
         else if (u < .5) {
