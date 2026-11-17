@@ -32,3 +32,5 @@ Markdown ──▶ VSS ──▶ GitHub Actions ──▶ GitHub Pages ──▶
 
 - [VSS](https://github.com/veltiosoft/vss) by [zztkm](https://github.com/zztkm)
 - [M PLUS 1 Code](https://fonts.google.com/specimen/M+PLUS+1+Code) (SIL Open Font License 1.1)
+
+`> oh daisy`
