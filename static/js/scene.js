@@ -532,6 +532,8 @@
         put(fx - 1, bank, "/", SC_DIM); put(fx, bank, "|", SC_DIM); put(fx + 1, bank, "\\", SC_DIM);
         put(fx - 1, bank + 1, "/", SC_DIM); put(fx, bank + 1, "_", SC_DIM); put(fx + 1, bank + 1, "\\", SC_DIM);
         put(fx + 3, bank, "[", SC_DIM); put(fx + 4, bank, "_", SC_DIM); put(fx + 5, bank, "]", SC_DIM);
+        // 曲が鳴っているあいだは、右手でひざを打って拍をとる
+        if (music && musicT() >= 0 && (musicT() * music.h.bpm / 60) % 1 < .3) put(fx + 1, bank, "_", SC_DIM);
         drawTalk(put);
         // 竿: ふだんは手もとから左上の川へ。投げ直すときは、立てて → 後ろへ振りかぶって → 前へ振る
         const pull = u >= 0 && u < 1.4;                                      // 魚を引いているあいだは竿がしなる
@@ -607,14 +609,67 @@
             secret.style.top = Math.max(8, (FISHER.r - 5) * S.chh) + "px";
             secret.addEventListener("submit", (e) => {
                 e.preventDefault();
-                if (!input.value.trim()) return;
+                const pass = input.value;
+                if (!pass.trim()) return;
                 input.value = "";
-                talk = { text: "...", t0: T };
+                if (music) { stopMusic(); return; }                          // 鳴っているあいだに Enter を押すと止まる
+                tryTune(pass);
             });
             secret.addEventListener("keydown", (e) => { if (e.key === "Escape") closeSecret(); });
             document.body.appendChild(secret);
         }
         secret.querySelector("input").focus();
+    }
+    // ===== 合言葉が合うと、釣り人が曲を鳴らす =====
+    // 曲と鳴らし方は tune.js(合言葉が入力されたときにだけ読む)。曲のデータは合言葉で暗号化してあり、
+    // 復号できたら合っている。違えば今までどおり「...」とつぶやく。
+    // 鳴っているあいだは、頭から音符が立ちのぼり、右手で拍をとる。Esc か、もう一度 Enter で止まる
+    let music = null, tuneJs = null;                                         // music: { ctx, h: tune.js の play の返り値 }
+    const loadTune = () => tuneJs || (tuneJs = new Promise((ok, ng) => {
+        const s = document.createElement("script");
+        s.src = "js/tune.js"; s.onload = ok; s.onerror = () => { tuneJs = null; ng(); };
+        document.head.appendChild(s);
+    }));
+    async function tryTune(pass) {
+        // 音を出す準備は、Enter を押したその場でしておく(あとからだとブラウザが音を止めることがある)
+        const AC = window.AudioContext || window.webkitAudioContext;
+        const ctx = AC ? new AC() : null;
+        let song = null;
+        try { await loadTune(); song = await window.TUNE.open(pass); } catch (e) { song = null; }
+        if (!song || !ctx || music) { if (ctx) ctx.close().catch(() => {}); if (!song) talk = { text: "...", t0: T }; return; }
+        ctx.resume().catch(() => {});
+        music = { ctx, h: window.TUNE.play(ctx, song) };
+    }
+    function stopMusic() { if (music) { music.h.stop(); music = null; } }
+    const musicT = () => (music ? music.ctx.currentTime - music.h.t0 : -1);   // 曲の中の秒。タブが裏のあいだは止まる
+    function stepMusic() {
+        if (music && musicT() > music.h.dur) { music.ctx.close().catch(() => {}); music = null; }
+    }
+    addEventListener("keydown", (e) => { if (e.key === "Escape") stopMusic(); });
+    document.addEventListener("visibilitychange", () => {
+        if (music) (document.hidden ? music.ctx.suspend() : music.ctx.resume()).catch(() => {});
+    });
+    // 頭から立ちのぼる音符。マス目に入れず、上から重ねて描く(なめらかに動かし、薄れさせるため)
+    function drawNotes() {
+        if (!music || !FISHER || !S.cw) return;
+        const e = musicT(), { cw, chh, cols } = S, on = music.h.onsets;
+        let prev = -9;
+        for (let k = 0; k < on.length; k++) {
+            if (on[k] - prev < .2) continue;                                 // 同時に鳴る音(和音)は 1 つにまとめる
+            prev = on[k];
+            const age = e - on[k];
+            if (age < 0) break;
+            if (age > 2.8) continue;
+            const p = age / 2.8, side = k % 2 ? 1 : -1;
+            const x = (FISHER.c + side * p * 2.5 + Math.sin(k * 2.3 + age * 2.4) * .7) * cw;
+            const y = (FISHER.r - 1.6 - age * 2.2) * chh;
+            const c = Math.floor(x / cw + .5), r = Math.floor(y / chh + .5);
+            if (r < 0 || (MASK && c >= 0 && c < cols && MASK[c + r * cols])) continue;   // 文字の上には出さない
+            g.globalAlpha = Math.min(1, age * 8) * Math.pow(1 - p, 1.3);
+            g.fillStyle = COLORS[k % 3 ? FLOAT : LAMP];
+            g.fillText(k % 5 === 2 ? "♫" : "♪", x, y);
+        }
+        g.globalAlpha = 1;
     }
     // 頭の上では指のカーソルにする
     addEventListener("pointermove", (e) => document.documentElement.classList.toggle("fisher-hover", onFisher(e.clientX, e.clientY)), { passive: true });
@@ -769,6 +824,7 @@
         stepShoot();
         stepVisitors(dt);
         stepFish();
+        stepMusic();
         // しぐさの切り替え。カーソルを見ているあいだは、見回すことが多い
         if (!(QS.has("act") && act) && (!act || T - act.t0 > act.len)) begin(watching && Math.random() < .6 ? "look" : pick());
         if (act.a.run) act.a.run(T - act.t0, act.len);
@@ -986,6 +1042,7 @@
                 g.fillText(String.fromCharCode.apply(null, line), 0, r * chh);
             }
         }
+        drawNotes();
     }
 
     // ===== ループ(1秒に30コマ。タブが裏なら止める。動きを減らす設定なら1コマだけ) =====
