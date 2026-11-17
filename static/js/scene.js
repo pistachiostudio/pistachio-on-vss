@@ -521,6 +521,7 @@
         const fx = Math.min(cols - 7, Math.round(cols * .91));               // 頭の位置。右にクーラーボックスを置くぶん空ける
         const put = (c, r, t, cl) => { if (c >= 0 && c < cols && r >= 0 && r < rows) { ch[c + r * cols] = t.charCodeAt(0); cls[c + r * cols] = cl; } };
         const u = fish ? T - fish.t0 : -1, v = cast ? T - cast.t0 : -1;
+        FISHER = { c: fx, r: bank - 1 };                                     // 頭のマス(押すと合言葉の欄が出る)
         const tipC = fx - 6, tipR = bank - 4;                                // 竿先
         const at = (b) => ({ c: tipC + Math.round(b.x), r: Math.max(hz + 1, tipR + 1 - b.dr) });   // ウキが浮いているマス
         // 人: 岸のふちに、川のほうを向いて座っている(後ろ姿)。右に小さなクーラーボックス
@@ -531,6 +532,7 @@
         put(fx - 1, bank, "/", SC_DIM); put(fx, bank, "|", SC_DIM); put(fx + 1, bank, "\\", SC_DIM);
         put(fx - 1, bank + 1, "/", SC_DIM); put(fx, bank + 1, "_", SC_DIM); put(fx + 1, bank + 1, "\\", SC_DIM);
         put(fx + 3, bank, "[", SC_DIM); put(fx + 4, bank, "_", SC_DIM); put(fx + 5, bank, "]", SC_DIM);
+        drawTalk(put);
         // 竿: ふだんは手もとから左上の川へ。投げ直すときは、立てて → 後ろへ振りかぶって → 前へ振る
         const pull = u >= 0 && u < 1.4;                                      // 魚を引いているあいだは竿がしなる
         const pose = v < 0 ? "\\" : v < .7 ? "\\" : v < 1 ? "|" : v < 1.4 ? "/" : v < 1.55 ? "|" : "\\";
@@ -575,6 +577,52 @@
             if (u < .9) { put(b.c - 1, b.r, "*", WATER); put(b.c + 1, b.r, "*", WATER); }
         }
     }
+
+    // ===== 釣り人の頭を押すと、そばに小さな入力欄が出る(合言葉) =====
+    // Enter を押すと、釣り人が頭の上で「...」とつぶやく。Esc か、ほかを押すと閉じる
+    let FISHER = null, secret = null, talk = null;
+    // 釣り人のつぶやき: 頭の上に、1 字ずつ出てきて、少しして消える
+    function drawTalk(put) {
+        if (!talk) return;
+        const e = T - talk.t0, n = Math.min(talk.text.length, Math.floor(e / .35) + 1);
+        if (e > talk.text.length * .35 + 1.8) { talk = null; return; }
+        for (let i = 0; i < n; i++) put(FISHER.c - 1 + i, FISHER.r - 2, talk.text[i], 4);   // 4: 明るい毛の色(景色より目立つ)
+    }
+    function onFisher(x, y) {
+        if (!FISHER || !S.cw) return false;
+        const c = Math.floor(x / S.cw), r = Math.floor(y / S.chh);
+        if (MASK && MASK[FISHER.c + FISHER.r * S.cols]) return false;        // 文字に隠れているときは押せない
+        return Math.abs(c - FISHER.c) <= 1 && r >= FISHER.r - 1 && r <= FISHER.r;
+    }
+    function closeSecret() { if (secret) { secret.remove(); secret = null; } }
+    function openSecret() {
+        if (!secret) {
+            secret = document.createElement("form");
+            secret.className = "secret";
+            secret.innerHTML = '<input type="text" maxlength="64" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="合言葉">';
+            const input = secret.querySelector("input");
+            // 景色のマス目にそろえて、つぶやきの 2 段上に出す。右はしは頭の 2 マス右
+            secret.style.fontSize = Math.max(11, S.chh / 1.2) + "px";       // 小さい画面でも読める大きさは残す
+            secret.style.right = Math.max(8, S.W - (FISHER.c + 2) * S.cw) + "px";
+            secret.style.top = Math.max(8, (FISHER.r - 5) * S.chh) + "px";
+            secret.addEventListener("submit", (e) => {
+                e.preventDefault();
+                if (!input.value.trim()) return;
+                input.value = "";
+                talk = { text: "...", t0: T };
+            });
+            secret.addEventListener("keydown", (e) => { if (e.key === "Escape") closeSecret(); });
+            document.body.appendChild(secret);
+        }
+        secret.querySelector("input").focus();
+    }
+    // 頭の上では指のカーソルにする
+    addEventListener("pointermove", (e) => document.documentElement.classList.toggle("fisher-hover", onFisher(e.clientX, e.clientY)), { passive: true });
+    // 開くのは click で(スマホでもキーボードが出るように)。入力欄の外を押したら閉じる
+    addEventListener("click", (e) => {
+        if (e.target.closest && e.target.closest(".secret")) return;
+        if (onFisher(e.clientX, e.clientY)) openSecret(); else closeSecret();
+    });
 
     // ===== 向こう岸の高架を、ときどき電車が通る(景色。犬は追わない) =====
     let train = null, trainAt = 4 + Math.random() * 4;
@@ -696,6 +744,8 @@
     }
     addEventListener("pointermove", (e) => onMove(e.clientX, e.clientY), { passive: true });
     addEventListener("pointerdown", (e) => {
+        // 合言葉の欄や釣り人を押したときは、犬は反応しない
+        if ((e.target.closest && e.target.closest(".secret")) || onFisher(e.clientX, e.clientY)) return;
         onMove(e.clientX, e.clientY);
         if (SLEEP) { ears.forEach((q) => { q.vy -= 1.4; }); return; }
         // 呼ばれたら、かしげるか、うれしくてハッハッするか、ぺろっ
