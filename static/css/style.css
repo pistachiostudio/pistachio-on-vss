@@ -102,6 +102,24 @@ canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 1
 .copied { margin-left: 8px; font-size: 11px; color: var(--fur); visibility: hidden; opacity: 0; transition: opacity .2s; }
 .copied.on { visibility: visible; opacity: 1; }
 
+/* 釣り人の頭を押すと出る、小さな合言葉の欄(js/scene.js が作る)。頭の上ではカーソルを指にする */
+html.fisher-hover, html.fisher-hover body { cursor: pointer; }
+/* 枠は付けず、景色の文字と同じ大きさで「> 」と下線だけ。文字の大きさとマスの位置は scene.js が合わせる */
+.secret {
+    position: fixed; z-index: 3; margin: 0; display: flex; align-items: baseline;
+    font-family: "M PLUS 1 Code", monospace; line-height: 1.2; color: var(--float); animation: secret-in .25s ease-out;
+}
+.secret::before { content: ">"; width: 2ch; }
+.secret input {
+    width: 12ch; padding: 0; border: 0; border-bottom: 1px dashed var(--scene-dim); border-radius: 0; background: var(--bg);
+    font: inherit; color: var(--white); caret-color: var(--float); outline: none;
+}
+.secret input:focus { border-bottom-color: var(--scene); }
+@keyframes secret-in { from { opacity: 0; transform: translateY(4px); } }
+@media (prefers-reduced-motion: reduce) { .secret { animation: none; } }
+/* スマホは 16px 未満だと、入力するときに画面が拡大されてしまう */
+@media (pointer: coarse) { .secret input { font-size: 16px; } }
+
 .foot { margin-top: 72px; font-size: 9.5px; line-height: 1.8; letter-spacing: .03em; color: var(--fur-dim); }
 .foot a { color: var(--fur); text-decoration-color: var(--scene); }
 
