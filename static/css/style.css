@@ -36,6 +36,11 @@ body { margin: 0; min-height: 100%; }
 /* 高さはアドレスバーが引っ込んだときの画面(100lvh)で固定する。スマホでスクロールしてバーが出入りしても
    絵の大きさが変わらず、犬が跳ねない(バーが出ているあいだは、いちばん下が少し隠れるだけ) */
 canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 100lvh; display: block; touch-action: pan-y; }
+/* サイトの中でページを移るとき、白く点滅させずに前のページから溶けるように切り替える(対応しているブラウザだけ)。
+   景色の続きは js/scene.js が引き継ぐ */
+@media (prefers-reduced-motion: no-preference) {
+    @view-transition { navigation: auto; }
+}
 
 /* 文字は左の列に。下の絵は、文字のある行だけ空ける(canvas 側) */
 .site {
@@ -62,6 +67,7 @@ canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; height: 1
 .gigs ul { list-style: none; padding: 0; margin: 0; }
 .gigs li > p { margin: 0; }
 .shows .tba { color: var(--fur-dim); }    /* TBA と、予定がないときの "Nothing on the calendar yet!" */
+.shows .done, .shows .done a { color: var(--fur-dim); }    /* 日付が過ぎた回(js/shows.js が付ける) */
 .shows > p { margin-top: 6px; }
 
 /* MEMBERS(partials/members.md): 2列。リンクが複数ある人は、押すとその下に開く(layouts/index.html のスクリプトで組み立てる) */

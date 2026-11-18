@@ -160,6 +160,8 @@ ______ _     _             _     _
         // 外へのリンクは新しいタブで開く
         document.querySelectorAll('.site a[href^="http"]').forEach((a) => { a.target = "_blank"; a.rel = "noopener"; });
     </script>
+    <!-- NEXT SHOWS の日付と今日を比べる(過ぎた回を暗く、当日と前夜は景色に出す、MusicEvent の構造化データ) -->
+    <script src="js/shows.js"></script>
     <!-- 犬のデータ(トップだけ)と、絵を描くスクリプト -->
     <script src="js/dogs.js"></script>
     <script src="js/scene.js"></script>

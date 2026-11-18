@@ -29,6 +29,9 @@
     canvas.setAttribute("aria-label", DOG.aria);
     const SLEEP = DOG.mode === "sleep";
     const QS = new URLSearchParams(location.search);
+    // ライブの当日と前日(js/shows.js が NEXT SHOWS の日付から決める。トップだけ)。404 ページでは釣り人が何も釣れない
+    const SHOWS = window.SHOWS || { today: [], eve: [] };
+    const LOST = document.body.classList.contains("lost");
     const W = D.w, H = D.h;
     const bytes = (s) => Uint8Array.from(atob(s), (c) => c.charCodeAt(0));
     const V = bytes(D.v), A = bytes(D.a);
@@ -354,6 +357,14 @@
             const x0 = Math.floor(train.x);
             for (let l = 0; l < train.len; l++) {
                 const c = x0 + l, m = l % 9;
+                // 会場を流す電車は、屋根の上(屋根のもう 1 段上)に看板を載せている。車両はふだんのまま
+                if (train.sign && deck >= 3 && c >= 0 && c < cols) {
+                    const k = l - ((train.len - train.sign.length) >> 1);
+                    if (k >= 0 && k < train.sign.length && train.sign.charCodeAt(k) !== 32) {
+                        const ib = c + (deck - 3) * cols;
+                        ch[ib] = train.sign.charCodeAt(k); cls[ib] = LAMP;
+                    }
+                }
                 if (c < 0 || c >= cols || m === 8) continue;
                 const iw = c + (deck - 1) * cols, ir = c + (deck - 2) * cols;
                 if (m === 0 || m === 7) { ch[iw] = m ? 93 : 91; cls[iw] = SC; }
@@ -418,7 +429,9 @@
     })();
     const FLIP = { 47: 92, 92: 47, 96: 39, 39: 96 };                        // / ↔ \、` ↔ '
     const BOATL = BOATR.map((row) => row.slice().reverse().map(([t, cl]) => [FLIP[t] || t, cl]));
-    let boat = null, boatAt = QS.has("boat") ? 1 : BOAT_EVERY;
+    // ライブの前日と当日は、屋根の上に公演の日付(12.20)の看板を載せる。その日は最初の船が早めに来る
+    const LABEL = (() => { const s = SHOWS.today[0] || SHOWS.eve[0]; return s ? s.date.slice(5).replace("-", ".") : ""; })();
+    let boat = null, boatAt = QS.has("boat") ? 1 : LABEL ? 15 + Math.random() * 10 : BOAT_EVERY;
     let walker = null, walkAt = QS.has("walk") ? 1.5 : Infinity;
     function stepVisitors(dt) {
         if (!SCN.ch) return;
@@ -449,6 +462,14 @@
         const { cols, ch, cls } = S, { hz, bank } = SCN;
         const hull = Math.min(bank - 2, Math.max(hz + BOATH, hz + Math.round((bank - hz) * .42)));
         const x0 = Math.round(boat.x), art = boat.dir > 0 ? BOATR : BOATL;
+        // 日付の看板は、屋根のもう 1 段上、屋根の真ん中に載せる(左右を反転しない)
+        if (LABEL && !lights) {
+            const r = hull - BOATH, c0 = x0 + ((BOATW - LABEL.length) >> 1) + (boat.dir > 0 ? 0 : 1);
+            for (let k = 0; k < LABEL.length; k++) {
+                const c = c0 + k;
+                if (r >= 0 && c >= 0 && c < cols) { ch[c + r * cols] = LABEL.charCodeAt(k); cls[c + r * cols] = LANTERN; }
+            }
+        }
         for (let rr = 0; rr < BOATH; rr++) {
             const r = hull - BOATH + 1 + rr;
             for (let cc = 0; cc < BOATW; cc++) {
@@ -493,7 +514,8 @@
     // 釣れたあとはウキが上がっているので、少しして投げ直す
     // ?fish ですぐ釣れる / ?cast ですぐ投げ直す(確かめる用)
     const FISH_EVERY = 480, CAST_LEN = 2.6;
-    let fish = null, fishAt = QS.has("fish") ? 2.5 : FISH_EVERY;
+    // 404 ページでは魚は釣れず、ときどき「...」とつぶやく
+    let fish = null, fishAt = QS.has("fish") ? 2.5 : LOST ? Infinity : FISH_EVERY, lostAt = LOST ? 3 : Infinity;
     let cast = null, castAt = QS.has("cast") ? 1.5 : Infinity;
     // ウキ: 竿先から x マス右(左はマイナス)・奥へ dr の位置に着水し、毎秒 v マスずつ右へ流れる。
     // x が until をこえたら投げ直す。null は上げてある
@@ -501,6 +523,7 @@
     let bobber = newBobber(-18 + Math.random() * 16, 0), bobberSeen = true;
     const bx = (b) => b.x0 + b.v * (T - b.t0);                             // いまの x
     function stepFish() {
+        if (!talk && T > lostAt) { talk = { text: "...", t0: T }; lostAt = T + 12 + Math.random() * 10; }
         if (!fish && !cast && bobber && bobberSeen && T > fishAt) fish = { t0: T };
         if (fish && T - fish.t0 > 3.4) {
             fish = null; bobber = null;
@@ -680,11 +703,19 @@
     });
 
     // ===== 向こう岸の高架を、ときどき電車が通る(景色。犬は追わない) =====
-    let train = null, trainAt = 4 + Math.random() * 4;
+    // ライブの当日は、1 本おきに、屋根の上に会場の看板(TODAY @WWW, Shibuya)を載せた電車が通る。
+    // 1 行をまとめて描くので半角の字だけにする(全角が混ざると、その行のうしろがずれる)。読めるように少しゆっくり走る
+    const ascii = (s) => s.replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/[^\x20-\x7e]/g, "").replace(/\s+/g, " ").trim();
+    const SIGN = SHOWS.today.length
+        ? ascii("TODAY " + [...new Set(SHOWS.today.map((s) => (s.place ? "@" + s.place : s.name)))].join(" / ")) : "";
+    let train = null, trainAt = 4 + Math.random() * 4, trainN = 0;
     function stepTrain(dt) {
         if (!train && T > trainAt && SCN.ch) {
-            const dir = side(), len = 9 * (4 + ((Math.random() * 3) | 0));
-            train = { dir, len, x: dir > 0 ? -len : S.cols, v: dir * S.cols / (17 + Math.random() * 7) };   // 17〜24 秒で画面を渡る
+            const sign = SIGN && trainN++ % 2 === 0 ? SIGN : "";
+            // 看板を載せる電車は、看板より少し長くなるまで車両をつなぐ
+            const n = 4 + ((Math.random() * 3) | 0), dir = side(), len = 9 * (sign ? Math.max(n, Math.ceil((sign.length + 6) / 9)) : n);
+            // ふだんは 17〜24 秒、会場を流す電車は 30〜36 秒で画面を渡る
+            train = { dir, len, sign, x: dir > 0 ? -len : S.cols, v: dir * S.cols / (sign ? 30 + Math.random() * 6 : 17 + Math.random() * 7) };
         }
         if (!train) return;
         train.x += train.v * dt;
@@ -1045,6 +1076,34 @@
         drawNotes();
     }
 
+    // ===== ページを移っても、景色を続きから描く =====
+    // 移る前のページが、時刻と電車・屋形船・ウキの様子を sessionStorage に残し、次のページが 10 秒以内なら続きから描く。
+    // 星や窓は画面の大きさで決まるので、同じ大きさなら同じ場所に出る。
+    // 電車と船の位置は、マスの数ではなく画面の幅に対する割合で残す(寝ている犬のトップは、マスの大きさが違うため)
+    const KEEP = "scene";
+    addEventListener("pagehide", () => {
+        if (!S.cols || QS.has("sim")) return;
+        const rel = (o) => o && Object.assign({}, o, { x: o.x / S.cols, v: o.v / S.cols });
+        // 投げ直しや魚の途中なら、投げ終わったところから続ける
+        const b = cast ? Object.assign({}, cast.to, { t0: T }) : fish ? null : bobber;
+        try {
+            sessionStorage.setItem(KEEP, JSON.stringify({ at: Date.now(), T, shootAt, train: rel(train), trainAt, trainN,
+                boat: rel(boat), boatAt, bobber: b, castAt: fish ? T + 2 : castAt, fishAt }));
+        } catch (e) { /* 保存できなければ、ふつうに最初から描く */ }
+    });
+    function restore() {
+        let s = null;
+        try { s = JSON.parse(sessionStorage.getItem(KEEP)); sessionStorage.removeItem(KEEP); } catch (e) { s = null; }
+        if (!s || !(Date.now() - s.at < 10000) || QS.has("sim")) return;
+        const gap = (Date.now() - s.at) / 1000;
+        const abs = (o) => o && Object.assign({}, o, { x: (o.x + o.v * gap) * S.cols, v: o.v * S.cols });
+        T = s.T + gap; shootAt = s.shootAt;
+        train = abs(s.train); trainAt = s.trainAt; trainN = s.trainN;
+        boat = abs(s.boat); boatAt = s.boatAt;
+        bobber = s.bobber; castAt = s.castAt === null ? Infinity : s.castAt;
+        if (!LOST && !QS.has("fish")) fishAt = s.fishAt === null ? FISH_EVERY : s.fishAt;
+    }
+
     // ===== ループ(1秒に30コマ。タブが裏なら止める。動きを減らす設定なら1コマだけ) =====
     const FPS = 30;
     let last = 0;
@@ -1063,6 +1122,7 @@
         : Promise.resolve();
     fontReady.catch(() => {}).then(() => {
         resize();
+        restore();
         // 大きさが本当に変わったとき(回転、ウィンドウの幅を変えたときなど)だけ作り直す
         addEventListener("resize", () => {
             if (canvas.clientWidth === S.W && canvas.clientHeight === S.H) return;

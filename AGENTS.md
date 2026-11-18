@@ -20,8 +20,8 @@
 - **ビルド成果物とバイナリはコミットしない。** `dist/` と VSS のバイナリ(`vss` / `vss.exe` /
   `vss_*.tar.gz` / `vss_*.zip`)は `.gitignore` 済み。`prototypes/`(デザインの試作)と `.vscode/`(ローカルのログ置き場)も追跡対象外。
 - **色は `static/css/style.css` の `:root` のトークンだけで管理する**(→ [8. 見た目の仕組み](#色))。
-- **2 つのレイアウト(`layouts/index.html` と `layouts/default.html`)はほぼ同じ中身の複製。**
-  共通部分を変えるときは 2 ファイルとも直す(→ [7. レイアウト](#7-レイアウト))。
+- **3 つのレイアウト(`layouts/index.html` / `layouts/default.html` / `layouts/404.html`)はほぼ同じ中身の複製。**
+  共通部分を変えるときは 3 ファイルとも直す(→ [7. レイアウト](#7-レイアウト))。
 - **PR に予約マージの文言(`/schedule 日時`)を勝手に入れない。** 予約マージ = 本番公開のタイミングになる。
 - 変更後は `vss build` が通ることを確かめる。見た目に関わる変更は、ブラウザで実際の表示も見る。テストやリンターは無い。
 
@@ -90,13 +90,16 @@ vss serve        # ファイル変更を見ながらローカルプレビュー(
   contact.md           連絡先。メールアドレスとコピーボタン(js/copy.js)
   cbscin.md            CBS と Chicken Is Nice(ハウスバンド)のメンバーとパート
   game.md / oldnews.md / 20230826.md   どこからもリンクされていないページ(sitemap.xml にも載せていない)
+  404.md               ない URL で GitHub Pages が返すページ。frontmatter の title だけ(layouts/404.html を使う)
 partials/            トップの各ブロックの中身(ひとこと / next_shows / members / find_us)。単独のページにはならない
 layouts/             HTML テンプレート。ページと同名の layout があればそれ、なければ default.html
   index.html           トップ用(犬のデータ dogs.js も読む。JSON-LD もここだけ)
   default.html         下のページ用(景色だけ。"← Top" とページ見出しを出す。copy.js を読む)
+  404.html             404.md 用。default.html とほぼ同じで、<base href="/"> と noindex がある(→ 11.)
 static/              そのまま dist/ にコピーされる静的ファイル
   css/style.css        すべての CSS。色は :root のトークンだけ
-  js/scene.js          うしろの canvas に、夜の川べり(と犬)を文字で描く(約 58KB)
+  js/scene.js          うしろの canvas に、夜の川べり(と犬)を文字で描く(約 60KB)
+  js/shows.js          NEXT SHOWS の日付を今日と比べる。過ぎた回を暗く、当日と前夜は景色に出す、MusicEvent の構造化データ(トップだけ)
   js/dogs.js           犬の濃淡と形のデータ(写真から作ったもの。約 220KB。手で編集しない)
   js/tune.js           釣り人の合言葉で鳴る曲(曲データは暗号化してある。scene.js が必要なときだけ読む)
   js/copy.js           data-copy のボタンでコピーして copied! を出す(contact.md のメールアドレス。default.html が読む)
@@ -167,6 +170,12 @@ post_slug: "past"
   `{{^partials.名前}}…{{/partials.名前}}` は空のときだけ出る。名前は `partials/` からの相対パスで拡張子なし(`partials.ひとこと` のように日本語も可)。
 - MEMBERS の開閉(入れ子のリストを `<details>` にする)と、NEXT SHOWS の TBA を暗くするのは `layouts/index.html` の短いスクリプト。
   スクリプトが動かないときは、入れ子のリストのまま見える。
+- NEXT SHOWS の日付は `static/js/shows.js` が、ページを開いたときに見ている人の今日(日本時間)と比べる。**ビルドし直さなくても、日付が来れば変わる。**
+  - 日付が過ぎた回は暗くなる(past.md へ移すまでのあいだ)。
+  - 当日は電車が、前夜と当日は屋形船が告知をする(→ [8.](#景色と登場するもの))。
+  - これからの回は、検索エンジン向けの構造化データ(MusicEvent)になる(→ [9.](#9-検索まわりseo-と-ai-向け))。
+  - 読むのは「`YYYY.MM.DD` の行」と「`出演 @会場, 地名`」の形。`>>>` のような字だけのリンクはチケットのリンク、先頭の `[S/O]` のような印は名前から外す。
+    書き方を変えるときは shows.js の読み取りも合わせる。
 - 外部リンク(`http` で始まる href)は、レイアウトのスクリプトが自動で `target="_blank" rel="noopener"` にする。
   Markdown 側で `target` を書く必要はない。
 
@@ -181,23 +190,25 @@ post_slug: "past"
   - `{{{partials.名前}}}`(→ [6. トップページの中身](#6-トップページの中身partials))
 - `{{#値}}…{{/値}}` は値があるときだけ、`{{^値}}…{{/値}}` は値がないときだけ出る。
   ramhorns の `{{>file}}`(HTML の include)は使えない(ビルドエラー)。
-- **2 つのレイアウトはほぼ同じ中身の複製。** 共通部分を変えるときは 2 ファイルとも直す。共通部分は次のとおり。
+- **3 つのレイアウトはほぼ同じ中身の複製。** 共通部分を変えるときは 3 ファイルとも直す。共通部分は次のとおり。
   - `<head>` の GA・OGP・favicon・manifest・フォント・CSS
   - ヘッダー(サイト名とタグライン)、フッター
   - 外部リンクを新しいタブで開くスクリプト、`©` の年を入れるスクリプト
-- **ただし `<head>` には、わざと違う部分がある。** 片方からもう片方へそのまま写さないこと。
+- **ただし `<head>` などには、わざと違う部分がある。** ほかのレイアウトへそのまま写さないこと。
 
-  | | `index.html`(トップ) | `default.html`(下のページ) |
-  |---|---|---|
-  | `<title>` / `og:title` | `{{site_title}}` | `{{title}} \| {{site_title}}` |
-  | canonical / `og:url` | `{{base_url}}` をそのまま | `{{#post_slug}}` のガード付きで `{{base_url}}{{post_slug}}` |
-  | JSON-LD | ある(WebSite と Organization) | ない |
-  | 読むスクリプト | `dogs.js` → `scene.js` | `copy.js` → `scene.js` |
-  | canvas の `aria-label` | 川べりの黒い犬 | 夜の川べり |
+  | | `index.html`(トップ) | `default.html`(下のページ) | `404.html` |
+  |---|---|---|---|
+  | `<title>` / `og:title` | `{{site_title}}` | `{{title}} \| {{site_title}}` | `<title>` だけ(OGP なし) |
+  | canonical / `og:url` | `{{base_url}}` をそのまま | `{{#post_slug}}` のガード付きで `{{base_url}}{{post_slug}}` | ない |
+  | `<base href="/">` / `noindex` | ない | ない | ある |
+  | JSON-LD | ある(WebSite と Organization。MusicEvent は shows.js が足す) | ない | ない |
+  | 読むスクリプト | `shows.js` → `dogs.js` → `scene.js` | `copy.js` → `scene.js` | `scene.js` |
+  | `<body>` | | | `class="lost"`(釣り人が何も釣れない) |
+  | canvas の `aria-label` | 川べりの黒い犬 | 夜の川べり | 夜の川べり |
 
 - スクリプトや長い CSS はレイアウトに直書きせず `static/` に置く(テンプレートの `{{ }}` とぶつからないように)。
   JSON-LD のように直書きするときは、`}}` が続かないよう閉じかっこを行で分ける。
-- 2 つのレイアウトの先頭(`<!DOCTYPE html>` の前)のコメントに、figlet の ASCII ロゴがある。README のロゴと同じもの。
+- レイアウトの先頭(`<!DOCTYPE html>` の前)のコメントに、figlet の ASCII ロゴがある。README のロゴと同じもの。
 - `{{title}}` は各 .md の frontmatter `title:`。書き忘れるとタブのタイトルが空になる(以前は全ページ空だった)。
 
 ---
@@ -223,6 +234,11 @@ post_slug: "past"
       合言葉は環境変数で渡し、ファイルに残さない。
     **このリポジトリは公開なので、合言葉や隠す中身(平文の曲データなど)をコミットやコメント、PR に書かないこと。**
   - 屋形船は 4 分ごとに川を通る(赤い提灯が川に映る)。
+  - 404 ページでは、魚は釣れず、釣り人がときどき `...` とつぶやく。
+- ライブの日(トップだけ。NEXT SHOWS の日付から決める → [6.](#6-トップページの中身partials)):
+  - 当日は、1 本おきに、屋根の上に会場の看板(`TODAY @WWW, Shibuya`)を載せた電車が通る。車両はふだんのまま、看板より少し長くなるまでつなぐ。読めるように少しゆっくり走る。
+    1 行をまとめて描くので、半角の字だけを出す(全角や `’` は落とすか置きかえる。全角が混ざると、その行のうしろがずれる)。
+  - 前夜と当日は、屋形船の屋根の上に公演の日付(`12.20`)の看板が載る。その日は最初の船が 15〜25 秒で来る。
   - どちらも、タブが裏にあるあいだは時間を数えない。
   - 懐中電灯で散歩する人は保留中で、`?walk` のときだけ出る。
 - 犬: トップページだけ。
@@ -244,6 +260,9 @@ post_slug: "past"
   手前の岸(釣り人がいるところ)は、スマホでもいつも見えている高さに収めている。
 - 動きを減らす設定(`prefers-reduced-motion`)では、絵は 1 コマだけ描いて止まる。
 - フォントは M PLUS 1 Code。canvas の絵も同じフォントで描くので、フォントを変えると犬の見え方も変わる。
+- サイトの中でページを移ると、前のページから溶けるように切り替わる(CSS の `@view-transition`。対応しているブラウザだけ)。
+  景色は続きから描く。移る前のページが時刻と電車・屋形船・ウキの様子を sessionStorage に残し、次のページが 10 秒以内なら引き継ぐ。
+  星や窓は画面の大きさで決まるので、同じ大きさなら同じ場所に出る(寝ている犬のトップだけはマスの大きさが違うので、星の位置も違う)。
 
 ### 試しに見るときの URL パラメータ
 
@@ -258,6 +277,7 @@ post_slug: "past"
 | `?eyes=0` | 閉じた目を描かない(お試し用) |
 | `?shadow=0` | 寝ている犬の下の景色を消す処理をしない(体の下に景色が透けて見える) |
 | `?sink=数値` | 寝ている犬を画面の下に沈める量(画面の高さに対する割合。既定 0.02)を上書きする |
+| `?date=YYYY-MM-DD` | トップで「今日」をその日にする。当日の電車(`?date=2026-12-20`)、前夜の提灯(`?date=2026-12-19&boat`)、過ぎた回が暗くなるのを確かめる |
 
 ### 色
 
@@ -284,6 +304,10 @@ post_slug: "past"
   - 変えたら、`dist/index.html` から JSON-LD を取り出し、JSON として読めるかを確かめる
     (例: `python -c "import re,json;h=open('dist/index.html',encoding='utf-8').read();json.loads(re.search(r'ld\+json\">(.*?)</script>',h,re.S).group(1))"`)。
   - 本番では Google のリッチリザルトテストで、Organization が「有効」と出ることを確認済み。
+- これからの公演の MusicEvent は、`static/js/shows.js` が NEXT SHOWS から作り、ページを開いたときに `<head>` へ足す
+  (Google は JavaScript で足した JSON-LD も読む)。過ぎた回と、会場の書いていない回(TBA)は出さない。
+  - 中身: `name`(`@` の前)、`startDate`(日付だけ)、`location`(会場名と、`,` の後ろを `addressLocality` に)、チケットのリンクがあれば `offers.url`。
+  - 住所が地名だけなので、リッチリザルトテストで警告が出るかもしれない。公開後に本番の URL で確かめる。
 - `static/llms.txt` は AI 向けのサイト案内。ライブ予定やメンバーのような変わりやすい中身は書かず、ページへの案内にとどめる。
 - `static/robots.txt` はすべて許可(AI のクローラーも含む)と、sitemap.xml の場所だけ。
 - Google Search Console は、ドメインプロパティ(`pistachiostudio.net`)で DNS の TXT により確認済み。
@@ -348,7 +372,9 @@ post_slug: "past"
 - フォントは Google Fonts の M PLUS 1 Code(SIL OFL 1.1)。`layouts/*.html` の `<head>` で読み込む外部 CDN 依存。
 - `layouts/*.html` に Google Analytics(gtag、`G-5W20EVMG6T`)が入っている。意図なく外さない。
 - アセットは相対パス(`css/...`, `js/...`, `favicon.ico`)で参照している。ページを深いパスに置くと壊れるので、ページはルート直下に置く。
-  同じ理由で、独自の 404 ページは作っていない(深い URL の 404 では CSS が読めない)。
+  - 404 ページ(`404.md` と `layouts/404.html`)だけは、`/a/b/c` のような深い URL でも返るので、`<base href="/">` で相対パスの基準をルートにしている。
+    `<base>` をほかのレイアウトに入れないこと(`#` だけのリンクがトップへ飛ぶようになる)。
+  - `vss serve` は、ない URL に 404.html を返さない。手元では `/404` を直接開いて見る。深い URL は、公開後に本番で確かめる。
 - `<meta>` での CSP は入れていない。レイアウトにインラインのスクリプトがあり効果が薄いうえ、GA を壊すおそれがあるため。
 - `security.txt` の `Expires` は 1 年以内が決まり。期限(今は 2027-11-08)が来る前に日付を延ばす。
 - 以前の仕組み(カラーテーマの切り替えと theme-swap スキル、左上のドット絵の猫、t.js と jQuery の
