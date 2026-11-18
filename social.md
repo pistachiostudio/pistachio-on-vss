@@ -50,9 +50,9 @@ post_slug: "social"
 
 ### YouTube
 
-- [Pistachio Studio](https://www.youtube.com/c/pistachiostudiokngw)
-- [TOSHIKI HAYASHI](https://www.youtube.com/c/TOSHIKIHAYASHI)
-- [mamiko suzuki](https://www.youtube.com/channel/UCTMTusalcEnq9WnuXfWmV7w)
+- [Pistachio Studio](https://www.youtube.com/@PistachioStudio)
+- [TOSHIKI HAYASHI](https://www.youtube.com/@TOSHIKIHAYASHI)
+- [mamiko suzuki](https://www.youtube.com/@______mmk______)
 
 ### Spotify
 
