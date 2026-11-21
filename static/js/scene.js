@@ -437,8 +437,12 @@
     })();
     const FLIP = { 47: 92, 92: 47, 96: 39, 39: 96 };                        // / ↔ \、` ↔ '
     const BOATL = BOATR.map((row) => row.slice().reverse().map(([t, cl]) => [FLIP[t] || t, cl]));
-    // ライブの前日と当日は、屋根の上に公演の日付(12.20)の看板を載せる。その日は最初の船が早めに来る
-    const LABEL = (() => { const s = SHOWS.today[0] || SHOWS.eve[0]; return s ? s.date.slice(5).replace("-", ".") : ""; })();
+    // ライブの前日と当日は、屋根の上に公演の日付と会場(12.20 @WWW)の看板を載せる。その日は最初の船が早めに来る。
+    // 地名まで入れると船より長くなるので、会場名だけにする
+    const LABEL = (() => {
+        const s = SHOWS.today[0] || SHOWS.eve[0];
+        return s ? ascii(s.date.slice(5).replace("-", ".") + (s.venue ? " @" + s.venue : "")) : "";
+    })();
     let boat = null, boatAt = QS.has("boat") ? 1 : LABEL ? 15 + Math.random() * 10 : BOAT_EVERY;
     let walker = null, walkAt = QS.has("walk") ? 1.5 : Infinity;
     function stepVisitors(dt) {
@@ -713,7 +717,8 @@
     // ===== 向こう岸の高架を、ときどき電車が通る(景色。犬は追わない) =====
     // ライブの当日は、1 本おきに、屋根の上に会場の看板(TODAY @WWW, Shibuya)を載せた電車が通る。
     // 1 行をまとめて描くので半角の字だけにする(全角が混ざると、その行のうしろがずれる)。読めるように少しゆっくり走る
-    const ascii = (s) => s.replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/[^\x20-\x7e]/g, "").replace(/\s+/g, " ").trim();
+    // (屋形船の看板も同じ。ascii() は function なので、上の屋形船のところからも使える)
+    function ascii(s) { return s.replace(/[‘’]/g, "'").replace(/[“”]/g, '"').replace(/[^\x20-\x7e]/g, "").replace(/\s+/g, " ").trim(); }
     const SIGN = SHOWS.today.length
         ? ascii("TODAY " + [...new Set(SHOWS.today.map((s) => (s.place ? "@" + s.place : s.name)))].join(" / ")) : "";
     let train = null, trainAt = 4 + Math.random() * 4, trainN = 0;
