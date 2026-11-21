@@ -284,6 +284,13 @@
             }
         }
     }
+    // 電車や屋形船のように何行かある絵は、どれか 1 行でも文字に重なる列を丸ごと描かない。
+    // 行ごとに消すと形が欠けて見えるので、文字の列の裏をまっすぐくぐるように見せる
+    function hiddenCol(c, r0, r1) {
+        if (!MASK) return false;
+        for (let r = Math.max(0, r0); r <= r1 && r < S.rows; r++) if (MASK[c + r * S.cols]) return true;
+        return false;
+    }
 
 
     // ===== 流れ星 =====
@@ -357,6 +364,7 @@
             const x0 = Math.floor(train.x);
             for (let l = 0; l < train.len; l++) {
                 const c = x0 + l, m = l % 9;
+                if (c >= 0 && c < cols && hiddenCol(c, deck - (train.sign ? 3 : 2), deck - 1)) continue;   // 文字の裏をくぐる
                 // 会場を流す電車は、屋根の上(屋根のもう 1 段上)に看板を載せている。車両はふだんのまま
                 if (train.sign && deck >= 3 && c >= 0 && c < cols) {
                     const k = l - ((train.len - train.sign.length) >> 1);
@@ -461,20 +469,20 @@
         if (!boat) return;
         const { cols, ch, cls } = S, { hz, bank } = SCN;
         const hull = Math.min(bank - 2, Math.max(hz + BOATH, hz + Math.round((bank - hz) * .42)));
-        const x0 = Math.round(boat.x), art = boat.dir > 0 ? BOATR : BOATL;
+        const x0 = Math.round(boat.x), art = boat.dir > 0 ? BOATR : BOATL, top = hull - BOATH + (LABEL ? 0 : 1);
         // 日付の看板は、屋根のもう 1 段上、屋根の真ん中に載せる(左右を反転しない)
         if (LABEL && !lights) {
             const r = hull - BOATH, c0 = x0 + ((BOATW - LABEL.length) >> 1) + (boat.dir > 0 ? 0 : 1);
             for (let k = 0; k < LABEL.length; k++) {
                 const c = c0 + k;
-                if (r >= 0 && c >= 0 && c < cols) { ch[c + r * cols] = LABEL.charCodeAt(k); cls[c + r * cols] = LANTERN; }
+                if (r >= 0 && c >= 0 && c < cols && !hiddenCol(c, top, hull)) { ch[c + r * cols] = LABEL.charCodeAt(k); cls[c + r * cols] = LANTERN; }
             }
         }
         for (let rr = 0; rr < BOATH; rr++) {
             const r = hull - BOATH + 1 + rr;
             for (let cc = 0; cc < BOATW; cc++) {
                 const [t, cl] = art[rr][cc], c = x0 + cc;
-                if ((t === 32 && !cl) || c < 0 || c >= cols) continue;
+                if ((t === 32 && !cl) || c < 0 || c >= cols || hiddenCol(c, top, hull)) continue;
                 const i = c + r * cols;
                 ch[i] = t; cls[i] = cl;
                 if (t === 111 && cl === LANTERN && lights) lights.push({ c, m: hull + 1, len: .5, cl: LANTERN });
