@@ -8,6 +8,10 @@ post_slug: "past"
 
 ### 2026
 
+11.21
+
+  - CBS & Chicken Is Nice @Bar Chit Chat, Shin-Yurigaoka
+
 10.17
 
   - CBS & Chicken Is Nice @Futakoshinchi
